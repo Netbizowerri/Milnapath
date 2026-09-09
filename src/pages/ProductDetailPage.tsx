@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CheckCircle2, MessageCircle, ShieldCheck, HeartPulse, Sparkles, Award, Pill, Clock, PackageCheck, AlertCircle, PhoneCall } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, MessageCircle, ShieldCheck, HeartPulse, Sparkles, Award, Pill, Clock, PackageCheck, AlertCircle, PhoneCall, Maximize2, X } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/productsData';
 import { COMPANY_DETAILS } from '../data/compensationData';
@@ -11,6 +11,7 @@ interface ProductDetailPageProps {
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, navigate }) => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [isBannerModalOpen, setIsBannerModalOpen] = useState<boolean>(false);
 
   const product = PRODUCTS.find((p) => p.slug === slug) || PRODUCTS[0];
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug).slice(0, 3);
@@ -98,24 +99,6 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
                 <Award className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
                 <span>Clinical Potency</span>
               </div>
-            </div>
-          </div>
-
-          {/* Active Botanicals Card */}
-          <div className="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200 shadow-sm space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-1.5">
-              <Pill className="w-4 h-4 text-emerald-700" />
-              Key Active Botanical Ingredients:
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {product.activeBotanicals.map((bot, i) => (
-                <span
-                  key={i}
-                  className="bg-emerald-50 text-emerald-800 text-sm px-3 py-1.5 rounded-lg font-medium border border-emerald-100"
-                >
-                  🌿 {bot}
-                </span>
-              ))}
             </div>
           </div>
         </div>
@@ -210,40 +193,8 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
             </div>
           </div>
 
-          {/* Full Key Indications & Symptoms Treated */}
-          <div className="space-y-3 bg-white p-6 sm:p-7 rounded-2xl border border-stone-200 shadow-sm">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
-              <PackageCheck className="w-4 h-4 text-emerald-700" />
-              Target Symptoms & Clinical Indications
-            </h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-stone-700">
-              {product.keyIndications.map((ind, i) => (
-                <li key={i} className="flex items-start gap-2.5 leading-relaxed">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{ind}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Full Health Benefits */}
-          <div className="space-y-3 bg-white p-6 sm:p-7 rounded-2xl border border-stone-200 shadow-sm">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
-              <HeartPulse className="w-4 h-4 text-emerald-700" />
-              Comprehensive Physiological Benefits
-            </h3>
-            <ul className="space-y-2.5 text-sm text-stone-700">
-              {product.fullBenefits.map((ben, i) => (
-                <li key={i} className="flex items-start gap-2.5 leading-relaxed">
-                  <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0 mt-1.5"></span>
-                  <span>{ben}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Dosage & Administration Instructions */}
-          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 space-y-2.5">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 space-y-2">
             <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-emerald-700" />
               Recommended Dosage & Administration
@@ -255,6 +206,106 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
               Note: For optimal therapeutic response, maintain continuous usage for a complete 30 to 60-day cycle. Always drink ample clean water.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* KEY ACTIVE BOTANICAL INGREDIENTS & FULL OFFICIAL BANNER SECTION */}
+      <div className="space-y-6">
+        {/* Active Botanicals Card */}
+        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-stone-200 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <h4 className="text-base font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
+              <Pill className="w-5 h-5 text-emerald-700" />
+              Key Active Botanical Ingredients:
+            </h4>
+            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 self-start sm:self-auto">
+              100% Organic Botanical Extracts
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2.5">
+            {product.activeBotanicals.map((bot, i) => (
+              <span
+                key={i}
+                className="bg-emerald-50 text-emerald-900 text-sm sm:text-base px-4 py-2 rounded-xl font-medium border border-emerald-200"
+              >
+                🌿 {bot}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Official Banner Displayed FULL */}
+        {product.bannerUrl && (
+          <div className="w-full space-y-2">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                Official {product.name} Clinical Guide & Flyer
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsBannerModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition-colors cursor-pointer"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>View Fullscreen</span>
+              </button>
+            </div>
+
+            <div 
+              onClick={() => setIsBannerModalOpen(true)}
+              className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300 bg-stone-900 cursor-pointer group relative"
+              title="Click to expand full flyer"
+            >
+              <img
+                src={product.bannerUrl}
+                alt={`${product.name} Official Presentation Banner`}
+                referrerPolicy="no-referrer"
+                className="w-full h-auto object-contain block transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+
+              {/* Hover overlay hint */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center pointer-events-none">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-stone-900/90 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg border border-stone-700 flex items-center gap-2">
+                  <Maximize2 className="w-4 h-4" /> Click to enlarge full screen
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Clinical Indications & Benefits Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Full Key Indications & Symptoms Treated */}
+        <div className="space-y-4 bg-white p-6 sm:p-7 rounded-2xl border border-stone-200 shadow-sm">
+          <h3 className="text-base font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
+            <PackageCheck className="w-5 h-5 text-emerald-700" />
+            Target Symptoms & Clinical Indications
+          </h3>
+          <ul className="space-y-3 text-sm sm:text-base text-stone-700">
+            {product.keyIndications.map((ind, i) => (
+              <li key={i} className="flex items-start gap-2.5 leading-relaxed">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span>{ind}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Full Health Benefits */}
+        <div className="space-y-4 bg-white p-6 sm:p-7 rounded-2xl border border-stone-200 shadow-sm">
+          <h3 className="text-base font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
+            <HeartPulse className="w-5 h-5 text-emerald-700" />
+            Comprehensive Physiological Benefits
+          </h3>
+          <ul className="space-y-3 text-sm sm:text-base text-stone-700">
+            {product.fullBenefits.map((ben, i) => (
+              <li key={i} className="flex items-start gap-2.5 leading-relaxed">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0 mt-2"></span>
+                <span>{ben}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -299,7 +350,7 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
                 </span>
                 <button
                   onClick={() => navigate(`/products/${op.slug}`)}
-                  className="text-sm font-bold text-emerald-700 hover:underline"
+                  className="text-sm font-bold text-emerald-700 hover:underline cursor-pointer"
                 >
                   View Product →
                 </button>
@@ -308,6 +359,44 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
           ))}
         </div>
       </div>
+
+      {/* FULLSCREEN LIGHTBOX MODAL FOR BANNER */}
+      {isBannerModalOpen && product.bannerUrl && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          onClick={() => setIsBannerModalOpen(false)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Controls */}
+            <div className="w-full flex items-center justify-between text-white pb-3">
+              <span className="text-sm font-semibold text-stone-300">
+                {product.name} Official Banner (Full View)
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsBannerModalOpen(false)}
+                className="bg-stone-800 hover:bg-stone-700 text-white rounded-full p-2 transition-colors cursor-pointer border border-stone-700 shadow-lg flex items-center gap-1 text-xs font-semibold px-3"
+              >
+                <X className="w-4 h-4" />
+                <span>Close</span>
+              </button>
+            </div>
+
+            {/* Modal Image */}
+            <div className="w-full rounded-2xl overflow-hidden bg-stone-950 border border-stone-800 shadow-2xl flex items-center justify-center max-h-[85vh] overflow-y-auto">
+              <img
+                src={product.bannerUrl}
+                alt={`${product.name} Official Full Banner`}
+                referrerPolicy="no-referrer"
+                className="w-full h-auto object-contain max-h-[85vh]"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

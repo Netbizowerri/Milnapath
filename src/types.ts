@@ -16,6 +16,7 @@ export interface Product {
   nafdacApproved: boolean;
   imageAccent: string;
   imageUrl: string;
+  bannerUrl?: string;
 }
 
 export interface PackageTier {

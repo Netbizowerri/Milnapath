@@ -30,7 +30,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#059669',
-    imageUrl: 'https://i.ibb.co/kVZ0nvRj/Milnapath-International.jpg'
+    imageUrl: 'https://i.ibb.co/kVZ0nvRj/Milnapath-International.jpg',
+    bannerUrl: 'https://i.ibb.co/WNXKR6QV/Whats-App-Image-2026-09-08-at-1-48-05-PM-1.jpg'
   },
   {
     id: 'gastro-pro',
