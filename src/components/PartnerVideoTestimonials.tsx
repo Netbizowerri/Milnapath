@@ -220,6 +220,7 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
                           <VimeoEmbedPlayer
                             vimeoId={video.vimeoId}
                             title={video.name}
+                            isVertical={true}
                             onClose={() => setPlayingVideoId(null)}
                             onMoreVideosClick={navigate ? () => navigate('/vsl') : undefined}
                             moreVideos={PARTNER_VIDEOS

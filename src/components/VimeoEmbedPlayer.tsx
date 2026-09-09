@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Player from '@vimeo/player';
-import { RotateCcw, Play, X, ArrowRight, Video as VideoIcon } from 'lucide-react';
+import { RotateCcw, Play, X, ArrowRight, Video as VideoIcon, Loader2, VolumeX, Volume2 } from 'lucide-react';
 
 export interface NextVideoItem {
   id: string | number;
@@ -19,6 +19,7 @@ interface VimeoEmbedPlayerProps {
   onMoreVideosClick?: () => void;
   onReplay?: () => void;
   className?: string;
+  isVertical?: boolean;
 }
 
 export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
@@ -28,19 +29,52 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
   moreVideos = [],
   onMoreVideosClick,
   onReplay,
-  className = 'w-full h-full'
+  className = 'w-full h-full',
+  isVertical = false
 }) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const playerRef = useRef<Player | null>(null);
   const [hasEnded, setHasEnded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     setHasEnded(false);
+    setIsLoading(true);
+    setIsMuted(false);
+
     if (!iframeRef.current) return;
 
     try {
       const player = new Player(iframeRef.current);
       playerRef.current = player;
+
+      player.ready().then(() => {
+        // Attempt autoplay immediately
+        return player.play();
+      }).then(() => {
+        setIsLoading(false);
+      }).catch((err) => {
+        console.warn('Vimeo autoplay with sound was restricted by browser policy:', err);
+        // If autoplay with sound is blocked, fallback to muted autoplay so playback begins immediately
+        player.setMuted(true).then(() => {
+          setIsMuted(true);
+          return player.play();
+        }).then(() => {
+          setIsLoading(false);
+        }).catch((e) => {
+          console.warn('Vimeo muted playback error:', e);
+          setIsLoading(false);
+        });
+      });
+
+      const handlePlay = () => {
+        setIsLoading(false);
+      };
+
+      const handleLoaded = () => {
+        setIsLoading(false);
+      };
 
       const handleEnded = () => {
         setHasEnded(true);
@@ -48,28 +82,46 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
       };
 
       const handleTimeUpdate = (data: { seconds: number; duration: number }) => {
-        // Intercept 0.8s before the video ends so Vimeo's end screen never flashes
-        if (data.duration > 0 && data.duration - data.seconds <= 0.8) {
+        // Intercept 1s before the video ends so Vimeo's end screen never flashes
+        // Ensure video has actually played past 3 seconds to avoid initial false alarms
+        if (data.duration > 5 && data.seconds > 3 && (data.duration - data.seconds <= 1.0)) {
           handleEnded();
         }
       };
 
+      player.on('play', handlePlay);
+      player.on('loaded', handleLoaded);
       player.on('ended', handleEnded);
       player.on('timeupdate', handleTimeUpdate);
 
       return () => {
+        player.off('play');
+        player.off('loaded');
         player.off('ended');
         player.off('timeupdate');
         player.destroy().catch(() => {});
         playerRef.current = null;
       };
-    } catch {
-      // Fallback
+    } catch (e) {
+      console.error('Error initializing Vimeo player:', e);
+      setIsLoading(false);
     }
   }, [vimeoId]);
 
+  const handleUnmute = () => {
+    if (playerRef.current) {
+      playerRef.current.setMuted(false)
+        .then(() => {
+          setIsMuted(false);
+          playerRef.current?.setVolume(1).catch(() => {});
+        })
+        .catch(() => {});
+    }
+  };
+
   const handleReplayClick = () => {
     setHasEnded(false);
+    setIsLoading(false);
     if (onReplay) {
       onReplay();
     } else if (playerRef.current) {
@@ -81,22 +133,43 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
 
   return (
     <div className={`relative bg-black overflow-hidden flex items-center justify-center ${className}`}>
-      {/* Vimeo iframe */}
+      {/* Vimeo iframe with full embed parameters for instant inline playback */}
       <iframe
         ref={iframeRef}
         key={vimeoId}
-        src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`}
-        className="w-full h-full border-0"
-        allow="autoplay; fullscreen; picture-in-picture"
+        src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&autopause=0&playsinline=1&controls=1&title=0&byline=0&portrait=0&dnt=1`}
+        className="w-full h-full border-0 absolute inset-0"
+        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
         allowFullScreen
         title={title}
       />
 
+      {/* Loading Spinner overlay while Vimeo initializes */}
+      {isLoading && !hasEnded && (
+        <div className="absolute inset-0 z-20 bg-stone-950/80 backdrop-blur-sm flex flex-col items-center justify-center gap-2.5 text-white pointer-events-none">
+          <Loader2 className="w-8 h-8 text-amber-400 animate-spin" />
+          <span className="text-xs font-semibold text-stone-200">Starting presentation...</span>
+        </div>
+      )}
+
+      {/* Tap to Unmute notice if browser forced initial muted autoplay */}
+      {isMuted && !hasEnded && !isLoading && (
+        <button
+          type="button"
+          onClick={handleUnmute}
+          className="absolute bottom-4 left-4 z-30 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-950 text-xs font-bold shadow-lg transition-all transform hover:scale-105 cursor-pointer"
+        >
+          <VolumeX className="w-4 h-4 animate-pulse" />
+          <span>Tap to Unmute Sound</span>
+        </button>
+      )}
+
       {/* Close button while playing */}
       {onClose && !hasEnded && (
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-3.5 right-3.5 bg-stone-900/90 hover:bg-stone-900 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm transition-colors z-30 border border-stone-700 shadow-md"
+          className="absolute top-3.5 right-3.5 bg-stone-900/90 hover:bg-stone-900 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm transition-colors z-30 border border-stone-700 shadow-md cursor-pointer"
         >
           Close Video
         </button>
@@ -140,7 +213,7 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
             {moreVideos.length > 0 ? (
               <div className="space-y-2.5">
                 <p className="text-xs text-stone-400 font-medium">Continue Watching:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[260px] overflow-y-auto pr-1">
+                <div className={`${isVertical ? 'grid grid-cols-1 gap-2.5 max-h-[360px]' : 'grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[260px]'} overflow-y-auto pr-1`}>
                   {moreVideos.map((item) => (
                     <div
                       key={item.id}

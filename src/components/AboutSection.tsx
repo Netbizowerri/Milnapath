@@ -110,42 +110,47 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
           </div>
         </div>
 
-        {/* Right Column: High-Impact Corporate Video Showcase */}
-        <div className="lg:col-span-5">
-          <div className="relative">
+        {/* Right Column: High-Impact Corporate Video Showcase (Vertical 9:16 Orientation) */}
+        <div className="lg:col-span-5 flex justify-center">
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px]">
             {/* Ambient Background Accent Glow */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-emerald-600 to-amber-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-emerald-600 to-amber-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000 pointer-events-none"></div>
 
-            <div className="relative bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-800 aspect-video w-full flex flex-col justify-between">
+            <div className="relative z-10 bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-800 aspect-[9/16] w-full">
               {isPlayingVideo ? (
                 /* Live Vimeo Embed Player with custom More Videos screen */
-                <VimeoEmbedPlayer
-                  vimeoId={corporateVimeoId}
-                  title="About Milnapath International Video Presentation"
-                  onClose={() => setIsPlayingVideo(false)}
-                  onMoreVideosClick={() => navigate('/vsl')}
-                  moreVideos={[
-                    {
-                      id: 'test-1',
-                      title: 'Partner Testimonial: Mary Linus Ibu',
-                      subtitle: 'Direct Partner Story • 01:05 mins',
-                      posterUrl: 'https://i.vimeocdn.com/video/2198866847-0f531fb3adfb34f3fd511d13a6c6e8060a04c60a472ac155776461dba48ec1ce-d_640',
-                      onClick: () => navigate('/vsl')
-                    },
-                    {
-                      id: 'test-2',
-                      title: 'Partner Testimonial: Adagold Nicholas',
-                      subtitle: 'Direct Partner Story • 01:00 mins',
-                      posterUrl: 'https://i.vimeocdn.com/video/2198867854-a2fd10a2c75737ae8d1b5823bf50618db61b3c5274f03855c207f04cc4976a35-d_640',
-                      onClick: () => navigate('/vsl')
-                    }
-                  ]}
-                />
+                <div className="absolute inset-0 w-full h-full">
+                  <VimeoEmbedPlayer
+                    vimeoId={corporateVimeoId}
+                    title="About Milnapath International Video Presentation"
+                    isVertical={true}
+                    onClose={() => setIsPlayingVideo(false)}
+                    onMoreVideosClick={() => navigate('/vsl')}
+                    moreVideos={[
+                      {
+                        id: 'test-1',
+                        title: 'Partner Testimonial: Mary Linus Ibu',
+                        subtitle: 'Direct Partner Story • 01:05 mins',
+                        posterUrl: 'https://i.vimeocdn.com/video/2198866847-0f531fb3adfb34f3fd511d13a6c6e8060a04c60a472ac155776461dba48ec1ce-d_640',
+                        onClick: () => navigate('/vsl')
+                      },
+                      {
+                        id: 'test-2',
+                        title: 'Partner Testimonial: Adagold Nicholas',
+                        subtitle: 'Direct Partner Story • 01:00 mins',
+                        posterUrl: 'https://i.vimeocdn.com/video/2198867854-a2fd10a2c75737ae8d1b5823bf50618db61b3c5274f03855c207f04cc4976a35-d_640',
+                        onClick: () => navigate('/vsl')
+                      }
+                    ]}
+                  />
+                </div>
               ) : (
                 /* Video Poster Card with Interactive Play Button */
-                <div 
+                <button 
+                  type="button"
                   onClick={() => setIsPlayingVideo(true)}
-                  className="relative w-full h-full cursor-pointer group flex flex-col justify-between p-5 overflow-hidden"
+                  className="absolute inset-0 w-full h-full cursor-pointer text-left group flex flex-col justify-between p-5 overflow-hidden focus:outline-none focus:ring-4 focus:ring-amber-400/50"
+                  aria-label="Play About Milnapath International Corporate Presentation Video"
                 >
                   <img
                     src={videoPosterUrl}
@@ -161,10 +166,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                   <div className="relative z-10 flex items-center justify-between">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-200 bg-emerald-950/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-700/50 shadow-sm">
                       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                      Official Corporate Showcase
+                      Corporate Showcase
                     </span>
                     <span className="text-[11px] font-semibold text-amber-300 bg-stone-900/85 backdrop-blur-md px-2.5 py-1 rounded-md border border-stone-700">
-                      High-Definition
+                      9:16 Vertical
                     </span>
                   </div>
 
@@ -190,7 +195,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                       The Vision, Cellular Healing Science & Million-Dollar Compensation Journey
                     </p>
                   </div>
-                </div>
+                </button>
               )}
             </div>
           </div>
