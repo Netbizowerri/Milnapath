@@ -62,7 +62,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#0D9488',
-    imageUrl: 'https://i.ibb.co/23CXqDPS/Milnapath-International-1.jpg'
+    imageUrl: 'https://i.ibb.co/23CXqDPS/Milnapath-International-1.jpg',
+    bannerUrl: 'https://i.ibb.co/m5cFN210/Whats-App-Image-2026-09-08-at-1-48-05-PM-3.jpg'
   },
   {
     id: 'nakom-oil',
@@ -93,7 +94,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#D97706',
-    imageUrl: 'https://i.ibb.co/h1DdVWv9/Milnapath-International.png'
+    imageUrl: 'https://i.ibb.co/h1DdVWv9/Milnapath-International.png',
+    bannerUrl: 'https://i.ibb.co/84nYrhhd/Whats-App-Image-2026-09-08-at-1-48-06-PM-2.jpg'
   },
   {
     id: 'gynomil',
@@ -124,7 +126,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#EC4899',
-    imageUrl: 'https://i.ibb.co/4RQW6RBL/Milnapath-International-1.png'
+    imageUrl: 'https://i.ibb.co/4RQW6RBL/Milnapath-International-1.png',
+    bannerUrl: 'https://i.ibb.co/d4bQCXsk/Whats-App-Image-2026-09-08-at-1-48-03-PM-1.jpg'
   },
   {
     id: 'peptic-tea',
@@ -155,7 +158,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#16A34A',
-    imageUrl: 'https://i.ibb.co/S452zXJy/Milnapath-International-3.png'
+    imageUrl: 'https://i.ibb.co/S452zXJy/Milnapath-International-3.png',
+    bannerUrl: 'https://i.ibb.co/0jgHK9kv/Whats-App-Image-2026-09-08-at-1-48-06-PM.jpg'
   },
   {
     id: 'body-lotion-soap',
@@ -186,7 +190,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#F59E0B',
-    imageUrl: 'https://i.ibb.co/sd7HRcMP/Milnapath-International-4.png'
+    imageUrl: 'https://i.ibb.co/sd7HRcMP/Milnapath-International-4.png',
+    bannerUrl: 'https://i.ibb.co/HksqhQ5/Whats-App-Image-2026-09-08-at-1-48-04-PM.jpg'
   },
   {
     id: 'control-oil',
@@ -217,7 +222,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#6366F1',
-    imageUrl: 'https://i.ibb.co/zTckQvFZ/Milnapath-International-5.png'
+    imageUrl: 'https://i.ibb.co/zTckQvFZ/Milnapath-International-5.png',
+    bannerUrl: 'https://i.ibb.co/bjCnztgG/Whats-App-Image-2026-09-08-at-1-48-04-PM-2.jpg'
   },
   {
     id: 'rejuvenating-drink',
@@ -248,7 +254,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#8B5CF6',
-    imageUrl: 'https://i.ibb.co/C3mNWQ3h/Milnapath-International-6.png'
+    imageUrl: 'https://i.ibb.co/C3mNWQ3h/Milnapath-International-6.png',
+    bannerUrl: 'https://i.ibb.co/67SnyVkG/Whats-App-Image-2026-09-08-at-1-48-04-PM-1.jpg'
   },
   {
     id: 'glucomil',
@@ -279,7 +286,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#0284C7',
-    imageUrl: 'https://i.ibb.co/YFYPGCqd/Milnapath-International-7.png'
+    imageUrl: 'https://i.ibb.co/YFYPGCqd/Milnapath-International-7.png',
+    bannerUrl: 'https://i.ibb.co/7tKZZhL0/Whats-App-Image-2026-09-08-at-1-48-05-PM.jpg'
   },
   {
     id: 'd-man',
@@ -310,7 +318,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#B45309',
-    imageUrl: 'https://i.ibb.co/Jw8GkkFf/Milnapath-International-2.png'
+    imageUrl: 'https://i.ibb.co/Jw8GkkFf/Milnapath-International-2.png',
+    bannerUrl: 'https://i.ibb.co/XrJsbRHj/Whats-App-Image-2026-09-08-at-1-48-05-PM-2.jpg'
   },
   {
     id: 'blood-building-tea',
@@ -341,7 +350,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#BE123C',
-    imageUrl: 'https://i.ibb.co/9mDBJWfb/Milnapath-International-8.png'
+    imageUrl: 'https://i.ibb.co/9mDBJWfb/Milnapath-International-8.png',
+    bannerUrl: 'https://i.ibb.co/3V8jKtS/Whats-App-Image-2026-09-08-at-1-48-05-PM-4.jpg'
   },
   {
     id: 'malaria-typhoid-shield',
@@ -372,7 +382,8 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#047857',
-    imageUrl: 'https://i.ibb.co/HTyw6ZBS/Milnapath-International-9.png'
+    imageUrl: 'https://i.ibb.co/HTyw6ZBS/Milnapath-International-9.png',
+    bannerUrl: 'https://i.ibb.co/W4MPfbP7/Whats-App-Image-2026-09-08-at-1-48-06-PM-1.jpg'
   }
 ];
 
