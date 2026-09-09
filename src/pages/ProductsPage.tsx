@@ -43,13 +43,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
             Formulated by seasoned phytotherapists and certified by NAFDAC. Designed to heal cellular toxicity, metabolic dysfunction, reproductive imbalances, and chronic infections without harsh chemical side effects.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-emerald-300 pt-2">
-            <span className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-emerald-200 pt-2 font-medium">
+            <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               NAFDAC Approved
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1.5">
               <HeartPulse className="w-4 h-4 text-amber-400" />
               25% Retail Profit Margin for Distributors
             </span>
@@ -60,7 +60,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white rounded-2xl p-5 shadow-md border border-stone-200/80 space-y-4">
+      <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-md border border-stone-200/80 space-y-4">
         {/* Search Input */}
         <div className="relative">
           <Search className="w-5 h-5 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -69,13 +69,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
             placeholder="Search products by name or indication (e.g. ulcer, fertility, detox, prostate, malaria)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none text-stone-900"
+            className="w-full pl-11 pr-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 focus:outline-none text-stone-900"
           />
         </div>
 
         {/* Category Pills Slider */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
-          <span className="text-stone-400 font-bold uppercase tracking-wider text-[11px] shrink-0 mr-1 flex items-center gap-1">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-sm">
+          <span className="text-stone-500 font-bold uppercase tracking-wider text-xs shrink-0 mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5" />
             Categories:
           </span>
@@ -85,7 +85,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full font-semibold transition-colors shrink-0 ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors shrink-0 ${
                   isSelected
                     ? 'bg-emerald-800 text-white shadow-xs'
                     : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
@@ -100,9 +100,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
 
       {/* Products Grid (All 12) */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between text-xs text-stone-500 px-1">
+        <div className="flex items-center justify-between text-sm text-stone-600 px-1">
           <span>
-            Showing <strong className="text-stone-800">{filteredProducts.length}</strong> of 12 Products
+            Showing <strong className="text-stone-900">{filteredProducts.length}</strong> of 12 Products
           </span>
           {selectedCategory !== 'All' && (
             <button
@@ -120,22 +120,22 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
               key={product.id}
               className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-200 border border-stone-200/90 flex flex-col justify-between overflow-hidden group hover:-translate-y-1"
             >
-              {/* Card Image Header - Full uncropped display */}
-              <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-stone-50 flex items-center justify-center p-3 border-b border-stone-100">
+              {/* Card Image Header - Full uncropped display with ample headroom */}
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-stone-50/80 flex items-center justify-center pt-7 pb-3 px-3 border-b border-stone-100">
                 <img
                   src={product.imageUrl}
                   alt={product.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full max-h-[175px] object-contain group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 
-                {/* Badges on image */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-emerald-900/90 text-emerald-100 shadow-xs border border-emerald-700/40">
+                {/* Badges on image - Sleek & compact */}
+                <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none gap-1 z-10">
+                  <span className="text-[11px] sm:text-xs font-semibold tracking-normal px-2.5 py-0.5 rounded-full bg-emerald-950/85 text-emerald-200 shadow-xs border border-emerald-800/40 backdrop-blur-xs truncate max-w-[70%]">
                     {product.category}
                   </span>
-                  <span className="text-xs font-extrabold text-amber-950 bg-amber-400 px-2.5 py-1 rounded-md shadow-xs">
+                  <span className="text-[11px] sm:text-xs font-bold text-amber-950 bg-amber-400 px-2 py-0.5 rounded-md shadow-xs shrink-0">
                     {product.pv} PV
                   </span>
                 </div>
@@ -143,28 +143,28 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
 
               {/* Card Title & Description */}
               <div className="p-5 border-b border-stone-100">
-                <div className="flex items-center gap-1.5 mb-1">
-                  <span className="text-[10px] text-emerald-700 uppercase font-bold tracking-wider">
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <span className="text-xs text-emerald-700 uppercase font-bold tracking-wider">
                     NAFDAC Approved • Botanical Formula
                   </span>
                 </div>
                 <h3 className="text-xl font-bold font-serif text-stone-900 group-hover:text-emerald-700 transition-colors">
                   {product.name}
                 </h3>
-                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed mt-2">
+                <p className="text-sm text-stone-600 line-clamp-2 leading-relaxed mt-2">
                   {product.shortDescription}
                 </p>
               </div>
 
               {/* Card Middle: Key Clinical Indications */}
               <div className="p-6 space-y-3 bg-stone-50/40 flex-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-600 block">
                   Key Indications & Target Symptoms:
                 </span>
-                <ul className="space-y-1.5 text-xs text-stone-700">
+                <ul className="space-y-2 text-sm text-stone-700">
                   {product.keyIndications.slice(0, 3).map((ind, idx) => (
                     <li key={idx} className="flex items-start gap-2 leading-snug">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{ind}</span>
                     </li>
                   ))}
@@ -175,14 +175,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
               <div className="p-6 bg-white border-t border-stone-100 space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-[11px] text-stone-400 block">Retail Price</span>
-                    <span className="font-extrabold text-base text-emerald-950 font-serif">
+                    <span className="text-xs sm:text-sm text-stone-500 block">Retail Price</span>
+                    <span className="font-extrabold text-lg text-emerald-950 font-serif">
                       ₦{product.retailPrice.toLocaleString()}
                     </span>
                   </div>
                   <div className="text-right">
-                    <span className="text-[11px] text-emerald-700 block font-semibold">Distributor Price</span>
-                    <span className="font-bold text-sm text-emerald-800">
+                    <span className="text-xs sm:text-sm text-emerald-700 block font-semibold">Distributor Price</span>
+                    <span className="font-bold text-base text-emerald-800">
                       ₦{product.memberPrice.toLocaleString()}
                     </span>
                   </div>
@@ -191,7 +191,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
                 <div className="grid grid-cols-2 gap-2 pt-1">
                   <button
                     onClick={() => navigate(`/products/${product.slug}`)}
-                    className="w-full py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold rounded-xl transition-colors text-center"
+                    className="w-full py-3 bg-stone-100 hover:bg-stone-200 text-stone-800 text-sm font-bold rounded-xl transition-colors text-center"
                   >
                     View Details
                   </button>
@@ -202,9 +202,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition-colors text-center shadow-xs flex items-center justify-center gap-1.5"
+                    className="w-full py-3 bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-colors text-center shadow-xs flex items-center justify-center gap-1.5"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" />
+                    <MessageCircle className="w-4 h-4" />
                     <span>Order (WA)</span>
                   </a>
                 </div>
@@ -217,20 +217,20 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
       {/* Become a Stockist Callout */}
       <div className="bg-amber-50 border border-amber-200 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-left">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-800">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-800">
             Wholesale & Clinic Distribution
           </span>
-          <h3 className="text-xl font-bold font-serif text-emerald-950">
+          <h2 className="text-xl sm:text-2xl font-bold font-serif text-emerald-950">
             Want to Distribute Milnapath Products in Bulk?
-          </h3>
-          <p className="text-xs sm:text-sm text-stone-700 max-w-xl">
+          </h2>
+          <p className="text-sm sm:text-base text-stone-700 max-w-xl leading-relaxed">
             Open an official Mini (₦2M), Super (₦5M), or Mega Stockist center (₦10M) in your city and earn 4.5% to 7.5% overrides on all products dispensed.
           </p>
         </div>
 
         <button
           onClick={() => navigate('/compensation')}
-          className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-xs shrink-0 shadow-md flex items-center gap-2"
+          className="px-6 py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-sm sm:text-base shrink-0 shadow-md flex items-center gap-2"
         >
           <span>Explore Stockist Model</span>
           <ArrowRight className="w-4 h-4" />

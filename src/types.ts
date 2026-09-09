@@ -56,10 +56,12 @@ export interface VideoModule {
   id: number;
   title: string;
   duration: string;
-  category: 'Business Opportunity' | 'Products' | 'Strategy';
+  category: 'Business Opportunity' | 'Products' | 'Strategy' | 'Testimonial' | 'Corporate';
   description: string;
   keyTakeaways: string[];
   videoUrlPlaceholder?: string;
+  vimeoId?: string;
+  posterUrl?: string;
   speaker: string;
 }
 

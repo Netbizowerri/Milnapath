@@ -76,15 +76,15 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
             <X className="w-6 h-6" />
           </button>
 
-          <div className="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-xs font-bold mb-3 border border-amber-500/30">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold mb-3 border border-amber-500/30">
+            <Sparkles className="w-4 h-4" />
             FREE EXCLUSIVE PDF PLAYBOOK
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold font-serif leading-tight">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-serif leading-tight">
             Wait! Don’t Leave Without The 2026 Milnapath 7-Figure Playbook
           </h3>
-          <p className="text-xs sm:text-sm text-emerald-200 mt-2">
+          <p className="text-sm sm:text-base text-emerald-200 mt-2 leading-relaxed">
             "The Step-By-Step System to Reaching Diamond Rank in 90 Days with 14% Binary Leverage & Organic Phytotherapy."
           </p>
         </div>
@@ -96,11 +96,11 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h4 className="text-xl font-bold text-emerald-950 font-serif">
+              <h4 className="text-xl sm:text-2xl font-bold text-emerald-950 font-serif">
                 Download Authorized!
               </h4>
-              <p className="text-xs text-stone-600 max-w-xs mx-auto">
-                Your PDF guide has been dispatched to <span className="font-semibold text-emerald-800">{formData.email}</span> and WhatsApp. Redirecting you to the Video Masterclass...
+              <p className="text-sm sm:text-base text-stone-600 max-w-sm mx-auto leading-relaxed">
+                Your PDF guide has been dispatched to <span className="font-semibold text-emerald-800">{formData.email}</span> and WhatsApp. Redirecting you to the Videos...
               </p>
               <div className="pt-2">
                 <div className="w-8 h-8 border-3 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
@@ -108,11 +108,11 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex items-start gap-3 bg-emerald-50 p-3.5 rounded-xl border border-emerald-100 text-xs text-emerald-900">
+              <div className="flex items-start gap-3 bg-emerald-50 p-4 rounded-2xl border border-emerald-100 text-sm text-emerald-950">
                 <FileText className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold block">What is inside this confidential 24-page report:</span>
-                  <ul className="list-disc list-inside mt-1 space-y-0.5 text-stone-700 text-[11px]">
+                  <ul className="list-disc list-inside mt-1.5 space-y-1 text-stone-700 text-xs sm:text-sm">
                     <li>Exact breakdown of the 14% binary matching formula</li>
                     <li>How ₦10,000 Foretaste yields 30% instant referral kickbacks</li>
                     <li>Clinical phytotherapy prescription guide for all 12 products</li>
@@ -121,7 +121,7 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">
+                <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                   Your Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -130,12 +130,12 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
                   placeholder="e.g., Dr. Emmanuel Okon"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
+                  className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">
+                <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                   WhatsApp Number (For PDF & Video Access) <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -144,12 +144,12 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
                   placeholder="e.g., 08031234567"
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
+                  className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">
+                <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                   Best Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -158,7 +158,7 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
                   placeholder="e.g., emmanuel@gmail.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
+                  className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-800"
                 />
               </div>
 
@@ -166,22 +166,22 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ isOpen, onClos
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-75"
+                  className="w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 text-white font-bold rounded-xl text-base shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75"
                 >
                   {loading ? (
                     <span>Processing Instant Download...</span>
                   ) : (
                     <>
-                      <Download className="w-4 h-4" />
+                      <Download className="w-5 h-5" />
                       <span>Download Free PDF & Proceed to VSL</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-5 h-5" />
                     </>
                   )}
                 </button>
               </div>
 
-              <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-500 pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-stone-500 pt-1">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Zero Spam Guarantee. Instant direct routing to Privyr CRM.</span>
               </div>
             </form>

@@ -548,7 +548,7 @@ When you register through our official team gateway, you don't just get products
 * **Automated Spillover Placements:** Our top team builders actively place new incoming members on your binary power leg, accelerating your 14% matching pairs!
 * **Zero Solo Guesswork:** Step-by-step advertising blueprints for Facebook, TikTok, and WhatsApp marketing.`,
       actionButton: {
-        label: 'Watch Video Masterclass',
+        label: 'Watch Videos',
         path: '/vsl'
       },
       relatedSuggestions: [

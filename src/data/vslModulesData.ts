@@ -3,11 +3,13 @@ import { VideoModule } from '../types';
 export const VSL_MODULES: VideoModule[] = [
   {
     id: 1,
-    title: 'The Milnapath Health Revolution & Corporate Vision',
-    duration: '18:45',
-    category: 'Business Opportunity',
-    description: 'Discover the inception of Millennium Nature’s Path Intl, our research-backed botanical approach to wellness, and why organic herbal therapy is booming across Africa.',
-    speaker: 'Executive Advisory Board',
+    title: 'Milnapath Corporate Overview: Health Revolution & Vision',
+    duration: '01:19',
+    category: 'Corporate',
+    vimeoId: '1225216185',
+    posterUrl: 'https://i.vimeocdn.com/video/2198878474-a0925424588d681015a4b0783dd46e13fc8e5bf05918dc17cac86c43e207490f-d_640',
+    description: 'Watch the official Milnapath International corporate orientation video introducing our revolutionary African herbal phytomedicines, mission, and life-changing partner opportunity.',
+    speaker: 'Milnapath International',
     keyTakeaways: [
       'The multi-billion dollar shift toward preventative herbal medicine in Nigeria and West Africa',
       'Milnapath’s mission, NAFDAC registrations, and state-of-the-art botanical extraction labs',
@@ -16,6 +18,66 @@ export const VSL_MODULES: VideoModule[] = [
   },
   {
     id: 2,
+    title: 'Partner Testimonial: Mary Linus Ibu',
+    duration: '01:05',
+    category: 'Testimonial',
+    vimeoId: '1225207239',
+    posterUrl: 'https://i.vimeocdn.com/video/2198866847-0f531fb3adfb34f3fd511d13a6c6e8060a04c60a472ac155776461dba48ec1ce-d_640',
+    description: 'Hear directly from Mary Linus Ibu as she shares her inspiring journey, health improvements, and income breakthroughs achieved partnering with Milnapath.',
+    speaker: 'Mary Linus Ibu (Partner)',
+    keyTakeaways: [
+      'Real-world efficacy of Milnapath herbal remedies for everyday wellness',
+      'How consistent binary team building generates steady weekly income',
+      'Mentorship support and leadership empowerment inside our community'
+    ]
+  },
+  {
+    id: 3,
+    title: 'Partner Testimonial: Adagold Nicholas',
+    duration: '01:00',
+    category: 'Testimonial',
+    vimeoId: '1225208008',
+    posterUrl: 'https://i.vimeocdn.com/video/2198867854-a2fd10a2c75737ae8d1b5823bf50618db61b3c5274f03855c207f04cc4976a35-d_640',
+    description: 'Adagold Nicholas discusses his firsthand experience with Milnapath remedies, distributor compensation milestones, and why this platform is built for lasting success.',
+    speaker: 'Adagold Nicholas (Partner)',
+    keyTakeaways: [
+      'Rapid health recovery through cellular detoxification and targeted phytotherapy',
+      'How the ₦500/$1 guaranteed dollar rate protects partners against inflation',
+      'Practical tips for sharing products and building a localized distribution network'
+    ]
+  },
+  {
+    id: 4,
+    title: 'Partner Testimonial: Esther Felix Akpan',
+    duration: '01:45',
+    category: 'Testimonial',
+    vimeoId: '1225210477',
+    posterUrl: 'https://i.vimeocdn.com/video/2198871114-32c650a193f774ea3062cc235ca7771e62f6bdd957eb546760a23aff3f05ab0d-d_640',
+    description: 'Esther Felix Akpan recounts her transformational journey with Milnapath, building financial independence and helping families regain their health.',
+    speaker: 'Esther Felix Akpan (Partner)',
+    keyTakeaways: [
+      'Empowering women and families through ethical, home-based direct selling',
+      'How to scale from the starter package to executive compensation ranks',
+      'Unlocking cumulative car and travel awards without leg flushing'
+    ]
+  },
+  {
+    id: 5,
+    title: 'Partner Testimonial: Evigonome Unuo',
+    duration: '01:14',
+    category: 'Testimonial',
+    vimeoId: '1225211287',
+    posterUrl: 'https://i.vimeocdn.com/video/2198872206-eabbe89a58880dfab533c7173b1464ad4e196cc483f007a9ab516577e97e9a21-d_640',
+    description: 'Evigonome Unuo breaks down the reliability and rewarding compensation mechanics that make Milnapath the foremost natural health business in Africa.',
+    speaker: 'Evigonome Unuo (Partner)',
+    keyTakeaways: [
+      'Building dual-leg volume for consistent 14% matching bonuses',
+      'Customer reorders driven by high-repeat natural health product efficacy',
+      'Why early action and positioning create massive binary leverage'
+    ]
+  },
+  {
+    id: 6,
     title: 'The 12 Ways to Earn Decoded: From Registration to Royalty',
     duration: '24:10',
     category: 'Business Opportunity',
@@ -28,7 +90,7 @@ export const VSL_MODULES: VideoModule[] = [
     ]
   },
   {
-    id: 3,
+    id: 7,
     title: 'Package Selection & Fast-Start Launch Strategy',
     duration: '16:20',
     category: 'Strategy',
@@ -41,7 +103,7 @@ export const VSL_MODULES: VideoModule[] = [
     ]
   },
   {
-    id: 4,
+    id: 8,
     title: 'Product Deep-Dive: Detox Plus & Gastro-Pro Efficacy',
     duration: '21:30',
     category: 'Products',
@@ -54,7 +116,7 @@ export const VSL_MODULES: VideoModule[] = [
     ]
   },
   {
-    id: 5,
+    id: 9,
     title: 'Nakom Oil & Gynomil: Fertility, Hormones & Joint Therapy',
     duration: '22:15',
     category: 'Products',
@@ -67,33 +129,7 @@ export const VSL_MODULES: VideoModule[] = [
     ]
   },
   {
-    id: 6,
-    title: 'Binary Pairing Mastery: 14% Lesser Leg to Infinity',
-    duration: '19:40',
-    category: 'Strategy',
-    description: 'Master the architecture of dual-team building. Understand spillover, leg placement balance, and how 40 PV pairs translate to daily bank cashouts.',
-    speaker: 'Diamond Director & Master Coach',
-    keyTakeaways: [
-      'How 1 PV = $1 = ₦500 calculates into clean ₦2,800 binary pair bonuses',
-      'Strategic downline placement techniques to balance power leg vs profit leg',
-      'Avoiding common beginner mistakes in genealogy tree structure'
-    ]
-  },
-  {
-    id: 7,
-    title: 'Unilevel & Repurchase Compounding: True Passive Income',
-    duration: '17:50',
-    category: 'Business Opportunity',
-    description: 'Why customer reorders are the lifeblood of true recurring wealth. Learn how the 12-generation compressed unilevel matrix guarantees monthly cash flow.',
-    speaker: 'Global Expansion Ambassador',
-    keyTakeaways: [
-      'The 20% personal repurchase cashback mechanism explained',
-      'Dynamic compression: earning deep within 12 generations without blockage',
-      'Building a loyal customer base of repeat health product consumers'
-    ]
-  },
-  {
-    id: 8,
+    id: 10,
     title: 'Rank Awards: From Laptops and Cars to the ₦60M Villa',
     duration: '20:05',
     category: 'Business Opportunity',
@@ -103,32 +139,6 @@ export const VSL_MODULES: VideoModule[] = [
       'The cumulative lesser leg formula (500 PV up to 800,000 PV)',
       'Proof of handover: past winners of the ₦5M sedan and ₦10M luxury SUV',
       'How to qualify for the ₦60,000,000 villa and 3% quarterly global pool'
-    ]
-  },
-  {
-    id: 9,
-    title: 'Becoming a Regional Stockist: ₦2M to ₦10M Hub Blueprint',
-    duration: '15:10',
-    category: 'Strategy',
-    description: 'How to turn your city into an exclusive Milnapath distribution center, earning 4.5% to 7.5% overrides on every single product package dispensed.',
-    speaker: 'Logistics & Franchise Director',
-    keyTakeaways: [
-      'Mini (₦2M), Super (₦5M), and Mega (₦10M) stockist margin breakdowns',
-      'Inventory management, fast fulfillment, and warehouse support from headquarters',
-      'Securing steady walk-in distributor traffic in your state or local council'
-    ]
-  },
-  {
-    id: 10,
-    title: 'Direct Mentorship Blueprint: Automated Digital Recruiting',
-    duration: '26:30',
-    category: 'Strategy',
-    description: 'How our top direct mentorship team uses automated sales funnels, WhatsApp scripts, and social media ads to recruit 20+ serious partners monthly.',
-    speaker: 'Lead Mentorship Coordinator',
-    keyTakeaways: [
-      'Accessing our turnkey sales funnel, follow-up automations, and ad templates',
-      'The exact WhatsApp closing script that turns prospects into paid members',
-      'How to qualify for 1-on-1 direct coaching by taking action today'
     ]
   }
 ];

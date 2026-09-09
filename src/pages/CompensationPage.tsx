@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Calculator, Award, TrendingUp, Sparkles, CheckCircle2, ChevronRight, Coins, Zap, GitMerge, RotateCcw, Layers, Store, PlaneTakeoff, Globe, Building2, ShieldCheck, ArrowRight } from 'lucide-react';
 import { COMPENSATION_STREAMS, RANK_AWARDS, STOCKIST_TIERS, PACKAGE_TIERS, COMPANY_DETAILS } from '../data/compensationData';
+import { MilestoneGallery } from '../components/MilestoneGallery';
 
 interface CompensationPageProps {
   navigate: (path: string) => void;
@@ -104,25 +105,28 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
         </div>
       </div>
 
+      {/* MILESTONE GALLERY: PARTNERS MEETING MILESTONES */}
+      <MilestoneGallery />
+
       {/* 1. INTERACTIVE REAL-TIME EARNINGS SIMULATOR */}
       <section className="bg-white rounded-3xl shadow-xl border-2 border-emerald-600/30 overflow-hidden">
         <div className="bg-gradient-to-r from-emerald-900 to-emerald-950 p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-left space-y-1">
-            <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-wider">
               <Calculator className="w-4 h-4" />
               <span>Interactive Commission Calculator</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-serif text-white">
               Simulate Your Potential Monthly & Annual Payouts
             </h2>
-            <p className="text-xs text-emerald-200">
+            <p className="text-sm text-emerald-100">
               Adjust your package tier, referral pace, and binary volume to test real earnings.
             </p>
           </div>
 
           <button
             onClick={() => navigate('/register')}
-            className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold text-xs rounded-xl shadow-md transition-all shrink-0"
+            className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold text-sm rounded-xl shadow-md transition-all shrink-0"
           >
             Register Now (₦10,000)
           </button>
@@ -133,7 +137,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Control 1: Select Your Current Package */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+              <label className="block text-sm font-semibold uppercase tracking-wider text-stone-800">
                 1. Your Personal Package Tier (Determines your bonus % & binary cap):
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -144,19 +148,19 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
                       key={pkg.id}
                       type="button"
                       onClick={() => setSelectedTierId(pkg.id)}
-                      className={`p-2.5 rounded-xl border text-left transition-all ${
+                      className={`p-3 rounded-xl border text-left transition-all ${
                         isSel
                           ? 'bg-emerald-50 border-emerald-600 ring-2 ring-emerald-600/30'
                           : 'bg-stone-50 border-stone-200 hover:border-emerald-300'
                       }`}
                     >
-                      <span className={`text-[11px] font-bold block truncate ${isSel ? 'text-emerald-900' : 'text-stone-700'}`}>
+                      <span className={`text-xs font-bold block truncate ${isSel ? 'text-emerald-900' : 'text-stone-700'}`}>
                         {pkg.name}
                       </span>
-                      <span className="text-xs font-extrabold text-emerald-950 font-serif">
+                      <span className="text-sm font-extrabold text-emerald-950 font-serif">
                         ₦{pkg.cost.toLocaleString()}
                       </span>
-                      <span className="text-[10px] text-amber-700 block mt-0.5">
+                      <span className="text-xs text-amber-700 block mt-0.5 font-medium">
                         {pkg.directBonusRate}% Direct Bonus
                       </span>
                     </button>
@@ -167,11 +171,11 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
 
             {/* Control 2: Direct Recruits per month */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <label className="font-bold uppercase tracking-wider text-stone-700">
+              <div className="flex items-center justify-between text-sm">
+                <label className="font-semibold uppercase tracking-wider text-stone-800">
                   2. Monthly Direct Personal Referrals:
                 </label>
-                <span className="font-bold text-emerald-900 font-mono text-sm">
+                <span className="font-bold text-emerald-900 font-mono text-base">
                   {directRecruitsPerMonth} Partners / month
                 </span>
               </div>
@@ -184,7 +188,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
                 onChange={(e) => setDirectRecruitsPerMonth(parseInt(e.target.value))}
                 className="w-full accent-emerald-700 cursor-pointer"
               />
-              <div className="flex items-center justify-between text-[10px] text-stone-400">
+              <div className="flex items-center justify-between text-xs text-stone-400 font-medium">
                 <span>0 recruits</span>
                 <span>5 recruits</span>
                 <span>10 recruits</span>
@@ -194,13 +198,13 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
 
             {/* Control 3: Average Package They Purchase */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+              <label className="block text-sm font-semibold uppercase tracking-wider text-stone-800">
                 3. Average Package They Register With:
               </label>
               <select
                 value={averageRecruitPackage}
                 onChange={(e) => setAverageRecruitPackage(e.target.value)}
-                className="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                className="w-full p-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-medium focus:ring-2 focus:ring-emerald-600 text-stone-900"
               >
                 {PACKAGE_TIERS.map((pkg) => (
                   <option key={pkg.id} value={pkg.id}>
@@ -212,11 +216,11 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
 
             {/* Control 4: Binary Pairs per week */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <label className="font-bold uppercase tracking-wider text-stone-700">
+              <div className="flex items-center justify-between text-sm">
+                <label className="font-semibold uppercase tracking-wider text-stone-800">
                   4. Binary Pairs Completed Per Week (1 Pair = 40 PV / ₦2,800):
                 </label>
-                <span className="font-bold text-emerald-900 font-mono text-sm">
+                <span className="font-bold text-emerald-900 font-mono text-base">
                   {pairsPerWeek} pairs/week (~{pairsPerWeek * 4} /mo)
                 </span>
               </div>
@@ -229,7 +233,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
                 onChange={(e) => setPairsPerWeek(parseInt(e.target.value))}
                 className="w-full accent-emerald-700 cursor-pointer"
               />
-              <div className="flex items-center justify-between text-[10px] text-stone-400">
+              <div className="flex items-center justify-between text-xs text-stone-400 font-medium">
                 <span>0 pairs</span>
                 <span>25 pairs</span>
                 <span>50 pairs</span>
@@ -239,11 +243,11 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
 
             {/* Control 5: Monthly Team Repurchase PV */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <label className="font-bold uppercase tracking-wider text-stone-700">
+              <div className="flex items-center justify-between text-sm">
+                <label className="font-semibold uppercase tracking-wider text-stone-800">
                   5. Monthly Downline Team Repurchase Volume:
                 </label>
-                <span className="font-bold text-emerald-900 font-mono text-sm">
+                <span className="font-bold text-emerald-900 font-mono text-base">
                   {monthlyTeamRepurchasePV.toLocaleString()} PV
                 </span>
               </div>
@@ -256,7 +260,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
                 onChange={(e) => setMonthlyTeamRepurchasePV(parseInt(e.target.value))}
                 className="w-full accent-emerald-700 cursor-pointer"
               />
-              <div className="flex items-center justify-between text-[10px] text-stone-400">
+              <div className="flex items-center justify-between text-xs text-stone-400 font-medium">
                 <span>0 PV</span>
                 <span>2,500 PV</span>
                 <span>5,000 PV</span>
@@ -268,22 +272,22 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           {/* Results Display Column (5 cols) */}
           <div className="lg:col-span-5 bg-stone-50 rounded-2xl p-6 border border-stone-200 space-y-6">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-600 block">
                 Estimated Total Monthly Cashout
               </span>
               <div className="flex items-baseline gap-1 mt-1">
                 <span className="text-3xl sm:text-4xl font-extrabold text-emerald-950 font-serif">
                   ₦{Math.round(calculatedEarnings.totalEstimatedMonthly).toLocaleString()}
                 </span>
-                <span className="text-xs text-stone-500 font-medium">/ month</span>
+                <span className="text-sm text-stone-500 font-medium">/ month</span>
               </div>
-              <span className="text-xs text-amber-700 font-bold block mt-0.5">
+              <span className="text-sm text-amber-700 font-bold block mt-1">
                 ≈ ₦{Math.round(calculatedEarnings.totalEstimatedAnnual).toLocaleString()} Projected Annually
               </span>
             </div>
 
             {/* Income Streams Breakdown */}
-            <div className="space-y-2.5 pt-4 border-t border-stone-200 text-xs">
+            <div className="space-y-3 pt-4 border-t border-stone-200 text-sm">
               <div className="flex items-center justify-between">
                 <span className="text-stone-600">Direct Activation Bonus ({selectedTier.directBonusRate}%):</span>
                 <span className="font-bold text-emerald-900">
@@ -308,8 +312,8 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
               </div>
 
               {selectedTier.dailyBinaryCapNaira && (
-                <div className="pt-2 border-t border-stone-200 text-[11px] text-stone-500">
-                  Your <strong className="text-stone-700">{selectedTier.name}</strong> has a max daily binary cap of ₦{selectedTier.dailyBinaryCapNaira.toLocaleString()}/day (₦{(selectedTier.dailyBinaryCapNaira * 30).toLocaleString()}/mo).
+                <div className="pt-2 border-t border-stone-200 text-xs sm:text-sm text-stone-600">
+                  Your <strong className="text-stone-800">{selectedTier.name}</strong> has a max daily binary cap of ₦{selectedTier.dailyBinaryCapNaira.toLocaleString()}/day (₦{(selectedTier.dailyBinaryCapNaira * 30).toLocaleString()}/mo).
                 </div>
               )}
             </div>
@@ -318,7 +322,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
             <div className="pt-2">
               <button
                 onClick={() => navigate('/register')}
-                className="w-full py-3.5 bg-gradient-to-r from-emerald-800 to-emerald-700 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 transition-all hover:scale-105"
+                className="w-full py-4 bg-gradient-to-r from-emerald-800 to-emerald-700 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold rounded-xl text-sm sm:text-base shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 transition-all hover:scale-105"
               >
                 <span>Activate Your Milnapath Position Today</span>
                 <ArrowRight className="w-4 h-4 text-amber-300" />
@@ -338,7 +342,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-emerald-950">
             The 12 Streams of Milnapath Income Detailed
           </h2>
-          <p className="text-sm text-stone-600">
+          <p className="text-base text-stone-600">
             From your very first ₦10k registrant up to corporate equity share pools, explore each revenue channel below.
           </p>
         </div>
@@ -348,38 +352,38 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           {COMPENSATION_STREAMS.map((stream) => (
             <div
               key={stream.number}
-              className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all border border-stone-200/90 flex flex-col justify-between"
+              className="bg-white rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-lg transition-all border border-stone-200/90 flex flex-col justify-between"
             >
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
                     {getStreamIcon(stream.iconName)}
                   </div>
-                  <span className="text-xs font-extrabold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                  <span className="text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
                     {stream.badge}
                   </span>
                 </div>
 
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 tracking-wider">
+                  <span className="text-xs uppercase font-bold text-stone-500 tracking-wider">
                     Stream #{stream.number}
                   </span>
-                  <h3 className="text-lg font-bold font-serif text-emerald-950">
+                  <h3 className="text-lg sm:text-xl font-bold font-serif text-emerald-950">
                     {stream.name}
                   </h3>
                 </div>
 
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
                   {stream.shortDescription}
                 </p>
 
-                <div className="bg-stone-50 p-3.5 rounded-xl border border-stone-200 text-xs text-stone-800 space-y-1">
+                <div className="bg-stone-50 p-4 rounded-xl border border-stone-200 text-sm text-stone-800 space-y-1.5">
                   <span className="font-bold text-emerald-900 block">Payout Details:</span>
-                  <p className="leading-snug">{stream.payoutDetail}</p>
+                  <p className="leading-relaxed">{stream.payoutDetail}</p>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-stone-100 text-[11px] text-stone-500 italic">
+              <div className="pt-4 mt-4 border-t border-stone-100 text-xs sm:text-sm text-stone-600 italic leading-relaxed">
                 {stream.formulaDescription}
               </div>
             </div>
@@ -397,7 +401,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-emerald-950">
             Rank Awards: From Laptops to the ₦60,000,000 Villa
           </h2>
-          <p className="text-sm text-stone-600">
+          <p className="text-base text-stone-600">
             At Milnapath, your points NEVER expire or flush. Every single package and product reorder in your lesser leg steadily pushes you toward your next car, trip, and mansion.
           </p>
         </div>
@@ -407,42 +411,42 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           {RANK_AWARDS.map((award, index) => (
             <div
               key={award.rank}
-              className={`bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all border flex flex-col justify-between ${
+              className={`bg-white rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all border flex flex-col justify-between ${
                 index >= 6 ? 'border-amber-400 ring-1 ring-amber-300' : 'border-stone-200'
               }`}
             >
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800">
+                  <span className="text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800">
                     Step {index + 1}
                   </span>
-                  <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">
+                  <span className="text-xs sm:text-sm font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded border border-amber-100">
                     {award.lesserLegPV}
                   </span>
                 </div>
 
-                <h3 className="font-serif font-bold text-base text-emerald-950">
+                <h3 className="font-serif font-bold text-lg text-emerald-950">
                   {award.rank}
                 </h3>
 
-                <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100">
-                  <span className="text-[10px] text-emerald-700 uppercase font-bold tracking-wider block">Award</span>
-                  <p className="font-bold text-xs text-emerald-950 font-serif leading-snug">
+                <div className="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-100">
+                  <span className="text-xs text-emerald-700 uppercase font-bold tracking-wider block">Award</span>
+                  <p className="font-bold text-sm sm:text-base text-emerald-950 font-serif leading-snug">
                     {award.awardTitle}
                   </p>
-                  <span className="text-xs font-extrabold text-amber-700 block mt-1">
+                  <span className="text-sm font-extrabold text-amber-700 block mt-1">
                     {award.awardValue}
                   </span>
                 </div>
 
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-sm text-stone-600 leading-relaxed">
                   {award.details}
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-stone-100 flex items-center justify-between text-[11px] text-emerald-800 font-semibold">
-                <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="pt-4 mt-4 border-t border-stone-100 flex items-center justify-between text-xs sm:text-sm text-emerald-800 font-semibold">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   Lesser Leg PV
                 </span>
                 <span>Cumulative</span>
@@ -455,13 +459,13 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
       {/* 4. STOCKIST DISTRIBUTION HUBS (₦2M TO ₦10M) */}
       <section className="bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-950 rounded-3xl p-8 sm:p-12 text-white border border-emerald-800 shadow-2xl space-y-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-3 py-1 rounded-full border border-amber-400/30">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-3.5 py-1 rounded-full border border-amber-400/30">
             Distribution Franchise Hubs
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-white">
             Operate a Regional Milnapath Stockist Center
           </h2>
-          <p className="text-xs sm:text-sm text-emerald-200">
+          <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
             Earn 4.5% to 7.5% overrides on ALL inventory flowing through your branch, plus product stock and company branding.
           </p>
         </div>
@@ -470,24 +474,24 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
           {STOCKIST_TIERS.map((st) => (
             <div
               key={st.tier}
-              className="bg-emerald-900/60 rounded-2xl p-6 border border-emerald-700/80 space-y-4 text-left flex flex-col justify-between"
+              className="bg-emerald-900/60 rounded-2xl p-6 sm:p-7 border border-emerald-700/80 space-y-4 text-left flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-lg text-white font-serif">{st.tier}</h3>
-                  <span className="text-xs font-extrabold text-amber-300 bg-amber-400/20 px-2.5 py-1 rounded-full">
+                  <h3 className="font-bold text-xl text-white font-serif">{st.tier}</h3>
+                  <span className="text-xs sm:text-sm font-extrabold text-amber-300 bg-amber-400/20 px-3 py-1 rounded-full">
                     {st.override} Override
                   </span>
                 </div>
 
                 <div className="space-y-1 mb-4">
-                  <span className="text-2xl font-extrabold text-white font-serif block">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-serif block">
                     {st.capital}
                   </span>
-                  <span className="text-xs text-emerald-300">Inventory Stock: {st.pvStock}</span>
+                  <span className="text-sm text-emerald-300">Inventory Stock: {st.pvStock}</span>
                 </div>
 
-                <p className="text-xs text-emerald-100/80 leading-relaxed">
+                <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
                   {st.benefits}
                 </p>
               </div>
@@ -499,7 +503,7 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-emerald-950 text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                  className="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-emerald-950 text-sm sm:text-base font-bold rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                 >
                   <span>Inquire for Stockist Center</span>
                   <ChevronRight className="w-4 h-4" />

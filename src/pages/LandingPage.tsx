@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { ShieldCheck, CheckCircle2, ArrowRight, Sparkles, Award, TrendingUp, Users, HeartPulse, ChevronRight, Zap, Play, Lock, FileCheck, Star, PackageCheck, PhoneCall } from 'lucide-react';
 import { PRODUCTS } from '../data/productsData';
 import { PACKAGE_TIERS, COMPANY_DETAILS } from '../data/compensationData';
+import { PartnerVideoTestimonials } from '../components/PartnerVideoTestimonials';
+import { AboutSection } from '../components/AboutSection';
+import { MilestoneGallery } from '../components/MilestoneGallery';
 
 interface LandingPageProps {
   navigate: (path: string) => void;
@@ -67,8 +70,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
             <div className="inline-flex items-center gap-2 bg-emerald-800/80 border border-emerald-600/50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-200 shadow-inner">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
               <span className="text-amber-300 font-bold">2026 OFFICIAL LAUNCH SYSTEM</span>
-              <span className="text-emerald-300/60">•</span>
-              <span>1 PV = $1 = ₦500</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-serif leading-[1.15] text-white">
@@ -81,15 +82,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
 
             {/* Quick Badges list */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-              <div className="flex items-center gap-2 text-xs font-medium text-emerald-200 bg-emerald-900/50 p-2.5 rounded-xl border border-emerald-800/60">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-emerald-100 bg-emerald-900/50 p-3 rounded-xl border border-emerald-800/60">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>₦10,000 Foretaste Entry</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-emerald-200 bg-emerald-900/50 p-2.5 rounded-xl border border-emerald-800/60">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-emerald-100 bg-emerald-900/50 p-3 rounded-xl border border-emerald-800/60">
                 <TrendingUp className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Up to 28% Referral Bonus</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-emerald-200 bg-emerald-900/50 p-2.5 rounded-xl border border-emerald-800/60 col-span-2 sm:col-span-1">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-emerald-100 bg-emerald-900/50 p-3 rounded-xl border border-emerald-800/60 col-span-2 sm:col-span-1">
                 <Award className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>No-Flush Lesser Leg PV</span>
               </div>
@@ -99,10 +100,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => navigate('/vsl')}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800/70 hover:bg-emerald-700/80 text-emerald-100 font-semibold text-xs border border-emerald-600/40 transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-800/80 hover:bg-emerald-700 text-emerald-100 font-semibold text-sm border border-emerald-600/40 transition-all hover:scale-105"
               >
                 <Play className="w-4 h-4 text-amber-400 fill-amber-400" />
-                <span>Already a Member? Jump to 10-Module Masterclass</span>
+                <span>Already a Member? Jump to Videos</span>
               </button>
             </div>
           </div>
@@ -111,19 +112,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
           <div className="lg:col-span-5">
             <div className="bg-white text-stone-900 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-amber-400/40 relative">
               {/* Corner Tag */}
-              <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-amber-600 text-emerald-950 font-extrabold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+              <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-amber-600 text-emerald-950 font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md">
                 Instant Video & PDF Access
               </div>
 
               <div className="mb-5 text-left">
-                <span className="text-[11px] font-extrabold tracking-wider uppercase text-emerald-700 block mb-1">
-                  Exclusive Masterclass Portal
+                <span className="text-xs font-extrabold tracking-wider uppercase text-emerald-700 block mb-1">
+                  Exclusive Video Portal
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold font-serif text-emerald-950">
-                  Access Free Masterclass & Blueprint
+                  Access Free Videos & Blueprint
                 </h3>
-                <p className="text-xs text-stone-600 mt-1">
-                  Enter your details to reveal the full 10-module Milnapath compensation masterclass and download the 2026 Playbook.
+                <p className="text-sm sm:text-base text-stone-600 mt-1.5 leading-relaxed">
+                  Enter your details to reveal the Milnapath videos and download the 2026 Playbook.
                 </p>
               </div>
 
@@ -135,15 +136,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                   <h4 className="text-lg font-bold text-emerald-950 font-serif">
                     Access Granted!
                   </h4>
-                  <p className="text-xs text-stone-600">
-                    Routing your session directly to the Video Masterclass Hub...
+                  <p className="text-sm text-stone-600">
+                    Routing your session directly to the Videos...
                   </p>
                   <div className="w-6 h-6 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mt-2"></div>
                 </div>
               ) : (
                 <form onSubmit={handleOptInSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
+                    <label className="block text-sm font-semibold text-stone-800 mb-1.5">
                       Full Name <span className="text-rose-500">*</span>
                     </label>
                     <input
@@ -152,12 +153,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                       placeholder="e.g. Chief Chinedu Eze"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
+                    <label className="block text-sm font-semibold text-stone-800 mb-1.5">
                       WhatsApp Number (For Direct Support) <span className="text-rose-500">*</span>
                     </label>
                     <input
@@ -166,12 +167,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                       placeholder="e.g. 08031234567"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
+                    <label className="block text-sm font-semibold text-stone-800 mb-1.5">
                       Email Address <span className="text-rose-500">*</span>
                     </label>
                     <input
@@ -180,26 +181,26 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                       placeholder="e.g. chinedu@yahoo.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold rounded-xl text-sm shadow-xl shadow-emerald-800/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-75"
+                    className="w-full py-4 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold rounded-xl text-base shadow-xl shadow-emerald-800/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-75"
                   >
                     {isSubmitting ? (
-                      <span>Unlocking Video Masterclass...</span>
+                      <span>Unlocking Videos...</span>
                     ) : (
                       <>
-                        <span>Watch Masterclass & Get Blueprint</span>
+                        <span>Watch Videos & Get Blueprint</span>
                         <ArrowRight className="w-4 h-4 text-amber-300" />
                       </>
                     )}
                   </button>
 
-                  <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-500 text-center">
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-stone-500 text-center">
                     <Lock className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                     <span>Privacy Assured. Submissions route to Privyr CRM & Formspree.</span>
                   </div>
@@ -212,14 +213,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
 
       {/* 2. TRUST BADGES & CORPORATE INTEGRITY BAR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-emerald-950 uppercase tracking-wide">NAFDAC Regulated</h4>
-              <p className="text-[11px] text-stone-600">Standardized botanical therapy safe for families</p>
+              <h4 className="text-sm font-bold text-emerald-950 uppercase tracking-wide">NAFDAC Regulated</h4>
+              <p className="text-xs sm:text-sm text-stone-600 leading-snug">Standardized botanical therapy safe for families</p>
             </div>
           </div>
 
@@ -228,8 +229,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <Award className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-emerald-950 uppercase tracking-wide">GT Bank Verified</h4>
-              <p className="text-[11px] text-stone-600">Corp Acct: 0718549018 (Millennium Nature's Path)</p>
+              <h4 className="text-sm font-bold text-emerald-950 uppercase tracking-wide">GT Bank Verified</h4>
+              <p className="text-xs sm:text-sm text-stone-600 leading-snug">Corp Acct: 0718549018 (Millennium Nature's Path)</p>
             </div>
           </div>
 
@@ -238,8 +239,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <TrendingUp className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-emerald-950 uppercase tracking-wide">14% Binary Leverage</h4>
-              <p className="text-[11px] text-stone-600">Matches 40 PV to infinity on lesser leg volume</p>
+              <h4 className="text-sm font-bold text-emerald-950 uppercase tracking-wide">14% Binary Leverage</h4>
+              <p className="text-xs sm:text-sm text-stone-600 leading-snug">Matches 40 PV to infinity on lesser leg volume</p>
             </div>
           </div>
 
@@ -248,12 +249,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-emerald-950 uppercase tracking-wide">Fixed Rate ₦500/$</h4>
-              <p className="text-[11px] text-stone-600">1 PV = $1.00 = ₦500 guaranteed exchange rate</p>
+              <h4 className="text-sm font-bold text-emerald-950 uppercase tracking-wide">Daily Bank Payouts</h4>
+              <p className="text-xs sm:text-sm text-stone-600 leading-snug">Withdraw commissions directly to your local bank</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* 2.5 ABOUT SECTION WITH VIDEO ON RIGHT COLUMN */}
+      <AboutSection navigate={navigate} />
 
       {/* 3. PRODUCT HIGHLIGHTS GRID (DETOX PLUS, GASTRO-PRO, NAKOM OIL, GYNOMIL, D-MAN) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -277,80 +281,67 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               key={prod.id}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-200 border border-stone-200/80 flex flex-col justify-between overflow-hidden group hover:-translate-y-1"
             >
-              {/* Product Image Stage - Full uncropped display */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-50 flex items-center justify-center p-2.5 border-b border-stone-100">
+              {/* Product Image Stage - Full uncropped display with ample headroom */}
+              <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-stone-50/80 flex items-center justify-center pt-6 pb-2 px-3 border-b border-stone-100">
                 <img
                   src={prod.imageUrl}
                   alt={prod.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full max-h-[145px] object-contain group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 
-                {/* Floating category and PV badges */}
-                <div className="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-900/90 text-emerald-100 shadow-xs">
+                {/* Floating category and PV badges - Sleek & compact */}
+                <div className="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none gap-1 z-10">
+                  <span className="text-[10px] sm:text-[11px] font-semibold tracking-normal px-2 py-0.5 rounded-full bg-emerald-950/85 text-emerald-200 shadow-xs border border-emerald-800/40 backdrop-blur-xs truncate max-w-[70%]">
                     {prod.category}
                   </span>
-                  <span className="text-[11px] font-extrabold text-amber-950 bg-amber-400 px-2 py-0.5 rounded-md shadow-xs">
+                  <span className="text-[10px] sm:text-[11px] font-bold text-amber-950 bg-amber-400 px-1.5 py-0.5 rounded shadow-xs shrink-0">
                     {prod.pv} PV
                   </span>
                 </div>
               </div>
 
-              {/* Product Title & Summary */}
-              <div className="p-4 border-b border-stone-100">
-                <h3 className="font-serif font-bold text-base sm:text-lg text-stone-900 group-hover:text-emerald-700 transition-colors leading-tight">
-                  {prod.name}
-                </h3>
-                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed mt-1">
-                  {prod.shortDescription}
-                </p>
-              </div>
-
-              {/* Middle Key Indications */}
-              <div className="p-5 space-y-3 flex-1 bg-stone-50/50">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
-                  Top Clinical Indications:
-                </span>
-                <ul className="space-y-1.5 text-xs text-stone-700">
-                  {prod.keyIndications.slice(0, 3).map((ind, i) => (
-                    <li key={i} className="flex items-start gap-1.5 leading-snug">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{ind}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Bottom Actions */}
-              <div className="p-4 bg-white border-t border-stone-100 space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-stone-500">Retail Price:</span>
-                  <span className="font-bold text-emerald-950 text-sm">
-                    ₦{prod.retailPrice.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-emerald-700 font-medium">
-                  <span>Member Price:</span>
-                  <span>₦{prod.memberPrice.toLocaleString()}</span>
+              {/* Product Title & Complete Short Description */}
+              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-stone-900 group-hover:text-emerald-700 transition-colors leading-tight">
+                    {prod.name}
+                  </h3>
+                  <p className="text-sm text-stone-600 leading-relaxed mt-2">
+                    {prod.shortDescription}
+                  </p>
                 </div>
 
-                <div className="pt-2 grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => navigate(`/products/${prod.slug}`)}
-                    className="w-full py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold rounded-lg text-center transition-colors"
-                  >
-                    Details
-                  </button>
-                  <a
-                    href={`https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(`Hello Milnapath, I would like to order ${prod.name} (₦${prod.retailPrice.toLocaleString()}).`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-lg text-center shadow-xs transition-colors flex items-center justify-center gap-1"
-                  >
-                    <span>Order</span>
-                  </a>
+                {/* Pricing & Actions */}
+                <div className="pt-4 mt-4 border-t border-stone-100 space-y-2.5">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-stone-600 font-medium">Retail Price:</span>
+                    <span className="font-bold text-emerald-950 text-base">
+                      ₦{prod.retailPrice.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-emerald-800 font-semibold">
+                    <span>Member Price:</span>
+                    <span className="font-bold text-emerald-950">₦{prod.memberPrice.toLocaleString()}</span>
+                  </div>
+
+                  <div className="pt-2 grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => navigate(`/products/${prod.slug}`)}
+                      className="w-full py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-800 text-sm font-semibold rounded-lg text-center transition-colors"
+                    >
+                      Details
+                    </button>
+                    <a
+                      href={`https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(`Hello Milnapath, I would like to order ${prod.name} (₦${prod.retailPrice.toLocaleString()}).`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-bold rounded-lg text-center shadow-xs transition-colors flex items-center justify-center gap-1"
+                    >
+                      <span>Order</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -360,7 +351,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
         <div className="text-center pt-2">
           <button
             onClick={() => navigate('/products')}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm shadow-md transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-base shadow-md transition-all hover:scale-105"
           >
             <span>Explore All 12 Milnapath Therapeutic Formulations</span>
             <ChevronRight className="w-4 h-4 text-amber-300" />
@@ -378,7 +369,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-emerald-950">
             Affordable Entry, Massive Binary Scaling
           </h2>
-          <p className="text-sm text-stone-600">
+          <p className="text-base text-stone-600">
             Start with as low as ₦10,000 Foretaste and upgrade anytime to higher packages using differential PV. Every tier unlocks higher direct bonus percentages and bigger daily binary caps.
           </p>
         </div>
@@ -388,7 +379,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
           {PACKAGE_TIERS.map((pkg) => (
             <div
               key={pkg.id}
-              className={`relative bg-white rounded-3xl p-6 shadow-lg border transition-all duration-200 flex flex-col justify-between ${
+              className={`relative bg-white rounded-3xl p-6 sm:p-7 shadow-lg border transition-all duration-200 flex flex-col justify-between ${
                 pkg.id === 'vip'
                   ? 'border-amber-400 ring-2 ring-amber-400/50 shadow-amber-100'
                   : pkg.id === 'executive'
@@ -398,32 +389,32 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
             >
               {/* Badge if any */}
               {pkg.badge && (
-                <div className="absolute -top-3 right-6 bg-gradient-to-r from-amber-500 to-amber-600 text-emerald-950 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow-sm">
+                <div className="absolute -top-3 right-6 bg-gradient-to-r from-amber-500 to-amber-600 text-emerald-950 text-xs font-extrabold uppercase px-3.5 py-1 rounded-full shadow-sm">
                   {pkg.badge}
                 </div>
               )}
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-serif font-bold text-xl text-emerald-950">
+                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-emerald-950">
                     {pkg.name}
                   </h3>
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100">
+                  <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100">
                     {pkg.pv} PV
                   </span>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-extrabold text-emerald-950 font-serif">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-emerald-950 font-serif">
                       ₦{pkg.cost.toLocaleString()}
                     </span>
-                    <span className="text-xs text-stone-500">one-time</span>
+                    <span className="text-xs sm:text-sm text-stone-500 font-medium">one-time</span>
                   </div>
-                  <p className="text-xs text-stone-600 mt-1">{pkg.description}</p>
+                  <p className="text-sm sm:text-base text-stone-600 mt-1.5 leading-relaxed">{pkg.description}</p>
                 </div>
 
-                <div className="space-y-2.5 py-3 border-y border-stone-100 text-xs">
+                <div className="space-y-3 py-3.5 border-y border-stone-100 text-sm">
                   <div className="flex items-center justify-between text-stone-700">
                     <span className="font-medium">Direct Referral Bonus:</span>
                     <span className="font-bold text-emerald-800">{pkg.directBonusRate}% ({pkg.directBonusRange})</span>
@@ -434,19 +425,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                       {pkg.dailyBinaryCapPairs ? `${pkg.dailyBinaryCapPairs} pairs/day (₦${pkg.dailyBinaryCapNaira?.toLocaleString()}/day)` : 'N/A (Foretaste Matrix)'}
                     </span>
                   </div>
-                  <div className="text-[11px] text-stone-500 italic">
+                  <div className="text-xs sm:text-sm text-stone-600 italic">
                     Best for: {pkg.recommendedFor}
                   </div>
                 </div>
 
-                <div className="pt-4 space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+                <div className="pt-4 space-y-2.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-stone-600 block">
                     Deliverables Included:
                   </span>
-                  <ul className="space-y-1.5 text-xs text-stone-700">
+                  <ul className="space-y-2 text-sm text-stone-700">
                     {pkg.deliverables.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -457,7 +448,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <div className="pt-6">
                 <button
                   onClick={() => navigate('/register')}
-                  className={`w-full py-3 rounded-xl text-xs font-bold shadow-md transition-all flex items-center justify-center gap-2 ${
+                  className={`w-full py-3.5 rounded-xl text-sm sm:text-base font-bold shadow-md transition-all flex items-center justify-center gap-2 ${
                     pkg.id === 'vip'
                       ? 'bg-amber-500 hover:bg-amber-400 text-emerald-950 shadow-amber-500/20'
                       : 'bg-emerald-800 hover:bg-emerald-700 text-white'
@@ -484,11 +475,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif leading-tight">
                 Never Run Out of Leads. We Give You Our Turnkey Sales Funnel Free.
               </h2>
-              <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
+              <p className="text-base sm:text-lg text-emerald-100/90 leading-relaxed">
                 When you register through our mentorship portal, you don't just get bottles of herbal medicine—you receive access to this exact digital recruiting sales funnel, pre-written WhatsApp scripts, and automated prospect qualification.
               </p>
 
-              <div className="space-y-3 text-xs sm:text-sm text-emerald-200">
+              <div className="space-y-3 text-sm sm:text-base text-emerald-100">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0" />
                   <span>Turnkey landing pages that filter out time-wasters and tire-kickers</span>
@@ -506,14 +497,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
               <div className="pt-4 flex flex-wrap gap-4">
                 <button
                   onClick={() => navigate('/apply')}
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-bold text-sm shadow-xl shadow-amber-600/30 flex items-center gap-2 transition-all hover:scale-105"
+                  className="px-6 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-bold text-base shadow-xl shadow-amber-600/30 flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <span>Apply for Direct Mentorship (Survey)</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={openExitModal}
-                  className="px-5 py-3 rounded-xl bg-emerald-800/80 hover:bg-emerald-700 text-emerald-100 font-semibold text-xs border border-emerald-700 transition-colors"
+                  className="px-5 py-3.5 rounded-xl bg-emerald-800/80 hover:bg-emerald-700 text-emerald-100 font-semibold text-sm border border-emerald-700 transition-colors"
                 >
                   Download Free 2026 PDF Playbook
                 </button>
@@ -523,21 +514,21 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
             {/* Right Card: Official Banking Spotlight */}
             <div className="bg-emerald-950/80 p-6 sm:p-8 rounded-2xl border border-emerald-700/60 space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-emerald-800">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                <span className="text-sm font-bold text-amber-400 uppercase tracking-wider">
                   Guaranty Trust Bank (GT Bank)
                 </span>
-                <span className="text-[11px] bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded font-mono">
+                <span className="text-xs bg-emerald-800 text-emerald-200 px-2.5 py-1 rounded font-mono">
                   Verified Corporate
                 </span>
               </div>
 
               <div>
-                <span className="text-xs text-emerald-300 block">Account Name</span>
-                <p className="text-lg font-bold text-white font-serif">{COMPANY_DETAILS.accountName}</p>
+                <span className="text-xs sm:text-sm text-emerald-300 block">Account Name</span>
+                <p className="text-xl font-bold text-white font-serif">{COMPANY_DETAILS.accountName}</p>
               </div>
 
               <div className="bg-emerald-900/60 p-4 rounded-xl border border-emerald-700/80">
-                <span className="text-xs text-emerald-400 block mb-1">Corporate Account Number</span>
+                <span className="text-xs sm:text-sm text-emerald-400 block mb-1">Corporate Account Number</span>
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-wider">
                     {COMPANY_DETAILS.accountNumber}
@@ -545,21 +536,27 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, openExitModa
                 </div>
               </div>
 
-              <p className="text-xs text-emerald-200/80 leading-relaxed">
+              <p className="text-sm text-emerald-100/90 leading-relaxed">
                 Pay your ₦10,000 Foretaste registration fee or higher package directly to GT Bank, then submit your proof of payment on WhatsApp to be activated instantly.
               </p>
 
               <button
                 onClick={() => navigate('/register')}
-                className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition-colors shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-sm sm:text-base transition-colors shadow-sm flex items-center justify-center gap-2"
               >
                 <span>Go to Step-by-Step Payment Instructions</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* 6. PARTNERS' VIDEO TESTIMONIALS CAROUSEL */}
+      <PartnerVideoTestimonials navigate={navigate} />
+
+      {/* 7. PARTNERS MEETING MILESTONES GALLERY */}
+      <MilestoneGallery />
     </div>
   );
 };

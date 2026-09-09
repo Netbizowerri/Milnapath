@@ -92,7 +92,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#D97706',
-    imageUrl: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/h1DdVWv9/Milnapath-International.png'
   },
   {
     id: 'gynomil',
@@ -123,7 +123,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#EC4899',
-    imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/4RQW6RBL/Milnapath-International-1.png'
   },
   {
     id: 'peptic-tea',
@@ -154,7 +154,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#16A34A',
-    imageUrl: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/S452zXJy/Milnapath-International-3.png'
   },
   {
     id: 'body-lotion-soap',
@@ -185,7 +185,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#F59E0B',
-    imageUrl: 'https://images.unsplash.com/photo-1608248597359-2ff50eb81ecb?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/sd7HRcMP/Milnapath-International-4.png'
   },
   {
     id: 'control-oil',
@@ -216,7 +216,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#6366F1',
-    imageUrl: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/zTckQvFZ/Milnapath-International-5.png'
   },
   {
     id: 'rejuvenating-drink',
@@ -247,7 +247,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#8B5CF6',
-    imageUrl: 'https://images.unsplash.com/photo-1556760544-74068565f05c?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/C3mNWQ3h/Milnapath-International-6.png'
   },
   {
     id: 'glucomil',
@@ -278,7 +278,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#0284C7',
-    imageUrl: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/YFYPGCqd/Milnapath-International-7.png'
   },
   {
     id: 'd-man',
@@ -309,7 +309,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     nafdacApproved: true,
     imageAccent: '#B45309',
-    imageUrl: 'https://images.unsplash.com/photo-1550572017-ed200f5e6343?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/Jw8GkkFf/Milnapath-International-2.png'
   },
   {
     id: 'blood-building-tea',
@@ -340,7 +340,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#BE123C',
-    imageUrl: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/9mDBJWfb/Milnapath-International-8.png'
   },
   {
     id: 'malaria-typhoid-shield',
@@ -371,7 +371,7 @@ export const PRODUCTS: Product[] = [
     featured: false,
     nafdacApproved: true,
     imageAccent: '#047857',
-    imageUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://i.ibb.co/HTyw6ZBS/Milnapath-International-9.png'
   }
 ];
 

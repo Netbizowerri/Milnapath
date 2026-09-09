@@ -79,7 +79,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <div className="prose prose-stone text-xs sm:text-sm leading-relaxed space-y-4 text-stone-700">
               <h3 className="text-base font-bold text-emerald-950">1. Information We Collect</h3>
               <p>
-                When you submit forms on this website (such as the Lead Magnet opt-in, Video Masterclass registration, Qualification Survey, or Distributor Registration Form), we collect information including your Full Name, WhatsApp phone number, email address, physical location, bank details, and desired genealogy ID.
+                When you submit forms on this website (such as the Lead Magnet opt-in, Video Training registration, Qualification Survey, or Distributor Registration Form), we collect information including your Full Name, WhatsApp phone number, email address, physical location, bank details, and desired genealogy ID.
               </p>
 
               <h3 className="text-base font-bold text-emerald-950">2. CRM & Processing Integration (Formspree & Privyr)</h3>
@@ -89,7 +89,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
 
               <h3 className="text-base font-bold text-emerald-950">3. Communication via WhatsApp & Email</h3>
               <p>
-                By opting into the masterclass or submitting an application, you consent to receive direct business updates, mentorship session links, and order dispatch notices from our official WhatsApp line (+234 903 823 7790). You may opt-out or request data erasure at any time by replying "STOP" or notifying support.
+                By opting into the video access or submitting an application, you consent to receive direct business updates, mentorship session links, and order dispatch notices from our official WhatsApp line (+234 903 823 7790). You may opt-out or request data erasure at any time by replying "STOP" or notifying support.
               </p>
             </div>
           </div>

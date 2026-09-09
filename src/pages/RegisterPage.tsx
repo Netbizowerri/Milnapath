@@ -97,14 +97,14 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       {/* Top Page Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
-          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+        <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3.5 py-1.5 rounded-full">
+          <Sparkles className="w-4 h-4 text-amber-600" />
           Step 4 of Sales Funnel: Official Enrollment
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-emerald-950">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif text-emerald-950">
           Official GT Bank Payment & Distributor Registration
         </h1>
-        <p className="text-sm text-stone-600">
+        <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
           Complete payment directly to the official corporate GT Bank account, then fill out the official registration form below for instant account provisioning and package shipment.
         </p>
       </div>
@@ -117,7 +117,7 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left info */}
           <div className="lg:col-span-7 space-y-5 text-left">
-            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-amber-300 text-xs sm:text-sm font-bold uppercase tracking-wider">
               <Landmark className="w-4 h-4" />
               <span>Official Corporate Bank Details</span>
             </div>
@@ -126,29 +126,29 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
               Pay Directly to Millennium Nature's Path Intl
             </h2>
 
-            <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+            <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
               To avoid middleman delays and guarantee legitimate product shipment, all registration fees are paid straight to our corporate GT Bank account.
             </p>
 
             {/* Account Details Box */}
-            <div className="bg-emerald-900/80 rounded-2xl p-5 border border-emerald-700/80 space-y-3">
+            <div className="bg-emerald-900/80 rounded-2xl p-5 sm:p-6 border border-emerald-700/80 space-y-3.5">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs text-emerald-300 font-medium">Bank Name:</span>
-                <span className="text-sm font-bold text-white">{COMPANY_DETAILS.bankName}</span>
+                <span className="text-xs sm:text-sm text-emerald-300 font-medium">Bank Name:</span>
+                <span className="text-base font-bold text-white">{COMPANY_DETAILS.bankName}</span>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-emerald-800">
-                <span className="text-xs text-emerald-300 font-medium">Account Name:</span>
-                <span className="text-sm font-bold text-amber-300 font-serif">{COMPANY_DETAILS.accountName}</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-emerald-800">
+                <span className="text-xs sm:text-sm text-emerald-300 font-medium">Account Name:</span>
+                <span className="text-base font-bold text-amber-300 font-serif">{COMPANY_DETAILS.accountName}</span>
               </div>
 
               {/* Account Number with 1-Click Copy */}
               <div className="pt-2 border-t border-emerald-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-emerald-400 block font-bold">
+                  <span className="text-xs uppercase tracking-wider text-emerald-400 block font-bold">
                     GT Bank Account Number
                   </span>
-                  <span className="font-mono text-2xl sm:text-3xl font-extrabold text-white tracking-wider">
+                  <span className="font-mono text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-wider">
                     {COMPANY_DETAILS.accountNumber}
                   </span>
                 </div>
@@ -156,7 +156,7 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                 <button
                   type="button"
                   onClick={handleCopyAccount}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-md ${
+                  className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-md ${
                     copied
                       ? 'bg-amber-400 text-emerald-950 scale-105'
                       : 'bg-emerald-700 hover:bg-emerald-600 text-white'
@@ -177,36 +177,36 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-emerald-300">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Verified GT Bank Corporate Account. NAFDAC Regulated.</span>
             </div>
           </div>
 
           {/* Right WhatsApp Dispatch Card */}
-          <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-emerald-600/40 text-left space-y-4">
-            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold">
+          <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 border border-emerald-600/40 text-left space-y-4">
+            <div className="flex items-center gap-2 text-amber-300 text-xs sm:text-sm font-bold">
               <MessageSquare className="w-4 h-4" />
               <span>Fast Verification Step</span>
             </div>
 
-            <h3 className="text-lg font-bold font-serif text-white">
+            <h3 className="text-lg sm:text-xl font-bold font-serif text-white">
               Already Made Your Transfer?
             </h3>
-            <p className="text-xs text-emerald-100/80 leading-relaxed">
+            <p className="text-sm text-emerald-100/90 leading-relaxed">
               Launch WhatsApp with your transfer receipt or bank reference number. Our admin verifies payments within 5 minutes.
             </p>
 
             <button
               type="button"
               onClick={handleLaunchWhatsAppProof}
-              className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-extrabold rounded-xl text-xs shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95"
+              className="w-full py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-extrabold rounded-xl text-sm sm:text-base shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95"
             >
-              <PhoneCall className="w-4 h-4 text-white" />
+              <PhoneCall className="w-5 h-5 text-white" />
               <span>Send Payment Proof to WhatsApp</span>
             </button>
 
-            <span className="text-[11px] text-emerald-300/80 block text-center">
+            <span className="text-xs sm:text-sm text-emerald-300/90 block text-center">
               Direct Desk: +234 903 823 7790
             </span>
           </div>
@@ -216,14 +216,14 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
       {/* 2. OFFICIAL DISTRIBUTOR REGISTRATION FORM */}
       <div className="bg-white rounded-3xl shadow-xl border border-stone-200 p-6 sm:p-10 space-y-8">
         <div className="border-b border-stone-100 pb-5">
-          <div className="flex items-center gap-2 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider mb-1">
             <UserPlus className="w-4 h-4" />
             <span>Official Distributor Profile Setup</span>
           </div>
-          <h2 className="text-2xl font-bold font-serif text-emerald-950">
+          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-emerald-950">
             Milnapath Membership Registration Form
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 mt-1">
+          <p className="text-sm sm:text-base text-stone-600 mt-1 leading-relaxed">
             Please fill out your official registration details. These will be encoded into the Milnapath international genealogy portal for your e-wallet and commission payouts.
           </p>
         </div>
@@ -233,19 +233,19 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
             <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto shadow-md">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-2xl font-bold text-emerald-950 font-serif">
+            <h3 className="text-2xl sm:text-3xl font-bold text-emerald-950 font-serif">
               Registration Form Submitted Successfully!
             </h3>
-            <p className="text-sm text-stone-700 max-w-lg mx-auto">
+            <p className="text-base text-stone-700 max-w-lg mx-auto leading-relaxed">
               Your registration profile for username <strong className="text-emerald-900">{form.username}</strong> has been logged into our Privyr CRM queue.
             </p>
             <div className="pt-3">
               <button
                 type="button"
                 onClick={handleLaunchWhatsAppProof}
-                className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow-lg inline-flex items-center gap-2"
+                className="px-7 py-4 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm sm:text-base rounded-xl shadow-lg inline-flex items-center gap-2"
               >
-                <PhoneCall className="w-4 h-4" />
+                <PhoneCall className="w-5 h-5" />
                 <span>Notify Verification Admin on WhatsApp Now</span>
               </button>
             </div>
@@ -254,7 +254,7 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Package Tier Selection Cards */}
             <div className="space-y-3">
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+              <label className="block text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">
                 1. Select Your Registration Package <span className="text-rose-500">*</span>
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -265,21 +265,21 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                       key={pkg.id}
                       type="button"
                       onClick={() => handlePackageChange(pkg.id)}
-                      className={`p-3 rounded-2xl text-left border transition-all flex flex-col justify-between ${
+                      className={`p-3.5 rounded-2xl text-left border transition-all flex flex-col justify-between ${
                         isSelected
                           ? 'bg-emerald-50 border-emerald-600 ring-2 ring-emerald-600/30'
                           : 'bg-stone-50 border-stone-200 hover:border-emerald-300'
                       }`}
                     >
                       <div>
-                        <span className={`text-[10px] font-bold block truncate ${isSelected ? 'text-emerald-800' : 'text-stone-500'}`}>
+                        <span className={`text-xs sm:text-sm font-bold block truncate ${isSelected ? 'text-emerald-800' : 'text-stone-600'}`}>
                           {pkg.name}
                         </span>
-                        <span className="font-serif font-bold text-sm text-emerald-950 block mt-1">
+                        <span className="font-serif font-bold text-sm sm:text-base text-emerald-950 block mt-1">
                           ₦{pkg.cost.toLocaleString()}
                         </span>
                       </div>
-                      <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-100 mt-2 self-start">
+                      <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-2 self-start">
                         {pkg.pv} PV
                       </span>
                     </button>
@@ -290,12 +290,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
 
             {/* Personal Details Section */}
             <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-900 border-b pb-1">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-900 border-b pb-1.5">
                 2. Personal & Contact Information
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Full Legal Name <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -304,12 +304,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. John Chukwuemeka"
                     value={form.fullName}
                     onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Desired Username / Member ID <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -318,12 +318,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. ChineduWealth"
                     value={form.username}
                     onChange={(e) => setForm({ ...form, username: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Phone / WhatsApp Number <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -332,12 +332,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. 08031234567"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Email Address <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -346,18 +346,18 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. john@gmail.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Gender <span className="text-rose-500">*</span>
                   </label>
                   <select
                     value={form.gender}
                     onChange={(e) => setForm({ ...form, gender: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -365,7 +365,7 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Date of Birth (DOB) <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -373,13 +373,13 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     required
                     value={form.dob}
                     onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">
+                <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                   Residential Delivery Address (For Product Waybill) <span className="text-rose-500">*</span>
                 </label>
                 <textarea
@@ -388,19 +388,19 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                   placeholder="Street Address, Town / LGA, State, Country"
                   value={form.address}
                   onChange={(e) => setForm({ ...form, address: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900 resize-none"
+                  className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900 resize-none"
                 />
               </div>
             </div>
 
             {/* Banking Details Section */}
             <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-900 border-b pb-1">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-900 border-b pb-1.5">
                 3. Your Bank Details (For Receiving Milnapath Commissions)
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Bank Name <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -409,12 +409,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. GT Bank / Access / Zenith"
                     value={form.bankName}
                     onChange={(e) => setForm({ ...form, bankName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Account Number <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -423,12 +423,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="10-digit NUBAN Account"
                     value={form.accountNumber}
                     onChange={(e) => setForm({ ...form, accountNumber: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Account Name <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -437,7 +437,7 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="Name as registered with bank"
                     value={form.accountName}
                     onChange={(e) => setForm({ ...form, accountName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
                 </div>
               </div>
@@ -445,12 +445,12 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
 
             {/* Genealogy Sponsorship & Payment Proof */}
             <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-900 border-b pb-1">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-900 border-b pb-1.5">
                 4. Sponsorship & GT Bank Payment Reference
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Sponsor Username <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -458,13 +458,13 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     required
                     value={form.sponsorUsername}
                     onChange={(e) => setForm({ ...form, sponsorUsername: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-100 border border-stone-300 rounded-xl text-xs font-mono text-emerald-950 font-bold"
+                    className="w-full px-4 py-3 bg-stone-100 border border-stone-300 rounded-xl text-sm sm:text-base font-mono text-emerald-950 font-bold"
                   />
-                  <span className="text-[10px] text-stone-500 mt-1 block">Default: Team Lead Sponsor</span>
+                  <span className="text-xs text-stone-500 mt-1 block">Default: Team Lead Sponsor</span>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Placement Username <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -472,13 +472,13 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     required
                     value={form.placementUsername}
                     onChange={(e) => setForm({ ...form, placementUsername: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-100 border border-stone-300 rounded-xl text-xs font-mono text-emerald-950 font-bold"
+                    className="w-full px-4 py-3 bg-stone-100 border border-stone-300 rounded-xl text-sm sm:text-base font-mono text-emerald-950 font-bold"
                   />
-                  <span className="text-[10px] text-stone-500 mt-1 block">Binary tree auto-spillover</span>
+                  <span className="text-xs text-stone-500 mt-1 block">Binary tree auto-spillover</span>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                     Payment Reference / Teller Number
                   </label>
                   <input
@@ -486,9 +486,9 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
                     placeholder="e.g. GTB/TRX/8947264 or Sender Name"
                     value={form.paymentReference}
                     onChange={(e) => setForm({ ...form, paymentReference: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-xs focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-emerald-600 text-stone-900"
                   />
-                  <span className="text-[10px] text-stone-500 mt-1 block">Leave blank if submitting via WhatsApp</span>
+                  <span className="text-xs text-stone-500 mt-1 block">Leave blank if submitting via WhatsApp</span>
                 </div>
               </div>
             </div>
@@ -498,14 +498,14 @@ Hello Support, I have paid to Millennium Nature's Path Intl GT Bank (0718549018)
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-800 hover:from-emerald-700 hover:to-emerald-600 text-white font-extrabold rounded-2xl text-sm shadow-xl shadow-emerald-900/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75"
+                className="w-full py-4.5 bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-800 hover:from-emerald-700 hover:to-emerald-600 text-white font-extrabold rounded-2xl text-base sm:text-lg shadow-xl shadow-emerald-900/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75"
               >
                 {isSubmitting ? (
                   <span>Transmitting Official Registration...</span>
                 ) : (
                   <>
                     <span>Submit Official Registration (₦{currentPackageObj.cost.toLocaleString()})</span>
-                    <ArrowRight className="w-4 h-4 text-amber-300" />
+                    <ArrowRight className="w-5 h-5 text-amber-300" />
                   </>
                 )}
               </button>

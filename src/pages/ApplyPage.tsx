@@ -66,36 +66,36 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
       <div className="bg-white rounded-3xl shadow-xl border border-stone-200 overflow-hidden">
         {/* Progress Header */}
         <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 p-6 sm:p-8 text-white relative">
-          <div className="inline-flex items-center gap-1.5 bg-amber-400/20 text-amber-300 px-3 py-1 rounded-full text-xs font-bold border border-amber-400/30 mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 bg-amber-400/20 text-amber-300 px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold border border-amber-400/30 mb-3">
+            <Sparkles className="w-4 h-4" />
             DIRECT MENTORSHIP QUALIFICATION SURVEY
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold font-serif leading-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif leading-tight">
             Apply to Join My Direct Milnapath Inner Circle Team
           </h1>
-          <p className="text-xs sm:text-sm text-emerald-200 mt-2">
+          <p className="text-sm sm:text-base text-emerald-200 mt-2 leading-relaxed">
             We work closely with only 10 serious individuals each month to help them hit Star 4 Leader (₦5M Car) in 6-12 months. Please answer honestly.
           </p>
 
           {/* Stepper Dots */}
-          <div className="mt-6 flex items-center justify-between text-xs max-w-sm">
+          <div className="mt-6 flex items-center justify-between text-xs sm:text-sm max-w-sm">
             <div className={`flex items-center gap-2 ${step >= 1 ? 'text-amber-300 font-bold' : 'text-emerald-400/60'}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step >= 1 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
+              <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold ${step >= 1 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
                 1
               </span>
               <span>Goals</span>
             </div>
             <div className="h-0.5 flex-1 bg-emerald-800 mx-2"></div>
             <div className={`flex items-center gap-2 ${step >= 2 ? 'text-amber-300 font-bold' : 'text-emerald-400/60'}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step >= 2 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
+              <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold ${step >= 2 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
                 2
               </span>
               <span>Capacity</span>
             </div>
             <div className="h-0.5 flex-1 bg-emerald-800 mx-2"></div>
             <div className={`flex items-center gap-2 ${step >= 3 ? 'text-amber-300 font-bold' : 'text-emerald-400/60'}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step >= 3 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
+              <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold ${step >= 3 ? 'bg-amber-400 text-emerald-950' : 'bg-emerald-900 text-white'}`}>
                 3
               </span>
               <span>Contact</span>
@@ -110,10 +110,10 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h2 className="text-2xl font-bold text-emerald-950 font-serif">
+              <h2 className="text-2xl sm:text-3xl font-bold text-emerald-950 font-serif">
                 Application Received & Qualified!
               </h2>
-              <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
+              <p className="text-sm sm:text-base text-stone-600 max-w-md mx-auto leading-relaxed">
                 Thank you, <span className="font-semibold text-emerald-800">{surveyData.fullName || 'Leader'}</span>. Your profile matches our team criteria. We are now redirecting you to complete your official GT Bank payment and registration...
               </p>
               <div className="pt-2">
@@ -125,8 +125,8 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
               {/* STEP 1: INCOME & MOTIVATION */}
               {step === 1 && (
                 <div className="space-y-5 animate-in fade-in duration-200">
-                  <div className="space-y-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                  <div className="space-y-2.5">
+                    <label className="block text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">
                       1. What is your realistic 90-day monthly income goal with Milnapath?
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -140,7 +140,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                           key={val}
                           type="button"
                           onClick={() => setSurveyData({ ...surveyData, monthlyIncomeGoal: val })}
-                          className={`p-3 rounded-xl text-xs text-left font-medium border transition-all ${
+                          className={`p-3.5 sm:p-4 rounded-xl text-sm sm:text-base text-left font-medium border transition-all ${
                             surveyData.monthlyIncomeGoal === val
                               ? 'bg-emerald-50 border-emerald-600 text-emerald-900 font-bold ring-2 ring-emerald-500/20'
                               : 'bg-stone-50 border-stone-200 hover:border-emerald-300 text-stone-700'
@@ -152,11 +152,11 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     </div>
                   </div>
 
-                  <div className="space-y-2 pt-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                  <div className="space-y-2.5 pt-2">
+                    <label className="block text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">
                       2. What is your primary driving motivation right now?
                     </label>
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="grid grid-cols-1 gap-2.5">
                       {[
                         'Financial Independence & Quitting 9-to-5 Job',
                         'Curing a family member with Milnapath Phytotherapy & spreading wellness',
@@ -167,7 +167,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                           key={mot}
                           type="button"
                           onClick={() => setSurveyData({ ...surveyData, primaryMotivation: mot })}
-                          className={`p-3 rounded-xl text-xs text-left font-medium border transition-all ${
+                          className={`p-3.5 sm:p-4 rounded-xl text-sm sm:text-base text-left font-medium border transition-all ${
                             surveyData.primaryMotivation === mot
                               ? 'bg-emerald-50 border-emerald-600 text-emerald-900 font-bold ring-2 ring-emerald-500/20'
                               : 'bg-stone-50 border-stone-200 hover:border-emerald-300 text-stone-700'
@@ -183,10 +183,10 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="px-6 py-3 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl flex items-center gap-2 shadow-md"
+                      className="px-6 py-3.5 bg-emerald-800 hover:bg-emerald-700 text-white text-sm sm:text-base font-bold rounded-xl flex items-center gap-2 shadow-md"
                     >
                       <span>Proceed to Step 2</span>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
@@ -195,8 +195,8 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
               {/* STEP 2: CAPITAL & COMMITMENT */}
               {step === 2 && (
                 <div className="space-y-5 animate-in fade-in duration-200">
-                  <div className="space-y-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                  <div className="space-y-2.5">
+                    <label className="block text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">
                       3. What is your available startup capital right now to activate your package?
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -211,7 +211,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                           key={cap}
                           type="button"
                           onClick={() => setSurveyData({ ...surveyData, capitalAvailability: cap })}
-                          className={`p-3 rounded-xl text-xs text-left font-medium border transition-all ${
+                          className={`p-3.5 sm:p-4 rounded-xl text-sm sm:text-base text-left font-medium border transition-all ${
                             surveyData.capitalAvailability === cap
                               ? 'bg-emerald-50 border-emerald-600 text-emerald-900 font-bold ring-2 ring-emerald-500/20'
                               : 'bg-stone-50 border-stone-200 hover:border-emerald-300 text-stone-700'
@@ -223,11 +223,11 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     </div>
                   </div>
 
-                  <div className="space-y-2 pt-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                  <div className="space-y-2.5 pt-2">
+                    <label className="block text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">
                       4. How many hours per week can you dedicate to your Milnapath business?
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                       {[
                         '5 - 10 hrs / week (Part-Time)',
                         '10 - 20 hrs / week (Focused)',
@@ -237,7 +237,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                           key={hrs}
                           type="button"
                           onClick={() => setSurveyData({ ...surveyData, weeklyHours: hrs })}
-                          className={`p-3 rounded-xl text-xs text-left font-medium border transition-all ${
+                          className={`p-3.5 sm:p-4 rounded-xl text-sm sm:text-base text-left font-medium border transition-all ${
                             surveyData.weeklyHours === hrs
                               ? 'bg-emerald-50 border-emerald-600 text-emerald-900 font-bold ring-2 ring-emerald-500/20'
                               : 'bg-stone-50 border-stone-200 hover:border-emerald-300 text-stone-700'
@@ -253,18 +253,18 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="px-4 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold rounded-xl flex items-center gap-1.5"
+                      className="px-5 py-3 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-semibold rounded-xl flex items-center gap-1.5"
                     >
-                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronLeft className="w-5 h-5" />
                       <span>Back</span>
                     </button>
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="px-6 py-3 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl flex items-center gap-2 shadow-md"
+                      className="px-6 py-3.5 bg-emerald-800 hover:bg-emerald-700 text-white text-sm sm:text-base font-bold rounded-xl flex items-center gap-2 shadow-md"
                     >
                       <span>Proceed to Final Step</span>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
               {step === 3 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
+                    <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                       Full Legal Name <span className="text-rose-500">*</span>
                     </label>
                     <input
@@ -283,13 +283,13 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                       placeholder="e.g. Dr. Ngozi Adeleke"
                       value={surveyData.fullName}
                       onChange={(e) => setSurveyData({ ...surveyData, fullName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-stone-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                         Active WhatsApp Number <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -298,12 +298,12 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                         placeholder="e.g. 08031234567"
                         value={surveyData.whatsapp}
                         onChange={(e) => setSurveyData({ ...surveyData, whatsapp: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                        className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-stone-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                         Email Address <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -312,13 +312,13 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                         placeholder="e.g. ngozi@gmail.com"
                         value={surveyData.email}
                         onChange={(e) => setSurveyData({ ...surveyData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                        className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
+                    <label className="block text-xs sm:text-sm font-bold text-stone-700 mb-1">
                       Your City, State & Country <span className="text-rose-500">*</span>
                     </label>
                     <input
@@ -327,7 +327,7 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                       placeholder="e.g. Ikeja, Lagos State, Nigeria"
                       value={surveyData.location}
                       onChange={(e) => setSurveyData({ ...surveyData, location: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-600 text-stone-900"
                     />
                   </div>
 
@@ -335,14 +335,14 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-extrabold rounded-2xl text-sm shadow-xl shadow-amber-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-75"
+                      className="w-full py-4.5 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-extrabold rounded-2xl text-base sm:text-lg shadow-xl shadow-amber-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75"
                     >
                       {isSubmitting ? (
                         <span>Processing Qualification...</span>
                       ) : (
                         <>
                           <span>Submit Application & Proceed to Payment (GT Bank)</span>
-                          <ArrowRight className="w-4 h-4" />
+                          <ArrowRight className="w-5 h-5" />
                         </>
                       )}
                     </button>
@@ -352,12 +352,12 @@ export const ApplyPage: React.FC<ApplyPageProps> = ({ navigate }) => {
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="text-xs text-stone-500 hover:text-stone-800 flex items-center gap-1"
+                      className="text-xs sm:text-sm text-stone-600 hover:text-stone-900 flex items-center gap-1 font-medium"
                     >
-                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <ChevronLeft className="w-4 h-4" />
                       Back to Step 2
                     </button>
-                    <span className="text-[11px] text-stone-400">
+                    <span className="text-xs text-stone-500">
                       Auto-routes to Privyr CRM & Formspree
                     </span>
                   </div>

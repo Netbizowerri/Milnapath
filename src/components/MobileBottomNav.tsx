@@ -45,7 +45,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
               >
                 <Icon className="w-5 h-5" />
               </div>
-              <span className="text-[10px] mt-0.5 tracking-tight font-medium truncate max-w-[65px]">
+              <span className="text-xs mt-1 tracking-tight font-semibold truncate max-w-[68px]">
                 {tab.label}
               </span>
               {isActive && !tab.highlight && (
