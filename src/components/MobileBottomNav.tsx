@@ -16,7 +16,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
   ];
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-emerald-950/95 backdrop-blur-md border-t border-emerald-800/80 px-2 py-1.5 shadow-2xl">
+    <div className="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-purple-950/95 backdrop-blur-md border-t border-purple-800/80 px-2 py-1.5 shadow-2xl">
       <div className="grid grid-cols-5 items-center justify-between text-center max-w-md mx-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -31,7 +31,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
                   ? 'text-amber-400 font-bold'
                   : isActive
                   ? 'text-white font-bold'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
+                  : 'text-purple-300/70 hover:text-purple-100'
               }`}
             >
               <div
@@ -39,7 +39,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
                   tab.highlight
                     ? 'bg-amber-500/20 text-amber-300'
                     : isActive
-                    ? 'bg-emerald-800 text-white'
+                    ? 'bg-purple-800 text-white'
                     : ''
                 }`}
               >
@@ -49,7 +49,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
                 {tab.label}
               </span>
               {isActive && !tab.highlight && (
-                <span className="w-1 h-1 rounded-full bg-emerald-400 mt-0.5"></span>
+                <span className="w-1 h-1 rounded-full bg-purple-400 mt-0.5"></span>
               )}
             </button>
           );

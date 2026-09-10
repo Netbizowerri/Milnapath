@@ -52,7 +52,7 @@ export const MilestoneGallery: React.FC = () => {
           <Trophy className="w-3.5 h-3.5 text-amber-700" />
           Milestones & Celebrations
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-emerald-950 tracking-tight leading-tight">
+        <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-purple-950 tracking-tight leading-tight">
           Partners Meeting Milestones
         </h2>
         <p className="mt-3 text-base sm:text-lg text-stone-600 leading-relaxed">

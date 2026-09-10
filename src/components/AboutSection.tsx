@@ -31,31 +31,31 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
         
         {/* Left Column: Brand Story & Mission */}
         <div className="lg:col-span-7 space-y-6 text-left">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-emerald-200 shadow-xs">
-            <Leaf className="w-3.5 h-3.5 text-emerald-700" />
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-purple-200 shadow-xs">
+            <Leaf className="w-3.5 h-3.5 text-purple-700" />
             About Milnapath International
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-emerald-950 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-purple-950 tracking-tight leading-tight">
             Restoring Vibrant Health & Building Generational Wealth Across Africa
           </h2>
 
           <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
-            <strong className="text-emerald-950">Millennium Nature’s Path International (Milnapath)</strong> is an indigenous, forward-thinking direct selling powerhouse established to revolutionize holistic health and financial self-determination. By blending centuries-old African herbal pharmacology with state-of-the-art laboratory extraction, Milnapath produces potent, 100% natural phytomedicines that target cellular rejuvenation, chronic disease reversal, and immune fortification.
+            <strong className="text-purple-950">Millennium Nature’s Path International (Milnapath)</strong> is an indigenous, forward-thinking direct selling powerhouse established to revolutionize holistic health and financial self-determination. By blending centuries-old African herbal pharmacology with state-of-the-art laboratory extraction, Milnapath produces potent, 100% natural phytomedicines that target cellular rejuvenation, chronic disease reversal, and immune fortification.
           </p>
 
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-            Beyond pharmaceutical-grade natural wellness, Milnapath offers one of the most lucrative and partner-centric compensation ecosystems in Africa — featuring a <strong className="text-emerald-900">guaranteed ₦500/$1 exchange rate</strong>, 14% infinite binary matching with zero volume flushing, and direct car, house, and international travel awards.
+            Beyond pharmaceutical-grade natural wellness, Milnapath offers one of the most lucrative and partner-centric compensation ecosystems in Africa — featuring a <strong className="text-purple-900">guaranteed ₦500/$1 exchange rate</strong>, 14% infinite binary matching with zero volume flushing, and direct car, house, and international travel awards.
           </p>
 
           {/* Key Value Pillars */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
-              <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-purple-50/70 border border-purple-100">
+              <div className="w-9 h-9 rounded-lg bg-purple-700 text-white flex items-center justify-center shrink-0 shadow-xs">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-emerald-950">NAFDAC Certified Quality</h4>
+                <h4 className="text-sm font-bold text-purple-950">NAFDAC Certified Quality</h4>
                 <p className="text-xs text-stone-600 mt-0.5">Rigorous batch-testing, 100% herbal active ingredients with no hazardous synthetic additives.</p>
               </div>
             </div>
@@ -65,17 +65,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-emerald-950">14% Infinite Binary Match</h4>
+                <h4 className="text-sm font-bold text-purple-950">14% Infinite Binary Match</h4>
                 <p className="text-xs text-stone-600 mt-0.5">Matches every 40 PV lesser-leg volume with zero volume flush on accumulated sales.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
-              <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-purple-50/70 border border-purple-100">
+              <div className="w-9 h-9 rounded-lg bg-purple-700 text-white flex items-center justify-center shrink-0 shadow-xs">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-emerald-950">Milestone Awards</h4>
+                <h4 className="text-sm font-bold text-purple-950">Milestone Awards</h4>
                 <p className="text-xs text-stone-600 mt-0.5">Brand new luxury cars (₦5M to ₦15M), house funds, and fully-sponsored international vacations.</p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                 <HeartHandshake className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-emerald-950">Foretaste Accessible Entry</h4>
+                <h4 className="text-sm font-bold text-purple-950">Foretaste Accessible Entry</h4>
                 <p className="text-xs text-stone-600 mt-0.5">Accessible ₦10,000 starter package with product inclusion, enabling anyone to launch immediately.</p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
           <div className="flex flex-wrap items-center gap-3.5 pt-3">
             <button
               onClick={() => navigate('/products')}
-              className="px-6 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-sm shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-purple-800 hover:bg-purple-900 text-white font-bold text-sm shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
               <span>Explore Natural Remedies</span>
               <ArrowRight className="w-4 h-4 text-amber-300" />
@@ -103,7 +103,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
 
             <button
               onClick={() => navigate('/compensation')}
-              className="px-6 py-3 rounded-xl bg-white hover:bg-emerald-50 text-emerald-900 font-bold text-sm border-2 border-emerald-800 transition-all hover:scale-105"
+              className="px-6 py-3 rounded-xl bg-white hover:bg-purple-50 text-purple-900 font-bold text-sm border-2 border-purple-800 transition-all hover:scale-105"
             >
               <span>Explore Compensation Plan</span>
             </button>
@@ -114,7 +114,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[340px] sm:max-w-[380px]">
             {/* Ambient Background Accent Glow */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-emerald-600 to-amber-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000 pointer-events-none"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-amber-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000 pointer-events-none"></div>
 
             <div className="relative z-10 bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-800 aspect-[9/16] w-full">
               {isPlayingVideo ? (
@@ -164,7 +164,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
 
                   {/* Top Header Tag */}
                   <div className="relative z-10 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-200 bg-emerald-950/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-700/50 shadow-sm">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-200 bg-purple-950/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-purple-700/50 shadow-sm">
                       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                       Corporate Showcase
                     </span>
@@ -177,11 +177,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                   <div className="relative z-10 my-auto flex flex-col items-center justify-center gap-3 py-6">
                     <div className="relative">
                       <div className="absolute -inset-3 rounded-full bg-amber-400/20 animate-ping"></div>
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-300 text-emerald-950 flex items-center justify-center shadow-2xl shadow-amber-500/60 group-hover:scale-110 transition-transform duration-300 ring-4 ring-white/40">
-                        <Play className="w-9 h-9 fill-current translate-x-1 text-emerald-950" />
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-300 text-purple-950 flex items-center justify-center shadow-2xl shadow-amber-500/60 group-hover:scale-110 transition-transform duration-300 ring-4 ring-white/40">
+                        <Play className="w-9 h-9 fill-current translate-x-1 text-purple-950" />
                       </div>
                     </div>
-                    <span className="text-xs sm:text-sm font-bold text-white bg-stone-900/90 px-4 py-1.5 rounded-full border border-stone-700 backdrop-blur-sm shadow-lg group-hover:bg-emerald-900 group-hover:border-emerald-600 transition-colors">
+                    <span className="text-xs sm:text-sm font-bold text-white bg-stone-900/90 px-4 py-1.5 rounded-full border border-stone-700 backdrop-blur-sm shadow-lg group-hover:bg-purple-900 group-hover:border-purple-600 transition-colors">
                       Click to Watch Presentation
                     </span>
                   </div>

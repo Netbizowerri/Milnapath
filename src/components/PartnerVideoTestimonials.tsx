@@ -146,11 +146,11 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
       {/* Section Title & Description */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-        <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-200 shadow-xs">
+        <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-purple-200 shadow-xs">
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
           Real People. Real Health. Real Wealth.
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-emerald-950 tracking-tight leading-tight">
+        <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-purple-950 tracking-tight leading-tight">
           Partners’ Video Testimonials
         </h2>
         <p className="mt-3 text-base sm:text-lg text-stone-600 leading-relaxed">
@@ -177,14 +177,14 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
             <button
               onClick={handlePrev}
               aria-label="Previous video"
-              className="w-10 h-10 rounded-full bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-900 border border-stone-200 shadow-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-10 h-10 rounded-full bg-white hover:bg-purple-50 text-stone-700 hover:text-purple-900 border border-stone-200 shadow-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-600"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next video"
-              className="w-10 h-10 rounded-full bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-900 border border-stone-200 shadow-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-10 h-10 rounded-full bg-white hover:bg-purple-50 text-stone-700 hover:text-purple-900 border border-stone-200 shadow-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-600"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -285,8 +285,8 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
 
                         {/* Top Meta Tag */}
                         <div className="relative z-10 flex items-start justify-between gap-2">
-                          <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-emerald-200 bg-emerald-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-emerald-700/50 shadow-xs">
-                            <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
+                          <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-purple-200 bg-purple-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-purple-700/50 shadow-xs">
+                            <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-purple-400 shrink-0" />
                             Verified Partner
                           </span>
                           <span className="text-[10px] sm:text-[11px] font-semibold text-amber-300 bg-stone-900/85 backdrop-blur-md px-2 py-1 rounded-md border border-stone-700 truncate max-w-[140px]">
@@ -296,10 +296,10 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
 
                         {/* Center Play Button Pulse */}
                         <div className="relative z-10 my-auto flex flex-col items-center justify-center gap-2.5 py-6">
-                          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-emerald-950 flex items-center justify-center shadow-2xl shadow-amber-500/50 group-hover:scale-110 transition-transform duration-300 ring-4 ring-white/40">
-                            <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current translate-x-0.5 text-emerald-950" />
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-purple-950 flex items-center justify-center shadow-2xl shadow-amber-500/50 group-hover:scale-110 transition-transform duration-300 ring-4 ring-white/40">
+                            <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current translate-x-0.5 text-purple-950" />
                           </div>
-                          <span className="text-xs font-bold text-white bg-stone-900/90 px-3.5 py-1 rounded-full border border-stone-700 backdrop-blur-sm shadow-md group-hover:bg-emerald-900 group-hover:border-emerald-600 transition-colors">
+                          <span className="text-xs font-bold text-white bg-stone-900/90 px-3.5 py-1 rounded-full border border-stone-700 backdrop-blur-sm shadow-md group-hover:bg-purple-900 group-hover:border-purple-600 transition-colors">
                             Click to Play
                           </span>
                         </div>
@@ -334,7 +334,7 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
           <button
             onClick={handlePrev}
             aria-label="Previous videos"
-            className="hidden lg:flex absolute -left-4 xl:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/95 hover:bg-white text-stone-800 shadow-xl border border-stone-200 items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+            className="hidden lg:flex absolute -left-4 xl:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/95 hover:bg-white text-stone-800 shadow-xl border border-stone-200 items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 focus:outline-none focus:ring-2 focus:ring-purple-600"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -343,7 +343,7 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
           <button
             onClick={handleNext}
             aria-label="Next videos"
-            className="hidden lg:flex absolute -right-4 xl:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/95 hover:bg-white text-stone-800 shadow-xl border border-stone-200 items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+            className="hidden lg:flex absolute -right-4 xl:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/95 hover:bg-white text-stone-800 shadow-xl border border-stone-200 items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 focus:outline-none focus:ring-2 focus:ring-purple-600"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -358,7 +358,7 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
               aria-label={`Go to slide ${idx + 1}`}
               className={`transition-all duration-300 rounded-full ${
                 currentIndex === idx
-                  ? 'w-7 h-2 bg-emerald-800 shadow-xs'
+                  ? 'w-7 h-2 bg-purple-800 shadow-xs'
                   : 'w-2 h-2 bg-stone-300 hover:bg-stone-400'
               }`}
             />

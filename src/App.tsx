@@ -92,7 +92,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-emerald-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-purple-600 selection:text-white">
       {/* Persistent Navbar */}
       <Navbar currentPath={currentPath} navigate={navigate} />
 

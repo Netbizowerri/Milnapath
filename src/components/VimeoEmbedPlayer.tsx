@@ -221,7 +221,7 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
                         setHasEnded(false);
                         item.onClick();
                       }}
-                      className="group/item flex items-center gap-3 p-2.5 rounded-xl bg-stone-900/90 hover:bg-emerald-950/80 border border-stone-800 hover:border-emerald-600/60 cursor-pointer transition-all duration-200 text-left"
+                      className="group/item flex items-center gap-3 p-2.5 rounded-xl bg-stone-900/90 hover:bg-purple-950/80 border border-stone-800 hover:border-purple-600/60 cursor-pointer transition-all duration-200 text-left"
                     >
                       {item.posterUrl ? (
                         <div className="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-stone-800 border border-stone-700">
@@ -236,8 +236,8 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
                           </div>
                         </div>
                       ) : (
-                        <div className="w-10 h-10 rounded-lg bg-emerald-900/50 flex items-center justify-center shrink-0 border border-emerald-700/40">
-                          <VideoIcon className="w-4 h-4 text-emerald-300" />
+                        <div className="w-10 h-10 rounded-lg bg-purple-900/50 flex items-center justify-center shrink-0 border border-purple-700/40">
+                          <VideoIcon className="w-4 h-4 text-purple-300" />
                         </div>
                       )}
 
@@ -269,7 +269,7 @@ export const VimeoEmbedPlayer: React.FC<VimeoEmbedPlayerProps> = ({
             <div className="pt-2 border-t border-stone-800 flex items-center justify-center">
               <button
                 onClick={onMoreVideosClick}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-xs sm:text-sm border border-emerald-600/50 shadow-md transition-all hover:scale-105 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-700 to-purple-800 hover:from-purple-600 hover:to-purple-700 text-white font-bold text-xs sm:text-sm border border-purple-600/50 shadow-md transition-all hover:scale-105 cursor-pointer"
               >
                 <span>Browse All Videos</span>
                 <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
