@@ -16,8 +16,13 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           {/* Brand Col */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white font-serif font-extrabold text-xl shadow-lg border border-purple-400/40">
-                <span className="text-amber-300">M</span>
+              <div className="w-[53px] h-[53px] rounded-xl overflow-hidden shadow-lg border border-white/20 shrink-0 bg-[#502C46] flex items-center justify-center">
+                <img
+                  src="https://i.ibb.co/YFhcJhNm/Milnapath-International-2.jpg"
+                  alt="Milnapath International Logo"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="font-extrabold text-lg sm:text-xl text-white font-serif tracking-tight">

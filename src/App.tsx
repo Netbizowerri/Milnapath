@@ -58,7 +58,7 @@ export default function App() {
     if (currentPath === '/' || currentPath === '') {
       return <LandingPage navigate={navigate} openExitModal={() => setExitModalOpen(true)} />;
     }
-    if (currentPath === '/vsl') {
+    if (currentPath === '/vsl' || currentPath === '/videos') {
       return <VSLPage navigate={navigate} openExitModal={() => setExitModalOpen(true)} />;
     }
     if (currentPath === '/apply') {

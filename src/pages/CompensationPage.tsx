@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Calculator, Award, TrendingUp, Sparkles, CheckCircle2, ChevronRight, Coins, Zap, GitMerge, RotateCcw, Layers, Store, PlaneTakeoff, Globe, Building2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Calculator, Award, TrendingUp, Sparkles, CheckCircle2, ChevronRight, Coins, Zap, GitMerge, RotateCcw, Layers, Store, PlaneTakeoff, Globe, Building2, ShieldCheck, ArrowRight, Play } from 'lucide-react';
 import { COMPENSATION_STREAMS, RANK_AWARDS, STOCKIST_TIERS, PACKAGE_TIERS, COMPANY_DETAILS } from '../data/compensationData';
 import { MilestoneGallery } from '../components/MilestoneGallery';
 
@@ -101,6 +101,17 @@ export const CompensationPage: React.FC<CompensationPageProps> = ({ navigate }) 
             <span className="bg-purple-900/80 px-3 py-1.5 rounded-lg border border-purple-700">
               Binary Matching: ₦2,800 per 40 PV Pair
             </span>
+          </div>
+
+          <div className="pt-3">
+            <button
+              onClick={() => navigate('/videos')}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-purple-950 font-extrabold text-sm px-5 py-2.5 rounded-xl shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Play className="w-4 h-4 fill-current text-purple-950" />
+              <span>Watch The Milnapath Business Plan Video</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>

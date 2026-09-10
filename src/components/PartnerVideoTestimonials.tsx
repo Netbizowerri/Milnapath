@@ -9,6 +9,7 @@ import {
   Maximize2
 } from 'lucide-react';
 import { VimeoEmbedPlayer } from './VimeoEmbedPlayer';
+import { YouTubeEmbedPlayer } from './YouTubeEmbedPlayer';
 
 export interface PartnerVideoItem {
   id: string;
@@ -16,6 +17,7 @@ export interface PartnerVideoItem {
   title: string;
   badge: string;
   posterUrl: string;
+  youtubeId?: string;
   vimeoId?: string;
   videoSrc?: string;
   fallbackSrc?: string;
@@ -214,15 +216,34 @@ export const PartnerVideoTestimonials: React.FC<PartnerVideoTestimonialsProps> =
                 >
                   <div className="relative bg-stone-950 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-stone-800 aspect-[9/14] max-h-[620px] flex items-center justify-center group">
                     {isPlaying ? (
-                      /* Active Player (Vimeo or HTML5 Video) */
+                      /* Active Player (YouTube, Vimeo, or HTML5 Video) */
                       <div className="relative w-full h-full bg-black flex items-center justify-center">
-                        {video.vimeoId ? (
+                        {video.youtubeId ? (
+                          <YouTubeEmbedPlayer
+                            youtubeIdOrUrl={video.youtubeId}
+                            title={video.name}
+                            isVertical={true}
+                            onClose={() => setPlayingVideoId(null)}
+                            onMoreVideosClick={navigate ? () => navigate('/videos') : undefined}
+                            moreVideos={PARTNER_VIDEOS
+                              .filter((v) => v.id !== video.id)
+                              .slice(0, 3)
+                              .map((v) => ({
+                                id: v.id,
+                                title: v.name,
+                                subtitle: v.title,
+                                posterUrl: v.posterUrl,
+                                onClick: () => handleStartPlay(v.id)
+                              }))
+                            }
+                          />
+                        ) : video.vimeoId ? (
                           <VimeoEmbedPlayer
                             vimeoId={video.vimeoId}
                             title={video.name}
                             isVertical={true}
                             onClose={() => setPlayingVideoId(null)}
-                            onMoreVideosClick={navigate ? () => navigate('/vsl') : undefined}
+                            onMoreVideosClick={navigate ? () => navigate('/videos') : undefined}
                             moreVideos={PARTNER_VIDEOS
                               .filter((v) => v.id !== video.id)
                               .slice(0, 3)

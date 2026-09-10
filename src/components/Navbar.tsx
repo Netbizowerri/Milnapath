@@ -12,7 +12,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
 
   const navLinks = [
     { label: 'Overview', path: '/' },
-    { label: 'Videos', path: '/vsl' },
+    { label: 'Videos', path: '/videos' },
     { label: 'Products (12)', path: '/products' },
     { label: 'Compensation Plan', path: '/compensation' },
     { label: 'Qualify for Mentorship', path: '/apply' },
@@ -62,12 +62,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
           onClick={() => handleNav('/')}
           className="flex items-center gap-2.5 sm:gap-3 text-left group focus:outline-none"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white shadow-lg shadow-purple-900/40 border border-purple-400/30 group-hover:scale-105 transition-transform">
-            <span className="font-extrabold text-lg sm:text-xl tracking-tighter text-amber-300 font-serif">M</span>
+          <div className="w-12 h-12 sm:w-[53px] sm:h-[53px] rounded-xl overflow-hidden shadow-lg shadow-[#502C46]/50 border border-white/25 group-hover:scale-105 transition-transform shrink-0 bg-[#502C46] flex items-center justify-center">
+            <img
+              src="https://i.ibb.co/YFhcJhNm/Milnapath-International-2.jpg"
+              alt="Milnapath International"
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-base sm:text-xl tracking-tight text-white group-hover:text-amber-300 transition-colors font-serif">
+              <span className="font-extrabold text-base sm:text-xl tracking-tight text-white group-hover:text-amber-400 transition-colors font-serif">
                 MILNAPATH
               </span>
               <span className="text-[10px] sm:text-xs uppercase font-bold tracking-widest bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded border border-amber-400/30">
@@ -83,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => {
-            const isActive = currentPath === link.path;
+            const isActive = currentPath === link.path || (link.path === '/videos' && currentPath === '/vsl');
             return (
               <button
                 key={link.path}
@@ -135,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
         <div className="lg:hidden bg-purple-950 border-b border-purple-800 px-4 pt-3 pb-6 space-y-3 animate-fadeIn">
           <div className="space-y-1.5 pt-1">
             {navLinks.map((link) => {
-              const isActive = currentPath === link.path;
+              const isActive = currentPath === link.path || (link.path === '/videos' && currentPath === '/vsl');
               return (
                 <button
                   key={link.path}

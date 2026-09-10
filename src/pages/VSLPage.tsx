@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronRight, MessageCircle, Sparkles, BookOpen, Clock, Users, ArrowRight, ShieldCheck, Download, Award, Share2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronRight, MessageCircle, Sparkles, BookOpen, Clock, Users, ArrowRight, ShieldCheck, Download, Award, Share2, Plus, X, Video as VideoIcon, ExternalLink } from 'lucide-react';
 import { VSL_MODULES } from '../data/vslModulesData';
+import { VideoModule } from '../types';
 import { COMPANY_DETAILS } from '../data/compensationData';
 import { VimeoEmbedPlayer } from '../components/VimeoEmbedPlayer';
+import { YouTubeEmbedPlayer, extractYouTubeId } from '../components/YouTubeEmbedPlayer';
 
 interface VSLPageProps {
   navigate: (path: string) => void;
@@ -10,12 +12,49 @@ interface VSLPageProps {
 }
 
 export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => {
-  const [selectedModuleId, setSelectedModuleId] = useState<number>(1);
+  const [videoList, setVideoList] = useState<VideoModule[]>(() => {
+    try {
+      const saved = localStorage.getItem('milnapath_custom_videos');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const defaultYouTubeIds = new Set(VSL_MODULES.map((m) => m.youtubeId).filter(Boolean));
+          const defaultTitles = new Set(VSL_MODULES.map((m) => m.title.toLowerCase()));
+          const genuineCustom = parsed.filter((p: VideoModule) => 
+            (!p.youtubeId || !defaultYouTubeIds.has(p.youtubeId)) &&
+            !defaultTitles.has(p.title.toLowerCase())
+          );
+          // The Milnapath Business Plan must ALWAYS be at the very top of all others on the video list
+          const topVideo = VSL_MODULES[0]; // The Milnapath Business Plan
+          const otherDefaults = VSL_MODULES.slice(1);
+          return [topVideo, ...genuineCustom, ...otherDefaults];
+        }
+      }
+    } catch (e) {
+      console.error('Error restoring custom videos:', e);
+    }
+    return VSL_MODULES;
+  });
+
+  const [selectedModuleId, setSelectedModuleId] = useState<number>(() => {
+    return videoList[0]?.id || 1;
+  });
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [videoProgress, setVideoProgress] = useState<number>(24);
 
-  const activeModule = VSL_MODULES.find((m) => m.id === selectedModuleId) || VSL_MODULES[0];
+  // Modal State for adding YouTube video
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const [newVideoUrl, setNewVideoUrl] = useState<string>('');
+  const [newTitle, setNewTitle] = useState<string>('');
+  const [newCategory, setNewCategory] = useState<VideoModule['category']>('Products');
+  const [newSpeaker, setNewSpeaker] = useState<string>('Milnapath Partner');
+  const [newDuration, setNewDuration] = useState<string>('05:00');
+  const [newDescription, setNewDescription] = useState<string>('');
+  const [newTakeaways, setNewTakeaways] = useState<string>('');
+  const [addError, setAddError] = useState<string>('');
+
+  const activeModule = videoList.find((m) => m.id === selectedModuleId) || videoList[0] || VSL_MODULES[0];
 
   const handleModuleSelect = (id: number) => {
     setSelectedModuleId(id);
@@ -23,7 +62,7 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
     setIsPlaying(true);
   };
 
-  const otherModules = VSL_MODULES
+  const otherModules = videoList
     .filter((m) => m.id !== activeModule.id)
     .slice(0, 4)
     .map((m) => ({
@@ -38,6 +77,65 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
   const whatsappInquiryUrl = `https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(
     `Hello Milnapath Mentor, I am currently watching Video ${activeModule.id}: "${activeModule.title}" and I would like to ask some questions before joining.`
   )}`;
+
+  const handleAddYouTubeVideo = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAddError('');
+
+    const extractedId = extractYouTubeId(newVideoUrl);
+    if (!extractedId) {
+      setAddError('Please enter a valid YouTube video link or 11-character video ID (e.g. https://youtu.be/VRgVgYKakBs).');
+      return;
+    }
+
+    if (!newTitle.trim()) {
+      setAddError('Please enter a descriptive title for this video.');
+      return;
+    }
+
+    const newId = Date.now();
+    const takeawaysList = newTakeaways.trim()
+      ? newTakeaways.split('\n').map((s) => s.trim()).filter(Boolean)
+      : [
+          'Detailed botanical phytotherapy benefits and patient wellness impact',
+          'Business compensation milestones and distributor earning leverage',
+          'Actionable next steps for joining our direct mentorship team'
+        ];
+
+    const newModule: VideoModule = {
+      id: newId,
+      title: newTitle.trim(),
+      category: newCategory,
+      duration: newDuration.trim() || '05:00',
+      youtubeId: extractedId,
+      posterUrl: `https://i.ytimg.com/vi/${extractedId}/hqdefault.jpg`,
+      speaker: newSpeaker.trim() || 'Milnapath Partner',
+      description: newDescription.trim() || 'Official YouTube presentation for Milnapath International.',
+      keyTakeaways: takeawaysList
+    };
+
+    // Ensure The Milnapath Business Plan remains at the very top of all others on the video list
+    const topVideo = videoList[0]?.youtubeId === 'yuMGbfulA08' ? videoList[0] : VSL_MODULES[0];
+    const restList = videoList.filter((v) => v.id !== topVideo.id);
+    const updatedList = [topVideo, newModule, ...restList];
+    setVideoList(updatedList);
+    setSelectedModuleId(newId);
+    setIsPlaying(true);
+
+    try {
+      const customOnes = updatedList.filter((m) => !VSL_MODULES.some((def) => def.id === m.id));
+      localStorage.setItem('milnapath_custom_videos', JSON.stringify(customOnes));
+    } catch (err) {
+      console.error('Failed to save custom video:', err);
+    }
+
+    // Reset form and close
+    setNewVideoUrl('');
+    setNewTitle('');
+    setNewDescription('');
+    setNewTakeaways('');
+    setShowAddModal(false);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
@@ -74,8 +172,21 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
         <div className="lg:col-span-8 space-y-6">
           {/* Video Container (16:9 aspect ratio) */}
           <div className="relative aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-800/60 flex flex-col justify-between group">
-            {activeModule.vimeoId ? (
-              /* Real Live Vimeo Video Player with custom More Videos end screen */
+            {activeModule.youtubeId ? (
+              /* Real Live YouTube Video Player */
+              <YouTubeEmbedPlayer
+                key={activeModule.youtubeId}
+                youtubeIdOrUrl={activeModule.youtubeId}
+                title={activeModule.title}
+                posterUrl={activeModule.posterUrl}
+                moreVideos={otherModules}
+                onReplay={() => {
+                  setVideoProgress(0);
+                  setIsPlaying(true);
+                }}
+              />
+            ) : activeModule.vimeoId ? (
+              /* Legacy Vimeo Video Player with custom More Videos end screen */
               <VimeoEmbedPlayer
                 key={activeModule.vimeoId}
                 vimeoId={activeModule.vimeoId}
@@ -97,7 +208,7 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
                   <div className="relative z-10 space-y-4 max-w-xl">
                     <div className="inline-flex items-center gap-2 bg-purple-900/80 border border-purple-500/40 text-purple-300 px-3.5 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
                       <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                      <span>MODULE {activeModule.id} OF {VSL_MODULES.length}: {activeModule.category.toUpperCase()}</span>
+                      <span>MODULE {activeModule.id} OF {videoList.length}: {activeModule.category.toUpperCase()}</span>
                     </div>
 
                     <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-serif tracking-tight drop-shadow-md">
@@ -229,24 +340,34 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
           </div>
         </div>
 
-        {/* Right 4 Cols: 10-Module Playlist Selector */}
+        {/* Right 4 Cols: Video Playlist Selector */}
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-white rounded-3xl shadow-lg border border-stone-200/80 p-5 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-100 gap-2">
               <div>
                 <h3 className="font-serif font-bold text-base sm:text-lg text-purple-950">
                   Videos
                 </h3>
-                <p className="text-xs text-stone-500">{VSL_MODULES.length} Videos Available</p>
+                <p className="text-xs text-stone-500">{videoList.length} Videos Available</p>
               </div>
-              <span className="text-xs sm:text-sm font-bold px-2.5 py-1 bg-amber-100 text-amber-900 rounded-md">
-                {VSL_MODULES.length} / {VSL_MODULES.length} Free
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowAddModal(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-900 hover:bg-purple-800 text-amber-300 hover:text-amber-200 text-xs font-bold transition-all shadow-sm active:scale-95"
+                  title="Add YouTube Video"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Add YouTube</span>
+                </button>
+                <span className="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-900 rounded-md shrink-0">
+                  {videoList.length} Free
+                </span>
+              </div>
             </div>
 
             {/* Playlist items */}
             <div className="space-y-2 max-h-[580px] overflow-y-auto pr-1">
-              {VSL_MODULES.map((m) => {
+              {videoList.map((m, idx) => {
                 const isCurrent = m.id === selectedModuleId;
                 return (
                   <button
@@ -262,21 +383,30 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
                       className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
                         isCurrent
                           ? 'bg-amber-400 text-purple-950'
+                          : m.youtubeId
+                          ? 'bg-red-100 text-red-700'
                           : 'bg-stone-200 text-stone-700'
                       }`}
                     >
-                      {isCurrent ? <Play className="w-3.5 h-3.5 fill-current" /> : m.id}
+                      {isCurrent ? <Play className="w-3.5 h-3.5 fill-current" /> : idx + 1}
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-0.5">
-                        <span
-                          className={`text-xs font-bold uppercase tracking-wider truncate ${
-                            isCurrent ? 'text-amber-300' : 'text-purple-700'
-                          }`}
-                        >
-                          {m.category}
-                        </span>
+                        <div className="flex items-center gap-1.5 truncate">
+                          <span
+                            className={`text-xs font-bold uppercase tracking-wider truncate ${
+                              isCurrent ? 'text-amber-300' : 'text-purple-700'
+                            }`}
+                          >
+                            {m.category}
+                          </span>
+                          {m.youtubeId && (
+                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-600 text-white shrink-0 leading-none">
+                              YouTube
+                            </span>
+                          )}
+                        </div>
                         <span
                           className={`text-xs font-mono shrink-0 ${
                             isCurrent ? 'text-purple-200' : 'text-stone-500'
@@ -328,6 +458,184 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
           </div>
         </div>
       </div>
+
+      {/* Add YouTube Video Modal */}
+      {showAddModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-purple-100 overflow-hidden text-stone-900 animate-scaleUp">
+            <div className="bg-gradient-to-r from-purple-950 via-purple-900 to-purple-950 text-white px-6 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white">
+                  <Play className="w-4 h-4 fill-current ml-0.5" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg">Add YouTube Video</h3>
+                  <p className="text-xs text-purple-200">Upload YouTube links directly to the videos page</p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setShowAddModal(false);
+                  setAddError('');
+                }}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleAddYouTubeVideo} className="p-6 space-y-4 max-h-[78vh] overflow-y-auto">
+              {addError && (
+                <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-medium">
+                  {addError}
+                </div>
+              )}
+
+              {/* YouTube Link / ID Input */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-purple-950 flex items-center justify-between">
+                  <span>YouTube Video Link or ID *</span>
+                  <span className="text-[11px] font-normal text-stone-500">e.g. https://youtu.be/VRgVgYKakBs</span>
+                </label>
+                <input
+                  type="text"
+                  value={newVideoUrl}
+                  onChange={(e) => setNewVideoUrl(e.target.value)}
+                  placeholder="https://youtu.be/VRgVgYKakBs or VRgVgYKakBs"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono"
+                  required
+                />
+                {newVideoUrl && extractYouTubeId(newVideoUrl) && (
+                  <div className="mt-2 flex items-center gap-3 p-2 bg-purple-50 rounded-xl border border-purple-100">
+                    <img
+                      src={`https://i.ytimg.com/vi/${extractYouTubeId(newVideoUrl)}/hqdefault.jpg`}
+                      alt="Thumbnail preview"
+                      className="w-20 aspect-video object-cover rounded-lg shadow-sm"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="text-xs text-purple-950 font-medium">
+                      <span className="text-purple-700 font-bold block">Valid YouTube ID:</span>
+                      <code>{extractYouTubeId(newVideoUrl)}</code>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Title */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                  Video Title *
+                </label>
+                <input
+                  type="text"
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  placeholder="e.g. D-Man From Milnapath International"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              {/* Category and Duration Grid */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                    Category
+                  </label>
+                  <select
+                    value={newCategory}
+                    onChange={(e) => setNewCategory(e.target.value as VideoModule['category'])}
+                    className="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  >
+                    <option value="Products">Products</option>
+                    <option value="Business Opportunity">Business Opportunity</option>
+                    <option value="Testimonial">Testimonial</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Corporate">Corporate</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                    Duration (MM:SS)
+                  </label>
+                  <input
+                    type="text"
+                    value={newDuration}
+                    onChange={(e) => setNewDuration(e.target.value)}
+                    placeholder="03:45"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              {/* Speaker / Presenter */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                  Speaker / Presenter
+                </label>
+                <input
+                  type="text"
+                  value={newSpeaker}
+                  onChange={(e) => setNewSpeaker(e.target.value)}
+                  placeholder="e.g. Milnapath Phytotherapy Showcase"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                />
+              </div>
+
+              {/* Description */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                  Description
+                </label>
+                <textarea
+                  rows={2}
+                  value={newDescription}
+                  onChange={(e) => setNewDescription(e.target.value)}
+                  placeholder="Detailed summary of the video presentation..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                />
+              </div>
+
+              {/* Key Takeaways */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-purple-950">
+                  Key Takeaways (one per line)
+                </label>
+                <textarea
+                  rows={3}
+                  value={newTakeaways}
+                  onChange={(e) => setNewTakeaways(e.target.value)}
+                  placeholder="Key takeaway 1&#10;Key takeaway 2&#10;Key takeaway 3"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                />
+              </div>
+
+              {/* Submit Buttons */}
+              <div className="pt-3 border-t border-stone-100 flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowAddModal(false);
+                    setAddError('');
+                  }}
+                  className="px-4 py-2.5 rounded-xl border border-stone-300 text-stone-700 text-sm font-semibold hover:bg-stone-100 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 rounded-xl bg-purple-900 hover:bg-purple-800 text-amber-300 font-bold text-sm shadow-md transition-all flex items-center gap-1.5"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add Video to Vault</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

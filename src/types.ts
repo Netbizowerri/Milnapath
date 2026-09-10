@@ -17,6 +17,7 @@ export interface Product {
   imageAccent: string;
   imageUrl: string;
   bannerUrl?: string;
+  youtubeVideoId?: string;
 }
 
 export interface PackageTier {
@@ -60,6 +61,7 @@ export interface VideoModule {
   category: 'Business Opportunity' | 'Products' | 'Strategy' | 'Testimonial' | 'Corporate';
   description: string;
   keyTakeaways: string[];
+  youtubeId?: string;
   videoUrlPlaceholder?: string;
   vimeoId?: string;
   posterUrl?: string;

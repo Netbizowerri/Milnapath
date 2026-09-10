@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CheckCircle2, MessageCircle, ShieldCheck, HeartPulse, Sparkles, Award, Pill, Clock, PackageCheck, AlertCircle, PhoneCall, Maximize2, X } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, MessageCircle, ShieldCheck, HeartPulse, Sparkles, Award, Pill, Clock, PackageCheck, AlertCircle, PhoneCall, Maximize2, X, Play, ArrowRight } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/productsData';
 import { COMPANY_DETAILS } from '../data/compensationData';
+import { YouTubeEmbedPlayer } from '../components/YouTubeEmbedPlayer';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -269,6 +270,34 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
                   <Maximize2 className="w-4 h-4" /> Click to enlarge full screen
                 </span>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Official YouTube Video Presentation */}
+        {product.youtubeVideoId && (
+          <div className="space-y-3 pt-4 border-t border-stone-200">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-950 flex items-center gap-2">
+                <Play className="w-4 h-4 text-red-600 fill-current" />
+                Official {product.name} Video Presentation
+              </span>
+              <button
+                type="button"
+                onClick={() => navigate('/videos')}
+                className="text-xs font-bold text-purple-700 hover:text-purple-900 flex items-center gap-1 transition-colors"
+              >
+                <span>Browse All Videos</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="relative aspect-video w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-purple-800/40 bg-black">
+              <YouTubeEmbedPlayer
+                youtubeIdOrUrl={product.youtubeVideoId}
+                title={`Official ${product.name} Video Presentation`}
+                posterUrl={`https://i.ytimg.com/vi/${product.youtubeVideoId}/hqdefault.jpg`}
+              />
             </div>
           </div>
         )}

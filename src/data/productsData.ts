@@ -31,7 +31,8 @@ export const PRODUCTS: Product[] = [
     nafdacApproved: true,
     imageAccent: '#059669',
     imageUrl: 'https://i.ibb.co/kVZ0nvRj/Milnapath-International.jpg',
-    bannerUrl: 'https://i.ibb.co/WNXKR6QV/Whats-App-Image-2026-09-08-at-1-48-05-PM-1.jpg'
+    bannerUrl: 'https://i.ibb.co/WNXKR6QV/Whats-App-Image-2026-09-08-at-1-48-05-PM-1.jpg',
+    youtubeVideoId: 'XMDeYpqpcjs'
   },
   {
     id: 'gastro-pro',
@@ -285,6 +286,7 @@ export const PRODUCTS: Product[] = [
     pv: 14,
     featured: false,
     nafdacApproved: true,
+    youtubeVideoId: '7aY5zbwP31o',
     imageAccent: '#0284C7',
     imageUrl: 'https://i.ibb.co/YFYPGCqd/Milnapath-International-7.png',
     bannerUrl: 'https://i.ibb.co/7tKZZhL0/Whats-App-Image-2026-09-08-at-1-48-05-PM.jpg'
@@ -319,7 +321,8 @@ export const PRODUCTS: Product[] = [
     nafdacApproved: true,
     imageAccent: '#B45309',
     imageUrl: 'https://i.ibb.co/Jw8GkkFf/Milnapath-International-2.png',
-    bannerUrl: 'https://i.ibb.co/XrJsbRHj/Whats-App-Image-2026-09-08-at-1-48-05-PM-2.jpg'
+    bannerUrl: 'https://i.ibb.co/XrJsbRHj/Whats-App-Image-2026-09-08-at-1-48-05-PM-2.jpg',
+    youtubeVideoId: 'VRgVgYKakBs'
   },
   {
     id: 'blood-building-tea',

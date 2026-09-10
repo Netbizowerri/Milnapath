@@ -9,7 +9,7 @@ interface MobileBottomNavProps {
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, navigate }) => {
   const tabs = [
     { label: 'Home', path: '/', icon: Home },
-    { label: 'VSL Class', path: '/vsl', icon: PlaySquare },
+    { label: 'Videos', path: '/videos', icon: PlaySquare },
     { label: 'Products', path: '/products', icon: Package },
     { label: 'Earnings', path: '/compensation', icon: Calculator },
     { label: 'Register', path: '/register', icon: UserPlus, highlight: true },
@@ -20,7 +20,10 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentPath, n
       <div className="grid grid-cols-5 items-center justify-between text-center max-w-md mx-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          const isActive = currentPath === tab.path || (tab.path === '/products' && currentPath.startsWith('/products/'));
+          const isActive =
+            currentPath === tab.path ||
+            (tab.path === '/videos' && currentPath === '/vsl') ||
+            (tab.path === '/products' && currentPath.startsWith('/products/'));
 
           return (
             <button

@@ -3,6 +3,49 @@
 @theme {
   --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-serif: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Official Milnapath Brand Palette */
+  --color-brand-pry: #502C46;
+  --color-brand-accent: #ADCE4A;
+
+  /* Primary Scale (Pry: #502C46) */
+  --color-purple-50: #FAF4F8;
+  --color-purple-100: #F5EAF2;
+  --color-purple-200: #ECD5E5;
+  --color-purple-300: #DCB4D3;
+  --color-purple-400: #C68BBC;
+  --color-purple-500: #AB659F;
+  --color-purple-600: #8E4B82;
+  --color-purple-700: #723A68;
+  --color-purple-800: #5D2F54;
+  --color-purple-900: #502C46;
+  --color-purple-950: #361B2E;
+
+  /* Accent Scale (Accent: #ADCE4A) */
+  --color-amber-50: #F8FAF2;
+  --color-amber-100: #EEF6DD;
+  --color-amber-200: #DEEDB9;
+  --color-amber-300: #C7DF8C;
+  --color-amber-400: #B9D760;
+  --color-amber-500: #ADCE4A;
+  --color-amber-600: #91B234;
+  --color-amber-700: #708C26;
+  --color-amber-800: #576E21;
+  --color-amber-900: #485B1E;
+  --color-amber-950: #26330B;
+
+  /* Explicit Accent Alias */
+  --color-accent-50: #F8FAF2;
+  --color-accent-100: #EEF6DD;
+  --color-accent-200: #DEEDB9;
+  --color-accent-300: #C7DF8C;
+  --color-accent-400: #B9D760;
+  --color-accent-500: #ADCE4A;
+  --color-accent-600: #91B234;
+  --color-accent-700: #708C26;
+  --color-accent-800: #576E21;
+  --color-accent-900: #485B1E;
+  --color-accent-950: #26330B;
 }
 
 @layer base {

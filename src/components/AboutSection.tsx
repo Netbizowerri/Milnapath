@@ -125,21 +125,70 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ navigate }) => {
                     title="About Milnapath International Video Presentation"
                     isVertical={true}
                     onClose={() => setIsPlayingVideo(false)}
-                    onMoreVideosClick={() => navigate('/vsl')}
+                    onMoreVideosClick={() => navigate('/videos')}
                     moreVideos={[
+                      {
+                        id: 'bizplan',
+                        title: 'The Milnapath Business Plan',
+                        subtitle: 'Official Blueprint & Wealth • 04:15 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/yuMGbfulA08/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'glucomil',
+                        title: 'Glucomil from Milnapath International',
+                        subtitle: 'Blood Sugar & Metabolic Care • 03:40 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/7aY5zbwP31o/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'dman',
+                        title: 'D-Man Phytotherapy Showcase',
+                        subtitle: 'Official Product Presentation • 03:45 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/VRgVgYKakBs/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'detox',
+                        title: 'Get Detox Plus from Milnapath',
+                        subtitle: 'Cellular Cleansing & Health • 03:52 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/XMDeYpqpcjs/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'ambassadors',
+                        title: 'Milnapath Ambassadors: Leadership & Vision',
+                        subtitle: 'Ambassador Showcase • 03:15 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/3ILUZOt0gps/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'bank',
+                        title: 'Smile to the Bank with Milnapath',
+                        subtitle: 'Compensation & Wealth • 03:40 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/9gFKhqWD74k/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
+                      {
+                        id: 'holistic',
+                        title: 'Holistic Health & Financial Self-Determination',
+                        subtitle: 'Corporate Vision & Freedom • 03:30 mins',
+                        posterUrl: 'https://i.ytimg.com/vi/VIxTXclPbpg/hqdefault.jpg',
+                        onClick: () => navigate('/videos')
+                      },
                       {
                         id: 'test-1',
                         title: 'Partner Testimonial: Mary Linus Ibu',
                         subtitle: 'Direct Partner Story • 01:05 mins',
                         posterUrl: 'https://i.vimeocdn.com/video/2198866847-0f531fb3adfb34f3fd511d13a6c6e8060a04c60a472ac155776461dba48ec1ce-d_640',
-                        onClick: () => navigate('/vsl')
+                        onClick: () => navigate('/videos')
                       },
                       {
                         id: 'test-2',
                         title: 'Partner Testimonial: Adagold Nicholas',
                         subtitle: 'Direct Partner Story • 01:00 mins',
                         posterUrl: 'https://i.vimeocdn.com/video/2198867854-a2fd10a2c75737ae8d1b5823bf50618db61b3c5274f03855c207f04cc4976a35-d_640',
-                        onClick: () => navigate('/vsl')
+                        onClick: () => navigate('/videos')
                       }
                     ]}
                   />
