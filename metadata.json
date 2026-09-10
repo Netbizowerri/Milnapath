@@ -1,6 +1,6 @@
 {
   "name": "Milnapath International - Health & Wealth Funnel",
-  "description": "Official recruiting sales funnel, compensation plan calculator, and 12-product natural health showcase for Milnapath International.",
+  "description": "Official recruiting sales funnel, compensation plan calculator, master phytotherapy catalog, and distributor price list for Milnapath International.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

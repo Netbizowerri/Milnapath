@@ -14,7 +14,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, navi
   const [quantity, setQuantity] = useState<number>(1);
   const [isBannerModalOpen, setIsBannerModalOpen] = useState<boolean>(false);
 
-  const product = PRODUCTS.find((p) => p.slug === slug) || PRODUCTS[0];
+  const product =
+    PRODUCTS.find((p) => p.slug === slug) ||
+    (slug === 'body-lotion-soap' ? PRODUCTS.find((p) => p.slug === 'body-lotion') : null) ||
+    PRODUCTS[0];
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug).slice(0, 3);
 
   const retailTotal = product.retailPrice * quantity;

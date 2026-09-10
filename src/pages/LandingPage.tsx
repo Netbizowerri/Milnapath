@@ -491,7 +491,7 @@ Hello Support, I just submitted my Fast Registration on the homepage. I am makin
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-xs sm:text-sm text-purple-800 font-semibold">
-                    <span>Member Price:</span>
+                    <span>Distributor Price:</span>
                     <span className="font-bold text-purple-950">₦{prod.memberPrice.toLocaleString()}</span>
                   </div>
 
@@ -522,7 +522,7 @@ Hello Support, I just submitted my Fast Registration on the homepage. I am makin
             onClick={() => navigate('/products')}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-purple-900 hover:bg-purple-800 text-white font-bold text-base shadow-md transition-all hover:scale-105"
           >
-            <span>Explore All 12 Milnapath Therapeutic Formulations</span>
+            <span>Explore All Formulations & Official Price List</span>
             <ChevronRight className="w-4 h-4 text-amber-300" />
           </button>
         </div>

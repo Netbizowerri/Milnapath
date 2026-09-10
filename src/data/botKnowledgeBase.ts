@@ -189,11 +189,11 @@ Milnapath has designed the most generous, never-flushing compensation plan in Af
 For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath provides a clinically proven botanical combination:
 
 #### 1. Gastro-Pro (The Core Remedy)
-* **Retail Price:** ₦12,000 | **Wholesale:** ₦9,500 (12 PV)
+* **Retail Price:** ₦15,000 | **Wholesale / Distributor:** ₦12,000 (12 PV)
 * **Actions:** Neutralizes gastric inflammation, destroys *Helicobacter pylori* bacteria, and stimulates rapid cellular rebuilding of damaged stomach mucosa.
 
 #### 2. Peptic Tea (Gentle Daily Healing & Soothing)
-* **Retail Price:** ₦8,500 | **Wholesale:** ₦6,500 (8 PV)
+* **Retail Price:** ₦15,000 | **Wholesale / Distributor:** ₦12,000 (12 PV)
 * **Actions:** Herbal infusion taken morning and night. Shields gastric tissue against hydrochloric acid, restores alkaline balance, and halts burning chest sensations.
 
 *Tip:* Combining **Gastro-Pro** with **Peptic Tea** delivers complete eradication of chronic ulcer pain within 14 to 28 days.`,
@@ -264,7 +264,7 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
 
 **Nakom Oil** is a fast-acting, cold-pressed therapeutic herbal rub formulated for deep musculoskeletal relief:
 
-* **Retail Price:** ₦11,500 | **Wholesale Price:** ₦9,000 (12 PV)
+* **Retail Price:** ₦10,000 | **Wholesale Price:** ₦8,000 (8 PV)
 * **Indications:** Severe osteoarthritis, rheumatoid joint stiffness, lower waist ache, sciatica nerve pain, neck strain, and post-stroke motor rehabilitation.
 * **Action:** Penetrates within minutes of topical massage to stimulate capillary blood circulation, soothe inflamed cartilage, and unlock frozen joints.`,
       actionButton: {
@@ -272,7 +272,7 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
         path: '/products/nakom-oil'
       },
       relatedSuggestions: [
-        'What are all 12 products?',
+        'What is the official price list?',
         'How to register with ₦10,000',
         'Explain the 14% binary pairing bonus'
       ]
@@ -293,7 +293,7 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
 
 **Detox Plus** is Milnapath’s flagship full-body cleanser and rejuvenation formula (included FREE in the ₦10,000 Foretaste registration package):
 
-* **Retail Price:** ₦9,500 | **Wholesale Price:** ₦7,500 (10 PV)
+* **Retail Price:** ₦14,000 | **Wholesale / Distributor Price:** ₦11,000 (11 PV)
 * **Health Benefits:** Clears impacted fecal toxins from the colon, relieves chronic constipation, purifies the liver and blood, enhances nutrient absorption, and revitalizes sluggish cellular organs.
 * **Bonus:** When you register with the ₦10,000 Foretaste package, you receive **1 full bottle of Detox Plus** free!`,
       actionButton: {
@@ -302,8 +302,8 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
       },
       relatedSuggestions: [
         'How do I register with ₦10,000?',
-        'Explain the 14% binary pairing bonus',
-        'What are the 12 products?'
+        'What is the official price list?',
+        'Explain the 14% binary pairing bonus'
       ]
     };
   }
@@ -326,7 +326,7 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
 
 **D-Man** is Milnapath’s potent botanical restorative for men:
 
-* **Retail Price:** ₦16,000 | **Wholesale Price:** ₦12,500 (16 PV)
+* **Retail Price:** ₦14,000 | **Wholesale / Distributor Price:** ₦11,000 (11 PV)
 * **Prostate Protection:** Naturally shrinks benign prostatic enlargement (BPH), halts painful nocturnal urination, and restores a steady urinary stream.
 * **Stamina & Libido:** Elevates natural testosterone, reverses erectile weakness, improves bedroom stamina, and supports healthy sperm count.`,
       actionButton: {
@@ -334,7 +334,7 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
         path: '/products/d-man'
       },
       relatedSuggestions: [
-        'What are all 12 products?',
+        'What is the official price list?',
         'Explain the 14% binary pairing bonus',
         'How do I register with ₦10,000?'
       ]
@@ -355,15 +355,15 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
 
 **Glucomil** is formulated for individuals struggling with type 2 diabetes and fluctuating blood sugar levels:
 
-* **Retail Price:** ₦14,000 | **Wholesale Price:** ₦11,200 (14 PV)
+* **Retail Price:** ₦14,000 | **Wholesale / Distributor Price:** ₦11,000 (11 PV)
 * **Benefits:** Revitalizes damaged pancreatic beta cells, boosts natural insulin sensitivity, reduces sugar cravings, and prevents diabetic complications like vision blurriness and slow-healing sores.`,
       actionButton: {
         label: 'View Glucomil Details',
         path: '/products/glucomil'
       },
       relatedSuggestions: [
-        'Tell me about Control Oil',
-        'What are all 12 products?',
+        'Tell me about Kardiamil',
+        'What is the official price list?',
         'How to order products'
       ]
     };
@@ -376,23 +376,29 @@ For chronic peptic ulcers, gastritis, H. Pylori, and acid reflux, Milnapath prov
     q.includes('hypertension') ||
     q.includes('cholesterol') ||
     q.includes('cardio') ||
-    q.includes('heart')
+    q.includes('heart') ||
+    q.includes('kardiamil')
   ) {
     return {
-      text: `### ❤️ Control Oil: Cardiovascular & Blood Pressure Balance
+      text: `### ❤️ Milnapath Cardiovascular & Circulatory Care
 
-**Control Oil** is an essential cardiovascular botanical formulation:
+Milnapath provides targeted botanical care for cardiovascular and arterial balance:
 
-* **Retail Price:** ₦12,500 | **Wholesale Price:** ₦9,800 (12 PV)
-* **Benefits:** Dilates constricted blood vessels, dissolves bad arterial LDL cholesterol plaques, maintains healthy systolic/diastolic blood pressure, and lowers the risk of cardiac arrest and stroke.`,
+#### 1. Kardiamil (Heart & Circulation Specialist)
+* **Retail Price:** ₦14,000 | **Wholesale:** ₦11,000 (11 PV)
+* **Benefits:** Clears arterial plaque buildup, improves blood flow to the brain and heart, aids blood pressure regulation, and prevents strokes.
+
+#### 2. Control Oil (Transdermal / Reproductive & Intimate Wellness)
+* **Retail Price:** ₦10,000 | **Wholesale:** ₦8,000 (8 PV)
+* **Benefits:** Natural barrier protection, non-hormonal intimate care, anti-microbial tissue defense.`,
       actionButton: {
-        label: 'View Control Oil Details',
-        path: '/products/control-oil'
+        label: 'View Cardiovascular Solutions',
+        path: '/products'
       },
       relatedSuggestions: [
+        'What is the official price list?',
         'Tell me about Rejuvenating Drink',
-        'What are all 12 products?',
-        'How to register'
+        'How to register with ₦10,000'
       ]
     };
   }
@@ -492,8 +498,13 @@ Becoming an authorized Milnapath Regional Stockist allows you to earn substantia
     };
   }
 
-  // 14. All 12 Products Overview
+  // 14. All Products & Price List Overview
   if (
+    q.includes('price list') ||
+    q.includes('price') ||
+    q.includes('prices') ||
+    q.includes('how much') ||
+    q.includes('cost') ||
     q.includes('all product') ||
     q.includes('list of product') ||
     q.includes('products') ||
@@ -501,30 +512,55 @@ Becoming an authorized Milnapath Regional Stockist allows you to earn substantia
     q.includes('catalog')
   ) {
     return {
-      text: `### 🌿 The Complete Milnapath 12-Product Herbal Line
+      text: `### 🌿 OFFICIAL MILNAPATH PRICE LIST
 
-All 12 Milnapath formulas are **NAFDAC Approved**, organic, and clinically formulated:
+Here is the current distributor wholesale vs retail price schedule:
 
-1. **Detox Plus:** Colon, liver & full-body detoxification (₦9,500 retail / ₦7,500 wholesale, 10 PV).
-2. **Gastro-Pro:** Severe peptic ulcers, acid reflux, H. pylori (₦12,000 / ₦9,500, 12 PV).
-3. **Nakom Oil:** Fast-acting rub for arthritis, joint pain & stroke recovery (₦11,500 / ₦9,000, 12 PV).
-4. **Gynomil:** Fibroids, ovarian cysts, hormonal imbalance & fertility (₦14,000 / ₦11,000, 15 PV).
-5. **Peptic Tea:** Soothing digestive lining repair & ulcer tea (₦8,500 / ₦6,500, 8 PV).
-6. **Body Lotion & Soap:** Radiant skincare, anti-aging, blemish removal (₦10,500 / ₦8,000, 10 PV).
-7. **Control Oil:** Hypertension, cholesterol & cardiovascular health (₦12,500 / ₦9,800, 12 PV).
-8. **Rejuvenating Drink:** Anti-aging, cellular vitality & longevity (₦17,500 / ₦14,000, 18 PV).
-9. **Glucomil:** Blood sugar regulation & pancreatic support (₦14,000 / ₦11,200, 14 PV).
-10. **D-Man:** Prostate enlargement, male stamina & virility (₦16,000 / ₦12,500, 16 PV).
-11. **Blood Building Tea:** Anemia, low PCV & immune defense (₦9,500 / ₦7,500, 9 PV).
-12. **Malaria & Typhoid Shield:** Resistant malaria & chronic typhoid (₦11,000 / ₦8,500, 11 PV).`,
+| PDT Name | Dist. (₦) | Retail (₦) | Profit Margin |
+| :--- | :--- | :--- | :--- |
+| **Detox plus** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Rejuvenating** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+| **Gastro Pro** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+| **Blood build tea** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+| **Peptic tea** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+| **Kardiamil** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Glucomil** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Gynomil** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Dman** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Nakom oil** | ₦8,000 | ₦10,000 | ₦2,000 (25%) |
+| **Malaria/ typh.** | ₦11,000 | ₦14,000 | ₦3,000 (27%) |
+| **Control oil** | ₦8,000 | ₦10,000 | ₦2,000 (25%) |
+| **Body lotion** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+| **Organic soap** | ₦12,000 | ₦15,000 | ₦3,000 (25%) |
+
+*All products are NAFDAC Approved, 100% organic phytotherapy, and generate personal repurchase cashback plus binary volume.*`,
+      copyData: {
+        label: 'Copy WhatsApp Ready Price List',
+        text: `*MILNAPATH PRICE LIST*
+*PDT Name       Dist. ~N~    Retail ~N~*
+Detox plus        11000     14000
+Rejuvenating    12000     15000
+Gastro Pro        12000     15000
+Blood build tea 12000     15000
+Peptic tea          12000     15000
+Kardiamil           11000     14000 
+Glucomil            11000     14000 
+Gynomil             11000     14000 
+Dman                 11000     14000 
+Nakom oil          8000       10000 
+Malaria/ typh.   11000     14000
+Control oil            8000     10000
+Body lotion        12000     15000
+Organic soap    12000     15000`
+      },
       actionButton: {
-        label: 'Explore Full Visual Product Catalog',
+        label: 'Explore Full Visual Product Catalog & Orders',
         path: '/products'
       },
       relatedSuggestions: [
         'Which product is best for ulcer & acid reflux?',
         'Tell me about Gynomil for fibroids',
-        'How do I register with ₦10,000?'
+        'How do I register with ₦10,000 to get wholesale prices?'
       ]
     };
   }

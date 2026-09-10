@@ -2,7 +2,7 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
-  category: 'Cleansing / Immunity' | 'Gastrointestinal' | 'Total Wellness' | "Women's Health" | 'Digestive Health' | 'Natural Skin Care' | 'Protection / Wellness' | 'Stem Cell / Anti-Aging' | 'Metabolic Balance' | "Men's Vitality" | 'Hematology / Blood Support' | 'Infection Defense';
+  category: 'Cleansing / Immunity' | 'Gastrointestinal' | 'Total Wellness' | "Women's Health" | 'Digestive Health' | 'Cardiovascular Health' | 'Natural Skin Care' | 'Protection / Wellness' | 'Stem Cell / Anti-Aging' | 'Metabolic Balance' | "Men's Vitality" | 'Hematology / Blood Support' | 'Infection Defense';
   shortDescription: string;
   keyIndications: string[];
   fullBenefits: string[];

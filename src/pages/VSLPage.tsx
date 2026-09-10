@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronRight, MessageCircle, Sparkles, BookOpen, Clock, Users, ArrowRight, ShieldCheck, Download, Award, Share2, Plus, X, Video as VideoIcon, ExternalLink } from 'lucide-react';
 import { VSL_MODULES } from '../data/vslModulesData';
 import { VideoModule } from '../types';
@@ -55,11 +55,36 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
   const [addError, setAddError] = useState<string>('');
 
   const activeModule = videoList.find((m) => m.id === selectedModuleId) || videoList[0] || VSL_MODULES[0];
+  const videoPlayerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToPlayer = () => {
+    const executeScroll = () => {
+      if (videoPlayerRef.current) {
+        // Calculate top position with 75px offset for the sticky navbar
+        const rect = videoPlayerRef.current.getBoundingClientRect();
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetScrollTop = Math.max(0, rect.top + currentScrollTop - 75);
+
+        window.scrollTo({
+          top: targetScrollTop,
+          behavior: 'smooth',
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    // Trigger immediately and after next frame for mobile touch responsiveness
+    executeScroll();
+    setTimeout(executeScroll, 60);
+  };
 
   const handleModuleSelect = (id: number) => {
     setSelectedModuleId(id);
     setVideoProgress(5);
     setIsPlaying(true);
+    // Immediately scroll up to the video player so the user can watch the video
+    scrollToPlayer();
   };
 
   const otherModules = videoList
@@ -121,6 +146,7 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
     setVideoList(updatedList);
     setSelectedModuleId(newId);
     setIsPlaying(true);
+    scrollToPlayer();
 
     try {
       const customOnes = updatedList.filter((m) => !VSL_MODULES.some((def) => def.id === m.id));
@@ -171,7 +197,11 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
         {/* Left 8 Cols: 16:9 Video Canvas */}
         <div className="lg:col-span-8 space-y-6">
           {/* Video Container (16:9 aspect ratio) */}
-          <div className="relative aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-800/60 flex flex-col justify-between group">
+          <div
+            ref={videoPlayerRef}
+            id="main-video-player"
+            className="relative aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-800/60 flex flex-col justify-between group scroll-mt-24"
+          >
             {activeModule.youtubeId ? (
               /* Real Live YouTube Video Player */
               <YouTubeEmbedPlayer
@@ -422,6 +452,17 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
                       >
                         {m.title}
                       </p>
+
+                      <div className="flex items-center justify-between mt-2 pt-1 border-t border-stone-200/50">
+                        <span
+                          className={`text-[11px] font-bold inline-flex items-center gap-1 ${
+                            isCurrent ? 'text-amber-300' : 'text-purple-700 group-hover:text-purple-900'
+                          }`}
+                        >
+                          <Play className="w-2.5 h-2.5 fill-current" />
+                          {isCurrent ? 'Now Playing Above' : 'Click to Watch Video ↑'}
+                        </span>
+                      </div>
                     </div>
                   </button>
                 );
