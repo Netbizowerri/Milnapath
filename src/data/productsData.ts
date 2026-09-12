@@ -478,11 +478,247 @@ export const PRODUCTS: Product[] = [
     imageAccent: '#D97706',
     imageUrl: 'https://i.ibb.co/sd7HRcMP/Milnapath-International-4.png',
     bannerUrl: 'https://i.ibb.co/HksqhQ5/Whats-App-Image-2026-09-08-at-1-48-04-PM.jpg'
+  },
+  /* =========================================================================
+   * MILNAPATH SYNERGISTIC TREATMENT COMBOS (POSITIONED LAST FOR ALL)
+   * These multi-product regimens have customized consultation pricing.
+   * ========================================================================= */
+  {
+    id: 'stroke-combo',
+    slug: 'stroke-combo',
+    name: 'Stroke Combo',
+    category: 'Combo',
+    shortDescription: 'Synergistic 4-product therapeutic protocol for stroke rehabilitation, neuro-cellular recovery, arterial unblocking, and vascular revitalization.',
+    keyIndications: [
+      'Post-stroke paralysis & neurological rehabilitation',
+      'Arterial plaque clearance & micro-circulation restoration',
+      'Cellular rejuvenation of damaged neural and brain tissues',
+      'Blood pressure stabilization and vascular elasticity support',
+      'Deep cellular detoxification and anti-inflammatory recovery'
+    ],
+    fullBenefits: [
+      'Combines the regenerative power of Rejuvenating Stem Cell to awaken dormant neuro-repair mechanisms',
+      'Cardio Care unblocks clogged blood vessels and optimizes cerebral perfusion',
+      'Detox Plus eliminates accumulated heavy metals and endotoxins impeding vascular elasticity',
+      'Gynocare balances systemic hormonal factors and tissue restoration',
+      'Provides comprehensive multi-pathway support for rapid mobility and cognitive restoration'
+    ],
+    dosage: 'Personalized protocol tailored to case severity, mobility status, and patient history. Contact our certified phytotherapists on WhatsApp for your custom dosage schedule.',
+    presentation: 'Complete 4-Product Synergistic Regimen (Rejuvenating Stem Cell + Gynocare + Cardio Care + Detox Plus)',
+    activeBotanicals: ['Rejuvenating Stem Cell', 'Gynocare', 'Cardio Care', 'Detox Plus'],
+    comboProducts: ['Rejuvenating Stem Cell', 'Gynocare', 'Cardio Care', 'Detox Plus'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#7C3AED',
+    imageUrl: 'https://i.ibb.co/77rrX5R/Whats-App-Image-2026-09-11-at-10-27-54-AM-1.jpg'
+  },
+  {
+    id: 'hiv-treatment-combo',
+    slug: 'hiv-treatment-combo',
+    name: 'HIV Treatment Combo',
+    category: 'Combo',
+    shortDescription: 'Potent botanical combination reinforcing immune function, elevating CD4 count, eliminating secondary infections, and repairing systemic cellular degradation.',
+    keyIndications: [
+      'Profound immune system fortification & CD4 count elevation',
+      'Deep lymphatic and cellular toxin clearance',
+      'Defense against opportunistic microbial and fungal infections',
+      'Vital organ cellular repair and chronic fatigue relief',
+      'Supports systemic viral defense and vitality restoration'
+    ],
+    fullBenefits: [
+      'Detox Plus purges heavy cellular toxins and lymphatic waste products',
+      'Nakom Oil delivers deep anti-inflammatory and cellular membrane protection',
+      'Cardio Care supports uninterrupted blood flow and vascular oxygenation to all organs',
+      'Rejuvenating Stem Cell accelerates bone marrow stem cell release to replenish damaged immune cells',
+      'Enhances overall vitality, physical resilience, and quality of life'
+    ],
+    dosage: 'Customized clinical schedule according to viral profile and baseline CD4 level. Contact our herbal consultants on WhatsApp for dosage guidance.',
+    presentation: 'Complete 4-Product Advanced Immune Protocol (Detox Plus + Nakom Oil + Cardio Care + Rejuvenating Stem Cell)',
+    activeBotanicals: ['Detox Plus', 'Nakom Oil', 'Cardio Care', 'Rejuvenating Stem Cell'],
+    comboProducts: ['Detox Plus', 'Nakom Oil', 'Cardio Care', 'Rejuvenating Stem Cell'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#DC2626',
+    imageUrl: 'https://i.ibb.co/39SFzq73/Whats-App-Image-2026-09-11-at-10-27-54-AM.jpg'
+  },
+  {
+    id: 'goitre-combo',
+    slug: 'goitre-combo',
+    name: 'Goitre Combo',
+    category: 'Combo',
+    shortDescription: 'Dedicated thyroid dissolving and endocrine balancing regimen formulated to naturally dissolve thyroid swelling, nodular enlargement, and metabolic disruption.',
+    keyIndications: [
+      'Thyroid gland enlargement & goitre neck swelling dissolution',
+      'Endocrine hormonal rebalancing and metabolic regulation',
+      'Dissolution of abnormal cystic thyroid nodules',
+      'Alleviates throat tightness, breathing restriction & swallowing discomfort',
+      'Targeted lymphatic drainage and anti-inflammatory cellular cleanse'
+    ],
+    fullBenefits: [
+      'Nakom Oil applied transdermally and ingested delivers targeted anti-inflammatory phyto-nutrients directly to glandular tissue',
+      'Cardio Care stimulates micro-vascular circulation to flush congested fluids from the neck area',
+      'Rejuvenating Stem Cell triggers healthy cell differentiation to replace fibrous thyroid nodules',
+      'Detox Plus purifies systemic endocrine disruptors and environmental toxins',
+      'Promotes natural thyroid size regression without surgical intervention'
+    ],
+    dosage: 'Dual internal protocol and external topical massage. Consult our health advisers on WhatsApp for exact application timing.',
+    presentation: 'Complete 4-Product Thyroid Dissolution Regimen (Nakom Oil + Cardio Care + Rejuvenating Stem Cell + Detox Plus)',
+    activeBotanicals: ['Nakom Oil', 'Cardio Care', 'Rejuvenating Stem Cell', 'Detox Plus'],
+    comboProducts: ['Nakom Oil', 'Cardio Care', 'Rejuvenating Stem Cell', 'Detox Plus'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#0D9488',
+    imageUrl: 'https://i.ibb.co/9m38V8st/Whats-App-Image-2026-09-11-at-10-27-53-AM-3.jpg'
+  },
+  {
+    id: 'rheumatoid-arthritis-combo',
+    slug: 'rheumatoid-arthritis-combo',
+    name: 'Rheumatoid Arthritis Treatment Combination',
+    category: 'Combo',
+    shortDescription: 'Intensive cartilage-rebuilding, anti-inflammatory, and joint mobility restoration protocol conquering chronic arthritis, severe stiffness, and bone pain.',
+    keyIndications: [
+      'Rheumatoid arthritis & osteoarthritis joint inflammation relief',
+      'Cartilage regeneration and synovial fluid replenishment',
+      'Combats severe morning stiffness, joint swelling & deformity risks',
+      'Flushes inflammatory uric acid and crystal deposits from joints',
+      'Restores pain-free skeletal flexibility and daily mobility'
+    ],
+    fullBenefits: [
+      'Detox Plus drains systemic acidity and toxic deposits causing autoimmune joint flare-ups',
+      'Cardio Care ensures oxygenated blood reaches avascular cartilage matrices',
+      'Rejuvenating Stem Cell stimulates chondrocyte proliferation to regenerate worn joint cushions',
+      'Nakom Oil delivers penetrating analgesic and anti-inflammatory relief both orally and topically',
+      'Restores restful sleep free from throbbing joint and bone pain'
+    ],
+    dosage: 'Combined oral capsules/elixirs with warm topical joint therapy. Contact our phytotherapists on WhatsApp for your custom regimen.',
+    presentation: 'Complete 4-Product Osteo-Synovial Care System (Detox Plus + Cardio Care + Rejuvenating Stem Cell + Nakom Oil)',
+    activeBotanicals: ['Detox Plus', 'Cardio Care', 'Rejuvenating Stem Cell', 'Nakom Oil'],
+    comboProducts: ['Detox Plus', 'Cardio Care', 'Rejuvenating Stem Cell', 'Nakom Oil'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#EA580C',
+    imageUrl: 'https://i.ibb.co/1fVsJsS7/Whats-App-Image-2026-09-11-at-10-27-53-AM-1.jpg'
+  },
+  {
+    id: 'erectile-dysfunction-combo',
+    slug: 'erectile-dysfunction-combo',
+    name: 'Erectile Dysfunction Combo',
+    category: 'Combo',
+    shortDescription: 'Ultimate male vitality and virility revival solving weak erections, quick ejaculation, low sperm count, fatigue, and hormonal decline permanently.',
+    keyIndications: [
+      'Eliminates weak erection & restores robust penile firmness',
+      'Ends premature ejaculation & extends bedroom endurance',
+      'Elevates healthy testosterone, sperm count, motility & semen volume',
+      'Unblocks pelvic micro-arteries for instant vascular response',
+      'Rebuilds physical stamina, libido, and bedroom confidence'
+    ],
+    fullBenefits: [
+      'D-Man stimulates natural testosterone secretion and optimizes pituitary-gonadal signaling',
+      'Nakom Oil restores cellular membrane vitality and calms penile hypersensitivity',
+      'Rejuvenating Stem Cell repairs damaged vascular endothelium in cavernous erectile tissue',
+      'Detox Plus eliminates pelvic arterial plaque, heavy metals, and oxidative stress',
+      'Puts an end to the "2-minute man" struggle with lasting stamina and vigor'
+    ],
+    dosage: 'Comprehensive male restoration protocol. Message privately on WhatsApp for discreet dosage instructions and personalized support.',
+    presentation: 'Complete 4-Product Male Vigor & Virility Pack (Nakom Oil + D-Man + Rejuvenating Stem Cell + Detox Plus)',
+    activeBotanicals: ['Nakom Oil', 'D-Man', 'Rejuvenating Stem Cell', 'Detox Plus'],
+    comboProducts: ['Nakom Oil', 'D-Man', 'Rejuvenating Stem Cell', 'Detox Plus'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#B45309',
+    imageUrl: 'https://i.ibb.co/Z6Xs7K5H/Whats-App-Image-2026-09-11-at-10-27-53-AM.jpg'
+  },
+  {
+    id: 'diabetes-sugar-combo',
+    slug: 'diabetes-sugar-combo',
+    name: 'Diabetes & Sugar Related Issues Combo',
+    category: 'Combo',
+    shortDescription: 'Breakthrough pancreatic beta-cell regenerative regimen stabilizing blood glucose, reversing insulin resistance, and healing diabetic neuropathy.',
+    keyIndications: [
+      'Normalizes stubborn fasting and random blood sugar spikes',
+      'Regenerates damaged insulin-secreting pancreatic beta cells',
+      'Combats diabetic peripheral neuropathy, leg numbness & tingling sensations',
+      'Protects eyesight from diabetic retinopathy and restores vital kidney filtration',
+      'Eliminates frequent nighttime urination, excessive thirst, and chronic exhaustion'
+    ],
+    fullBenefits: [
+      'Glucomil improves peripheral insulin receptor sensitivity and enzymatic glucose uptake',
+      'Detox Plus purges excess systemic glucose toxicity and cellular glycation end-products',
+      'Nakom Oil shields nerve fibers from oxidative degradation and supports micro-capillary healing',
+      'Rejuvenating Stem Cell revitalizes endocrine tissue architecture in the pancreas',
+      'Assists long-term metabolic homeostasis without reliance on harsh chemicals'
+    ],
+    dosage: 'Carefully measured phyto-nutritional protocol synchronized with regular blood sugar monitoring. Consult on WhatsApp for your tailored dosing schedule.',
+    presentation: 'Complete 4-Product Metabolic Stabilization Protocol (Detox Plus + Nakom Oil + Rejuvenating Stem Cell + Glucomil)',
+    activeBotanicals: ['Detox Plus', 'Nakom Oil', 'Rejuvenating Stem Cell', 'Glucomil'],
+    comboProducts: ['Detox Plus', 'Nakom Oil', 'Rejuvenating Stem Cell', 'Glucomil'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#2563EB',
+    imageUrl: 'https://i.ibb.co/XhHGYvz/Whats-App-Image-2026-09-11-at-10-27-52-AM.jpg'
+  },
+  {
+    id: 'ulcer-combo',
+    slug: 'ulcer-combo',
+    name: 'Ulcer Combo',
+    category: 'Combo',
+    shortDescription: 'Triple-action gastric mucosal healing protocol soothing chronic peptic, gastric, and duodenal ulcers, acid reflux, and H. pylori microbial irritation.',
+    keyIndications: [
+      'Rapid healing of severe gastric, peptic & duodenal ulcer lesions',
+      'Eradicates Helicobacter pylori and prevents recurring infections',
+      'Instant relief from burning epigastric chest pain and sour acid reflux',
+      'Coats and regenerates degraded stomach mucosal barriers',
+      'Restores painless digestion, comfortable eating, and stomach tranquility'
+    ],
+    fullBenefits: [
+      'Gastro-Pro neutralizes excess corrosive gastric acid and delivers mucosal-repairing flavonoids',
+      'Peptic Tea delivers soothing botanical tannins that promote rapid epithelial ulcer healing',
+      'Nakom Oil coats the gastrointestinal tract and provides deep mucosal anti-inflammatory shielding',
+      'Stops painful spasms and bloating following meals',
+      'A permanent botanical solution for chronic ulcer sufferers'
+    ],
+    dosage: 'Stepwise herbal infusion and oral elixir regimen taken before meals and at bedtime. Contact on WhatsApp for complete ulcer cure guidelines.',
+    presentation: 'Complete 3-Product Gastric Mucosa Healing Kit (Gastro-Pro + Nakom Oil + Peptic Tea)',
+    activeBotanicals: ['Gastro-Pro', 'Nakom Oil', 'Peptic Tea'],
+    comboProducts: ['Gastro-Pro', 'Nakom Oil', 'Peptic Tea'],
+    retailPrice: 0,
+    memberPrice: 0,
+    pv: 0,
+    featured: false,
+    isCombo: true,
+    nafdacApproved: true,
+    imageAccent: '#059669',
+    imageUrl: 'https://i.ibb.co/v657mFGL/Whats-App-Image-2026-09-11-at-10-25-36-AM-1.jpg'
   }
 ];
 
 export const CATEGORIES = [
   'All',
+  'Combo',
   'Cleansing / Immunity',
   'Gastrointestinal',
   'Total Wellness',

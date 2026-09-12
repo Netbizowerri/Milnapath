@@ -31,17 +31,28 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate }) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((p) => {
+    const list = PRODUCTS.filter((p) => {
       const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
+      const query = searchQuery.trim().toLowerCase();
       const matchSearch =
-        searchQuery.trim() === '' ||
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.keyIndications.some((ind) => ind.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase());
+        query === '' ||
+        p.name.toLowerCase().includes(query) ||
+        p.shortDescription.toLowerCase().includes(query) ||
+        p.keyIndications.some((ind) => ind.toLowerCase().includes(query)) ||
+        p.category.toLowerCase().includes(query) ||
+        (p.activeBotanicals && p.activeBotanicals.some((b) => b.toLowerCase().includes(query)));
 
       return matchCat && matchSearch;
     });
+
+    // For 'All', ALWAYS ensure Combo category products are positioned LAST
+    if (selectedCategory === 'All') {
+      const standard = list.filter((p) => p.category !== 'Combo');
+      const combos = list.filter((p) => p.category === 'Combo');
+      return [...standard, ...combos];
+    }
+
+    return list;
   }, [selectedCategory, searchQuery]);
 
   const rawPriceListText = `*MILNAPATH PRICE LIST*
@@ -319,19 +330,42 @@ Organic soap    12000     15000`;
                           </div>
                         </td>
 
-                        <td className="py-4 px-4 text-right font-mono font-bold text-purple-800">
-                          ₦{product.memberPrice.toLocaleString()}
-                        </td>
+                        {product.isCombo || product.category === 'Combo' ? (
+                          <>
+                            <td className="py-4 px-4 text-right">
+                              <span className="text-xs font-semibold text-stone-500 italic">Inquire on WA</span>
+                            </td>
 
-                        <td className="py-4 px-4 text-right font-mono font-bold text-stone-900">
-                          ₦{product.retailPrice.toLocaleString()}
-                        </td>
+                            <td className="py-4 px-4 text-right">
+                              <span className="text-xs font-bold text-purple-900 bg-purple-100/80 px-2.5 py-1 rounded-md border border-purple-200">
+                                Consultation Regimen
+                              </span>
+                            </td>
 
-                        <td className="py-4 px-4 text-right font-mono font-semibold text-emerald-700">
-                          <span className="inline-flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 text-xs">
-                            +₦{profit.toLocaleString()} ({margin}%)
-                          </span>
-                        </td>
+                            <td className="py-4 px-4 text-right">
+                              <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 inline-flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-amber-600" />
+                                Multi-Product Combo
+                              </span>
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td className="py-4 px-4 text-right font-mono font-bold text-purple-800">
+                              ₦{product.memberPrice.toLocaleString()}
+                            </td>
+
+                            <td className="py-4 px-4 text-right font-mono font-bold text-stone-900">
+                              ₦{product.retailPrice.toLocaleString()}
+                            </td>
+
+                            <td className="py-4 px-4 text-right font-mono font-semibold text-emerald-700">
+                              <span className="inline-flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 text-xs">
+                                +₦{profit.toLocaleString()} ({margin}%)
+                              </span>
+                            </td>
+                          </>
+                        )}
 
                         <td className="py-4 px-4 hidden md:table-cell text-xs text-stone-600">
                           <span className="bg-stone-100 px-2.5 py-1 rounded-full font-medium">
@@ -349,12 +383,14 @@ Organic soap    12000     15000`;
                             </button>
                             <a
                               href={`https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(
-                                `Hello Milnapath, I want to order ${product.name} (Wholesale: ₦${product.memberPrice.toLocaleString()} / Retail: ₦${product.retailPrice.toLocaleString()}).`
+                                product.isCombo || product.category === 'Combo'
+                                  ? `Hello Milnapath, I would like to inquire about the ${product.name} (Combo Package: ${product.activeBotanicals?.join(', ') || ''}). Please provide pricing, consultation, and delivery details.`
+                                  : `Hello Milnapath, I want to order ${product.name} (Wholesale: ₦${product.memberPrice.toLocaleString()} / Retail: ₦${product.retailPrice.toLocaleString()}).`
                               )}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="p-1.5 bg-purple-700 hover:bg-purple-600 text-white rounded-lg transition-colors shadow-xs"
-                              title="Order via WhatsApp"
+                              title={product.isCombo || product.category === 'Combo' ? 'Inquire on WhatsApp' : 'Order via WhatsApp'}
                             >
                               <MessageCircle className="w-3.5 h-3.5" />
                             </a>
@@ -388,20 +424,20 @@ Organic soap    12000     15000`;
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => {
               const profit = product.retailPrice - product.memberPrice;
-              const margin = Math.round((profit / product.retailPrice) * 100);
+              const margin = product.retailPrice > 0 ? Math.round((profit / product.retailPrice) * 100) : 0;
 
               return (
                 <div
                   key={product.id}
                   className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-200 border border-stone-200/90 flex flex-col justify-between overflow-hidden group hover:-translate-y-1"
                 >
-                  {/* Card Image Header */}
-                  <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-stone-50/80 flex items-center justify-center pt-7 pb-3 px-3 border-b border-stone-100">
+                  {/* Card Image Header - Whole image display */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-50 flex items-center justify-center p-3 border-b border-stone-100">
                     <img
                       src={product.imageUrl}
                       alt={product.name}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full max-h-[175px] object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
 
@@ -410,10 +446,17 @@ Organic soap    12000     15000`;
                       {product.category}
                     </span>
 
-                    {/* Profit Tag */}
-                    <span className="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-xs">
-                      +₦{profit.toLocaleString()} Profit
-                    </span>
+                    {/* Profit Tag / Combo Tag */}
+                    {product.isCombo || product.category === 'Combo' ? (
+                      <span className="absolute top-3 right-3 bg-gradient-to-r from-purple-800 to-purple-950 text-amber-300 border border-amber-400/40 text-xs font-bold px-2.5 py-1 rounded-full shadow-xs flex items-center gap-1.5 backdrop-blur-xs">
+                        <Sparkles className="w-3 h-3 text-amber-400" />
+                        Combo Regimen
+                      </span>
+                    ) : (
+                      <span className="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-xs">
+                        +₦{profit.toLocaleString()} Profit
+                      </span>
+                    )}
                   </div>
 
                   {/* Card Body */}
@@ -443,40 +486,72 @@ Organic soap    12000     15000`;
                       ))}
                     </div>
 
-                    {/* Pricing Grid */}
-                    <div className="bg-stone-50 rounded-2xl p-3.5 border border-stone-200/70 flex items-center justify-between">
-                      <div>
-                        <span className="text-xs text-stone-500 block font-medium">Retail Price</span>
-                        <span className="font-extrabold text-lg text-stone-900">
-                          ₦{product.retailPrice.toLocaleString()}
-                        </span>
+                    {/* Pricing Grid or Combo Specifications */}
+                    {product.isCombo || product.category === 'Combo' ? (
+                      <div className="bg-purple-50/90 rounded-2xl p-3.5 border border-purple-200/90 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-purple-950 uppercase tracking-wider flex items-center gap-1">
+                            <Sparkles className="w-3.5 h-3.5 text-purple-700" />
+                            Included Formulations:
+                          </span>
+                          <span className="text-[11px] font-bold text-purple-800 bg-purple-200/80 px-2 py-0.5 rounded-full">
+                            {product.activeBotanicals?.length || 0} Products
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {product.activeBotanicals?.map((item, idx) => (
+                            <span
+                              key={idx}
+                              className="text-xs font-medium text-purple-900 bg-white px-2 py-0.5 rounded-md border border-purple-200/70 shadow-2xs"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="pt-1.5 flex items-center justify-between text-xs border-t border-purple-200/60">
+                          <span className="text-stone-500 font-medium">Pricing:</span>
+                          <span className="font-bold text-purple-900 bg-amber-400/20 px-2 py-0.5 rounded text-amber-900">
+                            Custom Protocol / Inquire
+                          </span>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <span className="text-xs text-purple-700 block font-semibold">Distributor Price</span>
-                        <span className="font-bold text-base text-purple-800">
-                          ₦{product.memberPrice.toLocaleString()}
-                        </span>
+                    ) : (
+                      <div className="bg-stone-50 rounded-2xl p-3.5 border border-stone-200/70 flex items-center justify-between">
+                        <div>
+                          <span className="text-xs text-stone-500 block font-medium">Retail Price</span>
+                          <span className="font-extrabold text-lg text-stone-900">
+                            ₦{product.retailPrice.toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-xs text-purple-700 block font-semibold">Distributor Price</span>
+                          <span className="font-bold text-base text-purple-800">
+                            ₦{product.memberPrice.toLocaleString()}
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       <button
                         onClick={() => navigate(`/products/${product.slug}`)}
                         className="w-full py-3 bg-stone-100 hover:bg-stone-200 text-stone-800 text-sm font-bold rounded-xl transition-colors text-center"
                       >
-                        View Details
+                        {product.isCombo || product.category === 'Combo' ? 'View Protocol' : 'View Details'}
                       </button>
 
                       <a
                         href={`https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(
-                          `Hello Milnapath, I would like to order ${product.name} (₦${product.retailPrice.toLocaleString()} / Member: ₦${product.memberPrice.toLocaleString()}). Please assist me with payment and delivery.`
+                          product.isCombo || product.category === 'Combo'
+                            ? `Hello Milnapath, I would like to inquire about the ${product.name} (Combo Package: ${product.activeBotanicals?.join(', ') || ''}). Please provide pricing, consultation, and delivery details.`
+                            : `Hello Milnapath, I would like to order ${product.name} (₦${product.retailPrice.toLocaleString()} / Member: ₦${product.memberPrice.toLocaleString()}). Please assist me with payment and delivery.`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full py-3 bg-purple-700 hover:bg-purple-600 text-white text-sm font-bold rounded-xl transition-colors text-center shadow-xs flex items-center justify-center gap-1.5"
                       >
                         <MessageCircle className="w-4 h-4" />
-                        <span>Order (WA)</span>
+                        <span>{product.isCombo || product.category === 'Combo' ? 'Inquire (WA)' : 'Order (WA)'}</span>
                       </a>
                     </div>
                   </div>

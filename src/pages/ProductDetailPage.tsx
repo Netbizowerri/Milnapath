@@ -59,7 +59,7 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
         <div className="lg:col-span-5 space-y-6">
           <div className="bg-gradient-to-br from-purple-900 to-purple-950 rounded-3xl overflow-hidden text-white shadow-xl border border-purple-700/60 relative flex flex-col justify-between">
             {/* Product Image Stage - Full uncropped display */}
-            <div className="relative aspect-[4/3] sm:aspect-square w-full overflow-hidden bg-stone-900/90 flex items-center justify-center p-4">
+            <div className="relative aspect-square w-full overflow-hidden bg-stone-950 flex items-center justify-center p-3 sm:p-5">
               <img
                 src={product.imageUrl}
                 alt={product.name}
@@ -71,10 +71,28 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-900/90 text-purple-200 border border-purple-600/50 backdrop-blur-xs">
                   {product.category}
                 </span>
-                <span className="text-xs sm:text-sm font-extrabold text-amber-950 bg-amber-400 px-3 py-1 rounded-full shadow-xs">
-                  {product.pv} PV Awarded
-                </span>
+                {product.isCombo || product.category === 'Combo' ? (
+                  <span className="text-xs sm:text-sm font-extrabold text-amber-950 bg-amber-400 px-3 py-1 rounded-full shadow-xs flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Multi-Product Regimen
+                  </span>
+                ) : (
+                  <span className="text-xs sm:text-sm font-extrabold text-amber-950 bg-amber-400 px-3 py-1 rounded-full shadow-xs">
+                    {product.pv} PV Awarded
+                  </span>
+                )}
               </div>
+
+              {/* View Whole Image fullscreen button */}
+              <button
+                type="button"
+                onClick={() => setIsBannerModalOpen(true)}
+                className="absolute bottom-3 right-3 bg-stone-900/90 hover:bg-stone-800 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-stone-700/80 shadow-md flex items-center gap-1.5 transition-colors cursor-pointer"
+                title="View Full Presentation Image"
+              >
+                <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
+                <span>View Whole Image</span>
+              </button>
             </div>
 
             {/* Product Title Bar inside detail card */}
@@ -118,84 +136,158 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
             </p>
           </div>
 
-          {/* Pricing & Order Config Card */}
-          <div className="bg-stone-50 rounded-2xl p-6 sm:p-7 border border-stone-200 space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-stone-200">
-              <div>
-                <span className="text-xs sm:text-sm text-stone-500 block">Single Unit Retail Price</span>
-                <span className="font-extrabold text-2xl sm:text-3xl text-purple-950 font-serif">
-                  ₦{product.retailPrice.toLocaleString()}
-                </span>
-              </div>
-              <div className="bg-purple-100/60 p-4 rounded-xl border border-purple-200">
-                <span className="text-xs sm:text-sm text-purple-800 font-bold block">Distributor Member Price</span>
-                <span className="font-bold text-xl sm:text-2xl text-purple-900 font-serif">
-                  ₦{product.memberPrice.toLocaleString()}
-                </span>
-                <span className="text-xs sm:text-sm text-purple-800 block mt-1 font-medium">
-                  Save ₦{(product.retailPrice - product.memberPrice).toLocaleString()} per unit with ₦10k registration!
-                </span>
-              </div>
-            </div>
-
-            {/* Quantity Selector */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <label className="text-sm font-bold uppercase tracking-wider text-stone-700">
-                  Select Quantity:
-                </label>
-                <div className="flex items-center border border-stone-300 rounded-xl bg-white overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="px-3.5 py-2 hover:bg-stone-100 text-stone-700 font-bold text-base"
-                  >
-                    -
-                  </button>
-                  <span className="px-4 py-2 text-sm font-bold text-stone-900 min-w-[40px] text-center">
-                    {quantity}
+          {/* Pricing & Order Config Card: Conditional for Combos vs Single Products */}
+          {product.isCombo || product.category === 'Combo' ? (
+            <div className="bg-gradient-to-br from-purple-50 via-white to-purple-50/50 rounded-2xl p-6 sm:p-7 border-2 border-purple-200 shadow-sm space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-4 border-b border-purple-100">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-800 block">
+                    Synergistic Treatment Protocol
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => setQuantity((q) => q + 1)}
-                    className="px-3.5 py-2 hover:bg-stone-100 text-stone-700 font-bold text-base"
-                  >
-                    +
-                  </button>
+                  <h3 className="font-extrabold text-xl sm:text-2xl text-purple-950 font-serif mt-0.5">
+                    Personalized Regimen Consultation
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                    Multi-product botanical combination formulated for comprehensive, synergistic clinical action.
+                  </p>
+                </div>
+                <span className="shrink-0 bg-purple-100 text-purple-900 border border-purple-300/80 text-xs font-extrabold px-3 py-1.5 rounded-xl shadow-2xs self-start">
+                  {product.activeBotanicals?.length || 4} Formulations Included
+                </span>
+              </div>
+
+              {/* Products in this combo list */}
+              <div className="space-y-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-purple-900 block">
+                  Included Formulations in this Combo Protocol:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {product.activeBotanicals?.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white p-3 rounded-xl border border-purple-200/80 shadow-2xs flex items-center gap-2.5"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-purple-600 shrink-0" />
+                      <span className="text-sm font-bold text-stone-800">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="text-right">
-                <span className="text-xs sm:text-sm text-stone-500 block">Total Retail Order:</span>
-                <span className="font-extrabold text-xl sm:text-2xl text-purple-950 font-serif">
-                  ₦{retailTotal.toLocaleString()}
-                </span>
+              {/* Consultation & Dosage Note */}
+              <div className="bg-amber-50/80 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-900 flex items-start gap-2.5">
+                <AlertCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                <p className="leading-relaxed">
+                  <strong>Dosage & Case Evaluation:</strong> Because dosages vary depending on individual condition, severity, and duration of symptoms, this combination regimen has no fixed retail price and is dispensed with personalized guidance from Milnapath phytotherapists.
+                </p>
               </div>
-            </div>
 
-            {/* Buy via WhatsApp Button */}
-            <div className="space-y-2 pt-2">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-4 bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 hover:from-purple-600 hover:to-purple-700 text-white font-extrabold rounded-2xl text-base shadow-xl shadow-purple-900/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <MessageCircle className="w-5 h-5 text-white" />
-                <span>Buy {quantity} Unit(s) via WhatsApp Now</span>
-              </a>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm text-stone-600 pt-1">
-                <span>Direct delivery available across all 36 Nigerian states & internationally.</span>
-                <button
-                  onClick={() => navigate('/register')}
-                  className="text-amber-700 font-bold hover:underline text-left sm:text-right"
+              {/* Inquire on WhatsApp */}
+              <div className="space-y-2 pt-1">
+                <a
+                  href={`https://wa.me/${COMPANY_DETAILS.whatsappRaw}?text=${encodeURIComponent(
+                    `*MILNAPATH COMBO CONSULTATION & ORDER REQUEST*\n----------------------------------------\n*Protocol:* ${product.name}\n*Category:* ${product.category}\n*Included Formulations:* ${product.activeBotanicals?.join(', ')}\n*Destination:* [Please enter your City/State]\n----------------------------------------\nHello Milnapath Phytotherapy Team, I am inquiring about the ${product.name}. Please guide me on pricing, complete dosage schedule, and how to receive this combo protocol.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 hover:from-purple-600 hover:to-purple-700 text-white font-extrabold rounded-2xl text-base shadow-xl shadow-purple-900/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  Join as Distributor for ₦{memberTotal.toLocaleString()} →
-                </button>
+                  <MessageCircle className="w-5 h-5 text-white" />
+                  <span>Inquire & Order Combo via WhatsApp</span>
+                </a>
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm text-stone-600 pt-1">
+                  <span>Nationwide doorstep dispatch across all 36 states & worldwide shipping.</span>
+                  <a
+                    href={`tel:+${COMPANY_DETAILS.whatsappRaw}`}
+                    className="text-purple-700 font-bold hover:underline flex items-center gap-1"
+                  >
+                    <PhoneCall className="w-3.5 h-3.5" />
+                    <span>Call Phytotherapy Desk: {COMPANY_DETAILS.whatsappNumber}</span>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            /* Regular Single Product Pricing Card */
+            <div className="bg-stone-50 rounded-2xl p-6 sm:p-7 border border-stone-200 space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-stone-200">
+                <div>
+                  <span className="text-xs sm:text-sm text-stone-500 block">Single Unit Retail Price</span>
+                  <span className="font-extrabold text-2xl sm:text-3xl text-purple-950 font-serif">
+                    ₦{product.retailPrice.toLocaleString()}
+                  </span>
+                </div>
+                <div className="bg-purple-100/60 p-4 rounded-xl border border-purple-200">
+                  <span className="text-xs sm:text-sm text-purple-800 font-bold block">Distributor Member Price</span>
+                  <span className="font-bold text-xl sm:text-2xl text-purple-900 font-serif">
+                    ₦{product.memberPrice.toLocaleString()}
+                  </span>
+                  <span className="text-xs sm:text-sm text-purple-800 block mt-1 font-medium">
+                    Save ₦{(product.retailPrice - product.memberPrice).toLocaleString()} per unit with ₦10k registration!
+                  </span>
+                </div>
+              </div>
+
+              {/* Quantity Selector */}
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <label className="text-sm font-bold uppercase tracking-wider text-stone-700">
+                    Select Quantity:
+                  </label>
+                  <div className="flex items-center border border-stone-300 rounded-xl bg-white overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                      className="px-3.5 py-2 hover:bg-stone-100 text-stone-700 font-bold text-base"
+                    >
+                      -
+                    </button>
+                    <span className="px-4 py-2 text-sm font-bold text-stone-900 min-w-[40px] text-center">
+                      {quantity}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => q + 1)}
+                      className="px-3.5 py-2 hover:bg-stone-100 text-stone-700 font-bold text-base"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="text-right">
+                  <span className="text-xs sm:text-sm text-stone-500 block">Total Retail Order:</span>
+                  <span className="font-extrabold text-xl sm:text-2xl text-purple-950 font-serif">
+                    ₦{retailTotal.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              {/* Buy via WhatsApp Button */}
+              <div className="space-y-2 pt-2">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 hover:from-purple-600 hover:to-purple-700 text-white font-extrabold rounded-2xl text-base shadow-xl shadow-purple-900/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <MessageCircle className="w-5 h-5 text-white" />
+                  <span>Buy {quantity} Unit(s) via WhatsApp Now</span>
+                </a>
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm text-stone-600 pt-1">
+                  <span>Direct delivery available across all 36 Nigerian states & internationally.</span>
+                  <button
+                    onClick={() => navigate('/register')}
+                    className="text-amber-700 font-bold hover:underline text-left sm:text-right"
+                  >
+                    Join as Distributor for ₦{memberTotal.toLocaleString()} →
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Dosage & Administration Instructions */}
           <div className="bg-purple-50 border border-purple-200 rounded-2xl p-5 space-y-2">
@@ -238,12 +330,12 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
           </div>
         </div>
 
-        {/* Official Banner Displayed FULL */}
-        {product.bannerUrl && (
+        {/* Official Banner or Treatment Flyer Displayed FULL */}
+        {(product.bannerUrl || product.isCombo || product.category === 'Combo') && (
           <div className="w-full space-y-2">
             <div className="flex items-center justify-between px-1">
               <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
-                Official {product.name} Clinical Guide & Flyer
+                Official {product.name} {product.isCombo || product.category === 'Combo' ? 'Synergistic Protocol Flyer' : 'Clinical Guide & Flyer'}
               </span>
               <button
                 type="button"
@@ -257,14 +349,14 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
 
             <div 
               onClick={() => setIsBannerModalOpen(true)}
-              className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300 bg-stone-900 cursor-pointer group relative"
+              className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300 bg-stone-900 cursor-pointer group relative flex items-center justify-center p-2 sm:p-4"
               title="Click to expand full flyer"
             >
               <img
-                src={product.bannerUrl}
-                alt={`${product.name} Official Presentation Banner`}
+                src={product.bannerUrl || product.imageUrl}
+                alt={`${product.name} Official Presentation`}
                 referrerPolicy="no-referrer"
-                className="w-full h-auto object-contain block transition-transform duration-300 group-hover:scale-[1.01]"
+                className="w-full h-auto max-h-[750px] object-contain block transition-transform duration-300 group-hover:scale-[1.01]"
               />
 
               {/* Hover overlay hint */}
@@ -344,7 +436,7 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
       {/* Complementary Products Recommendation */}
       <div className="space-y-4 pt-6 border-t border-stone-200">
         <h3 className="text-xl font-bold font-serif text-purple-950">
-          Other Highly Recommended Formulations
+          {product.category === 'Combo' ? 'Other Milnapath Treatment Combos' : 'Other Highly Recommended Formulations'}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherProducts.map((op) => (
@@ -362,9 +454,15 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
                 <span className="absolute top-2 left-2 text-xs font-bold text-purple-100 uppercase bg-purple-900/90 px-2.5 py-1 rounded-full shadow-xs">
                   {op.category}
                 </span>
-                <span className="absolute top-2 right-2 text-xs font-bold text-amber-900 bg-amber-400 px-2.5 py-1 rounded-md shadow-xs">
-                  {op.pv} PV
-                </span>
+                {op.isCombo || op.category === 'Combo' ? (
+                  <span className="absolute top-2 right-2 text-xs font-bold text-amber-950 bg-amber-400 px-2.5 py-1 rounded-md shadow-xs">
+                    Combo Pack
+                  </span>
+                ) : (
+                  <span className="absolute top-2 right-2 text-xs font-bold text-amber-900 bg-amber-400 px-2.5 py-1 rounded-md shadow-xs">
+                    {op.pv} PV
+                  </span>
+                )}
               </div>
 
               <div className="p-5 flex-1">
@@ -378,7 +476,7 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
 
               <div className="p-5 pt-3 flex items-center justify-between border-t border-stone-100 bg-stone-50/50">
                 <span className="font-bold text-base text-purple-950">
-                  ₦{op.retailPrice.toLocaleString()}
+                  {op.isCombo || op.category === 'Combo' ? 'Custom Regimen' : `₦${op.retailPrice.toLocaleString()}`}
                 </span>
                 <button
                   onClick={() => navigate(`/products/${op.slug}`)}
@@ -392,8 +490,8 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
         </div>
       </div>
 
-      {/* FULLSCREEN LIGHTBOX MODAL FOR BANNER */}
-      {isBannerModalOpen && product.bannerUrl && (
+      {/* FULLSCREEN LIGHTBOX MODAL FOR BANNER / FLYER */}
+      {isBannerModalOpen && (product.bannerUrl || product.imageUrl) && (
         <div 
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
           onClick={() => setIsBannerModalOpen(false)}
@@ -405,7 +503,7 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
             {/* Modal Controls */}
             <div className="w-full flex items-center justify-between text-white pb-3">
               <span className="text-sm font-semibold text-stone-300">
-                {product.name} Official Banner (Full View)
+                {product.name} Official Presentation (Full High-Resolution View)
               </span>
               <button
                 type="button"
@@ -417,13 +515,13 @@ Hello Milnapath Support, I would like to order ${quantity}x ${product.name}. How
               </button>
             </div>
 
-            {/* Modal Image */}
-            <div className="w-full rounded-2xl overflow-hidden bg-stone-950 border border-stone-800 shadow-2xl flex items-center justify-center max-h-[85vh] overflow-y-auto">
+            {/* Modal Image - Completely uncropped and whole */}
+            <div className="w-full rounded-2xl overflow-hidden bg-stone-950 border border-stone-800 shadow-2xl flex items-center justify-center max-h-[85vh] overflow-y-auto p-2 sm:p-4">
               <img
-                src={product.bannerUrl}
-                alt={`${product.name} Official Full Banner`}
+                src={product.bannerUrl || product.imageUrl}
+                alt={`${product.name} Official Full Presentation`}
                 referrerPolicy="no-referrer"
-                className="w-full h-auto object-contain max-h-[85vh]"
+                className="w-full h-auto object-contain max-h-[82vh]"
               />
             </div>
           </div>

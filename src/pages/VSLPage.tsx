@@ -56,28 +56,70 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
 
   const activeModule = videoList.find((m) => m.id === selectedModuleId) || videoList[0] || VSL_MODULES[0];
   const videoPlayerRef = useRef<HTMLDivElement>(null);
+  const isFirstMount = useRef(true);
+  const [isPlayerInView, setIsPlayerInView] = useState<boolean>(true);
+
+  // IntersectionObserver to detect when the video player is scrolled out of viewport
+  useEffect(() => {
+    const el = videoPlayerRef.current || document.getElementById('main-video-player');
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPlayerInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToPlayer = () => {
     const executeScroll = () => {
-      if (videoPlayerRef.current) {
-        // Calculate top position with 75px offset for the sticky navbar
-        const rect = videoPlayerRef.current.getBoundingClientRect();
-        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const el = videoPlayerRef.current || document.getElementById('main-video-player');
+      if (el) {
+        // Method 1: scrollIntoView with smooth behavior (honors scroll-mt-24)
+        try {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        } catch {
+          // fallback
+        }
+
+        // Method 2: coordinate-based window.scrollTo with 75px offset for sticky header
+        const rect = el.getBoundingClientRect();
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
         const targetScrollTop = Math.max(0, rect.top + currentScrollTop - 75);
 
-        window.scrollTo({
-          top: targetScrollTop,
-          behavior: 'smooth',
-        });
+        try {
+          window.scrollTo({
+            top: targetScrollTop,
+            behavior: 'smooth',
+          });
+        } catch {
+          window.scrollTo(0, targetScrollTop);
+        }
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
-    // Trigger immediately and after next frame for mobile touch responsiveness
+    // Trigger across animation frames and mobile touch intervals to ensure scroll is never cancelled
     executeScroll();
+    requestAnimationFrame(executeScroll);
     setTimeout(executeScroll, 60);
+    setTimeout(executeScroll, 180);
+    setTimeout(executeScroll, 350);
   };
+
+  // Automatically scroll up to video player whenever selected module changes
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    scrollToPlayer();
+  }, [selectedModuleId]);
 
   const handleModuleSelect = (id: number) => {
     setSelectedModuleId(id);
@@ -675,6 +717,23 @@ export const VSLPage: React.FC<VSLPageProps> = ({ navigate, openExitModal }) => 
               </div>
             </form>
           </div>
+        </div>
+      )}
+
+      {/* Floating Mobile Return-to-Video Button when scrolled down past player */}
+      {!isPlayerInView && (
+        <div className="fixed bottom-20 left-4 right-4 z-30 lg:hidden flex justify-center pointer-events-none">
+          <button
+            type="button"
+            onClick={scrollToPlayer}
+            className="pointer-events-auto bg-purple-950/95 hover:bg-purple-900 text-white px-4 py-2.5 rounded-full shadow-2xl border-2 border-amber-400/80 backdrop-blur-md flex items-center gap-2 text-xs font-bold transition-all transform active:scale-95 animate-pulse"
+          >
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span className="truncate max-w-[190px]">Now Playing: {activeModule.title}</span>
+            <span className="text-amber-300 font-extrabold flex items-center gap-0.5 shrink-0">
+              Scroll Up ↑
+            </span>
+          </button>
         </div>
       )}
     </div>
